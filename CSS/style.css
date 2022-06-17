@@ -1,0 +1,84 @@
+/* todo */
+/* 
+*#############
+* index.html
+*#############
+*/
+body {
+  margin: 0 auto;
+  background-color: rgb(133, 204, 254);
+  height: 100vh;
+}
+header h1 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  /* justify-content: center; */
+}
+
+form {
+  /* debbug */
+  border: 1px solid yellow;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+section {
+  display: flex;
+  justify-content: center;
+}
+form input {
+  height: fit-content;
+  margin: 1rem;
+}
+button {
+  width: fit-content;
+}
+
+/* 
+^
+^Tarjetas
+^
+*/
+article {
+  /* debbug */
+  border: 1px solid black;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  /* 
+    & flex section
+    */
+  display: flex;
+  justify-content: space-between;
+}
+article p {
+  /* display: flex; */
+  padding: 0.5rem;
+}
+
+/* 
+*#############
+* vuelo.html
+*#############
+*/
+#vueloInd section h2 {
+  text-align: center;
+}
+#vueloInd section {
+  display: flex;
+  flex-direction: column;
+}
+#vueloInd section > section {
+  padding: 1.5rem;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
