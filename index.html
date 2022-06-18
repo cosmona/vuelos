@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./JS/main.js"></script>
+
     <link rel="stylesheet" href="./CSS/style.css" />
     <title>FlightFinder</title>
   </head>
   <body>
     <header><h1>Flight finder</h1></header>
     <main>
-      <form action="" method="get" name="">
+      <form name="flightForm" id="flightForm">
         <label>Origen</label>
         <input type="text" name="origen" id="origen" />
         <label>Destino</label>
         <input type="text" name="destino" id="destino" />
+        <button type="submit">Buscar!</button>
       </form>
-      <button type="submit">Buscar!</button>
+
       <section class="vuelos">
         <article>
           <p>AER</p>
@@ -29,5 +30,6 @@
       </section>
     </main>
     <footer>foot</footer>
+    <script src="./JS/main.js"></script>
   </body>
 </html>
