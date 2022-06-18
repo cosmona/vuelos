@@ -1,3 +1,4 @@
+"using strict";
 /* var myHeaders = new Headers();
 myHeaders.append("Content-type", "application/x-www-form-urlencoded");
 
@@ -21,22 +22,62 @@ fetch("https://test.api.amadeus.com/v1/security/oauth2/token", requestOptions)
   .catch(error => console.log('error', error));
    */
 
-let myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer gIWNriBfPgcYNmy4qOV4fJ18K5UU");
+/* 
+  ?
+  ? Inicializacion de variables
+  ?
+  ? */
+/*
+ *  originLocation-> origen del vuelo
+ *  destinationLocation-> destino del vuelo
+ *  deptDate-> fecha de salida
+ *  numAdultos-> numero de personas que vuelan, al principio solo 1
+ *  maxFlights-> numero de vuelos que se obtendran con el API, se puede obtener 250
+ *  flightClass-> Economy porque no hay plata
+ *
+ * esto luego de los ejemplos agarrala la info de el form html
+ */
+let originLocation = "SYD";
+let destinationLocation = "BKK";
+let deptDate = "2022-11-01";
+let numAdultos = 1;
+let maxFlights = 1;
+let flightClass = "ECONOMY";
+/*
+ *  principio de el enlace que luego se va a llenar de info
+ *  los campos estan separados por un &
+ */
+let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${deptDate}&adults=${numAdultos}&travelClass=ECONOMY&max=${maxFlights}`;
 
-let urlencoded = new URLSearchParams();
+console.log(enlace); //debbug
 
-let requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  body: urlencoded,
-  redirect: "follow",
-};
+function vuelosDisponibles(link) {
+  let myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer eMDKatLQxfKQpRet0JLHHkUYanEA");
 
-fetch(
-  "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=BKK&departureDate=2022-11-01&returnDate=2022-11-18&adults=2&max=5",
-  requestOptions
-)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
+  let urlencoded = new URLSearchParams();
+
+  let requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+  let trying = {};
+
+  trying = fetch(link, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      //console.log(typeof result, result);
+      result = JSON.parse(result);
+      // console.log(typeof result, result);
+      return result;
+    })
+    .catch((error) => console.log("error", error));
+
+  //debbug
+  console.log(trying);
+  console.log("Llamando trying");
+  return trying;
+}
+
+vuelosDisponibles(enlace);
