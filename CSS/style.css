@@ -17,16 +17,19 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 80vh;
+  align-items: center;
+  padding: 1rem;
   /* justify-content: center; */
 }
 
 form {
   /* debbug */
   border: 1px solid yellow;
-  height: 50px;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 1rem;
 }
 section {
@@ -63,7 +66,8 @@ article{
 */
 article {
   /* debbug */
-  border: 1px solid black;
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff80;
   border-radius: 5px;
   list-style: none;
   width: 85vw;
