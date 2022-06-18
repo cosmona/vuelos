@@ -1,3 +1,5 @@
+
+//& Obtiene el Token
 function getToken(){
 	var myHeaders = new Headers();
 	myHeaders.append("Content-type", "application/x-www-form-urlencoded");
@@ -20,6 +22,8 @@ function getToken(){
 		.catch(error => console.log('error', error));
 }
 
+
+//& Obtiene el los vuelos
 function vuelosDisponibles(link, accessToken) {
 
 	let myHeaders = new Headers();
@@ -43,6 +47,16 @@ function vuelosDisponibles(link, accessToken) {
 	return vuelos;
   }
 
+  //& Pinta un vuelo
+  function pintaVuelo(vuelo){
+	console.log('vuelo', vuelo)
+
+	let domElement = document.querySelector(".vuelos")
+	const newArticle = document.createElement("article");
+	domElement.appendChild(newArticle);
+	newArticle.innerHTML += `<p>${vuelo.itineraries[0].segments[0].carrierCode}</p>`
+
+  }
 
   
 /*  originLocation-> origen del vuelo
@@ -60,17 +74,25 @@ let originLocation = "SYD";
 let destinationLocation = "BKK";
 let deptDate = "2022-11-01";
 let numAdultos = 1;
-let maxFlights = 1;
+let maxFlights = 11;
 let flightClass = "ECONOMY";
 let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${deptDate}&adults=${numAdultos}&travelClass=ECONOMY&max=${maxFlights}`;
   
  
 
 getToken().then((res)=>{
-	console.log('res', res)
-	vuelosDisponibles(enlace, res).then((result)=> console.log(result));
+	vuelosDisponibles(enlace, res).then((result)=> {
+		console.log('result', result)
+
+		for (let i = 0; i < result.data.length; i++) {
+			console.log("AQUI", result.data[i].id);
+			console.log("AQUI", result.data[i].price.grandTotal);
+			pintaVuelo(result.data[i]);
+		}
+	});
+
 });
 
 
-//console.log('getToken();', getToken());
+
 
