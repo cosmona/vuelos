@@ -36,6 +36,8 @@ section {
   display: flex;
   justify-content: center;
 }
+
+
 form input {
   height: fit-content;
   margin: 1rem;
@@ -43,7 +45,20 @@ form input {
 button {
   width: fit-content;
 }
+.vuelos{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    gap: 1rem;
+}
 
+article{
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff80;
+  border-radius: 5px;
+  width: 85vw;
+}
 /* 
 ^
 ^Tarjetas
