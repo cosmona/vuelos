@@ -92,7 +92,3 @@ getToken().then((res)=>{
 	});
 
 });
-
-
-
-
