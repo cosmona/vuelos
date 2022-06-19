@@ -53,29 +53,46 @@ function vuelosDisponibles(link, accessToken) {
 //& Pinta un vuelo
 function pintaVuelo(vuelo) {
   //console.log("vuelo", vuelo);
+  if (!vuelo) {
+    //DOM
+    let errorClase = document.getElementsByClassName("error");
+    console.log("errorClase", errorClase);
 
-  let aerolinea = vuelo.itineraries[0].segments[0].carrierCode;
-  let escalas = vuelo.itineraries[0].segments.length - 1;
-  let salida = vuelo.itineraries[0].segments[0].departure.at;
-  // slice corta hora de salida y llegada
-  salida = salida.slice(-8, -3);
-  let llegada = vuelo.itineraries[0].segments[escalas].arrival.at; // Todo: confirmar con dos o más escalas
-  llegada = llegada.slice(-8, -3);
-  let duracion = vuelo.itineraries[0].duration;
-  duracion = duracion.slice(2);
-  let precio = vuelo.price.grandTotal;
-  //DOM
-  let domElement = document.querySelector(".vuelos"); //DOM
-  const newArticle = document.createElement("article"); //DOM
-  domElement.appendChild(newArticle);
-  //Pinta tarjetas de vuelo
-  newArticle.innerHTML += `
+    if (errorClase.length === 0) {
+      let domElement = document.querySelector(".vuelos"); //DOM
+      const newArticle = document.createElement("article"); //DOM
+      newArticle.classList.add("error");
+      domElement.appendChild(newArticle);
+
+      //Pinta tarjetas de vuelo
+      newArticle.innerHTML = `
+      <p>ERROR: no hay vuelos</p>`; //todo poner algo mas bonito
+    }
+  } else {
+    let aerolinea = vuelo.itineraries[0].segments[0].carrierCode;
+    let escalas = vuelo.itineraries[0].segments.length - 1;
+    let salida = vuelo.itineraries[0].segments[0].departure.at;
+    // slice corta hora de salida y llegada
+    salida = salida.slice(-8, -3);
+    let llegada = vuelo.itineraries[0].segments[escalas].arrival.at; // Todo: confirmar con dos o más escalas
+    llegada = llegada.slice(-8, -3);
+    let duracion = vuelo.itineraries[0].duration;
+    duracion = duracion.slice(2);
+    let precio = vuelo.price.grandTotal;
+    //DOM
+    let domElement = document.querySelector(".vuelos"); //DOM
+    const newArticle = document.createElement("article"); //DOM
+    domElement.appendChild(newArticle);
+
+    //Pinta tarjetas de vuelo
+    newArticle.innerHTML += `
 	  <p>${aerolinea}</p>
 	  <p> ${salida} - ${llegada}</p>
 	  <p>${escalas}</p>
 	  <p>${duracion}</p>
 	  <p>${precio} € </p>
 	  `;
+  }
 }
 
 //& Muestra aeropuertos por ciudad
@@ -111,7 +128,7 @@ function showSuggestions(list, lugar) {
   let listData = "";
   if (list.length) {
     for (let i = 0; i < list.length; i++) {
-      listData += `<li id="${list[i]["iataCode"]}" class="icon">${list[i]["iataCode"]} - ${list[i]["detailedName"]},${list[i]["address"]["countryName"]} </li></ul>`;
+      listData += `<li id="${list[i]["iataCode"]}" class="icon">${list[i]["iataCode"]} - ${list[i]["detailedName"]},${list[i]["address"]["countryName"]} </li>`;
       // DOM
       if (lugar) {
         suggBoxORIGEN.innerHTML = listData;
@@ -119,23 +136,34 @@ function showSuggestions(list, lugar) {
         suggBoxDESTINO.innerHTML = listData;
       }
     }
+  } else {
+    listData += `<li id="oops" class="icon">oops, cuidad no valida</li>`;
+    if (lugar) {
+      suggBoxORIGEN.innerHTML = listData;
+    } else {
+      suggBoxDESTINO.innerHTML = listData;
+    }
   }
 }
 
 //& Gestiona llamadas a los vuelos inputs origen / destino
 function gestionInputs(origen, destino) {
+  let fecha = document.getElementById("start");
+  let numAdultos = document.getElementById("pasajeros");
   let originLocation = origen;
   let destinationLocation = destino;
-  let deptDate = "2022-06-19"; //TODO getDate Bonus(form)
-  let numAdultos = 1; //TODO nº personas
   let maxFlights = 11;
-  let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${deptDate}&adults=${numAdultos}&max=${maxFlights}`;
+  let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${fecha.value}&adults=${numAdultos.value}&max=${maxFlights}`;
 
   //* Origen y destino rellenados, procede a buscar vuelos
   getToken().then((res) => {
     vuelosDisponibles(enlace, res).then((result) => {
-      for (let i = 0; i < result.data.length; i++) {
-        pintaVuelo(result.data[i]);
+      if (result.data.length === 0) {
+        pintaVuelo(false);
+      } else {
+        for (let i = 0; i < result.data.length; i++) {
+          pintaVuelo(result.data[i]);
+        }
       }
     });
   });
@@ -166,12 +194,18 @@ const handleClickLiORIGEN = (event) => {
   origen = event.target.id; //* Guardo en item el li donde hizo click el usuario
   //todo cambiar a ternario
   if (origen && destino) {
-    gestionInputs(origen, destino);
+    if (origen != destino) {
+      gestionInputs(origen, destino);
+    } else {
+      console.error("Origen y destino igual (origen)");
+      //! control de error capa8: si el origen y destino es igual
+    }
   }
 };
 
 inputBoxORIGEN.onkeyup = (e) => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" && e.target.value.length >= 3) {
+    console.log("e.targer.val", e.target.value);
     //* pedimos el token
     getToken()
       .then((res) => {
@@ -203,12 +237,18 @@ const handleClickLiDESTINO = (event) => {
   //* guardo en item el li donde hizo click el usuario
   destino = event.target.id;
   if (origen && destino) {
-    gestionInputs(origen, destino);
+    if (origen != destino) {
+      gestionInputs(origen, destino);
+    } else {
+      pintaVuelo(false);
+      console.error("Origen y destino igual (destino)");
+      //! control de error capa8: si el origen y destino es igual
+    }
   }
 };
 
 inputBoxDESTINO.onkeyup = (e) => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" && e.target.value.length >= 3) {
     //* pedimos el token
     getToken()
       .then((res) => {

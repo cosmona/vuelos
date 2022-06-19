@@ -1,30 +1,28 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
   background: #644bff;
   padding: 0 20px;
 }
 
-
-
-.container{
+.container {
   max-width: 450px;
   margin: 150px auto;
 }
 
-.container .search-input{
+.container .search-input {
   background: #fff;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
 }
 
-.search-input input{
+.search-input input {
   height: 55px;
   width: 100%;
   outline: none;
@@ -32,14 +30,14 @@ body{
   border-radius: 5px;
   padding: 0 60px 0 20px;
   font-size: 18px;
-  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-input.active input{
+.search-input.active input {
   border-radius: 5px 5px 0 0;
 }
 
-.search-input .autocom-box{
+.search-input .autocom-box {
   padding: 0;
   opacity: 1;
   pointer-events: none;
@@ -47,13 +45,13 @@ body{
   overflow-y: auto;
 }
 
-.search-input.active .autocom-box{
+.search-input.active .autocom-box {
   padding: 10px 8px;
   opacity: 1;
   pointer-events: auto;
 }
 
-.autocom-box li{
+.autocom-box li {
   list-style: none;
   padding: 8px 12px;
   width: 100%;
@@ -61,14 +59,14 @@ body{
   border-radius: 3px;
 }
 
-.search-input.active .autocom-box li{
+.search-input.active .autocom-box li {
   display: block;
 }
-.autocom-box li:hover{
+.autocom-box li:hover {
   background: #efefef;
 }
 
-.search-input .icon{
+.search-input .icon {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -79,4 +77,10 @@ body{
   font-size: 20px;
   color: #644bff;
   cursor: pointer;
+}
+article {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff80;
+  border-radius: 5px;
+  width: 85vw;
 }

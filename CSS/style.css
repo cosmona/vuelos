@@ -37,27 +37,38 @@ section {
   justify-content: center;
 }
 
-
 form input {
   height: fit-content;
   margin: 1rem;
 }
+/* !IMPORTANTE llevar al ccs final */
+input:invalid:focus {
+  color: red;
+}
 button {
   width: fit-content;
 }
-.vuelos{
+.vuelos {
   display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 0 auto;
-    gap: 1rem;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
-article{
+article {
   border: 1px solid rgb(62, 61, 61);
   background-color: #ffffff80;
   border-radius: 5px;
   width: 85vw;
+}
+li {
+  background-color: rgb(224, 252, 252, 50);
+  list-style: none;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
 }
 /* 
 ^
