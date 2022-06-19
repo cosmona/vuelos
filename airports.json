@@ -1,0 +1,325 @@
+{
+	"meta": {
+	  "count": 10,
+	  "links": {
+		"self": "https://test.api.amadeus.com/v1/reference-data/locations/cities?include=AIRPORTS&keyword=valencia&max=10"
+	  }
+	},
+	"data": [
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia",
+		"iataCode": "VLC",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 39.46975,
+		  "longitude": -0.37739
+		},
+		"relationships": [
+		  {
+			"id": "VLC",
+			"type": "Airport",
+			"href": "#/included/airports/VLC"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia",
+		"iataCode": "VLN",
+		"address": {
+		  "countryCode": "VE",
+		  "stateCode": "VE-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 10.16202,
+		  "longitude": -68.00765
+		},
+		"relationships": [
+		  {
+			"id": "CCS",
+			"type": "Airport",
+			"href": "#/included/airports/CCS"
+		  },
+		  {
+			"id": "VLN",
+			"type": "Airport",
+			"href": "#/included/airports/VLN"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia",
+		"address": {
+		  "countryCode": "CO",
+		  "stateCode": "CO-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 8.25801,
+		  "longitude": -76.14928
+		},
+		"relationships": [
+		  {
+			"id": "MTR",
+			"type": "Airport",
+			"href": "#/included/airports/MTR"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia de Alcantara",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 39.41148,
+		  "longitude": -7.24435
+		},
+		"relationships": [
+		  {
+			"id": "BJZ",
+			"type": "Airport",
+			"href": "#/included/airports/BJZ"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia de Don Juan",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 42.29374,
+		  "longitude": -5.5172
+		},
+		"relationships": [
+		  {
+			"id": "VLL",
+			"type": "Airport",
+			"href": "#/included/airports/VLL"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia del Ventoso",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 38.26667,
+		  "longitude": -6.46667
+		},
+		"relationships": [
+		  {
+			"id": "BJZ",
+			"type": "Airport",
+			"href": "#/included/airports/BJZ"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia del Mombuey",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 38.24243,
+		  "longitude": -7.11965
+		},
+		"relationships": [
+		  {
+			"id": "BJZ",
+			"type": "Airport",
+			"href": "#/included/airports/BJZ"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia de las Torres",
+		"address": {
+		  "countryCode": "ES",
+		  "stateCode": "ES-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 38.40518,
+		  "longitude": -6.00403
+		},
+		"relationships": [
+		  {
+			"id": "BJZ",
+			"type": "Airport",
+			"href": "#/included/airports/BJZ"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "Valencia de Fuentes",
+		"address": {
+		  "countryCode": "MX",
+		  "stateCode": "MX-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 20.44405,
+		  "longitude": -100.96617
+		},
+		"relationships": [
+		  {
+			"id": "QRO",
+			"type": "Airport",
+			"href": "#/included/airports/QRO"
+		  }
+		]
+	  },
+	  {
+		"type": "location",
+		"subType": "city",
+		"name": "El Valenciano",
+		"address": {
+		  "countryCode": "MX",
+		  "stateCode": "MX-ZZZ"
+		},
+		"geoCode": {
+		  "latitude": 20.14885,
+		  "longitude": -102.45691
+		},
+		"relationships": [
+		  {
+			"id": "GDL",
+			"type": "Airport",
+			"href": "#/included/airports/GDL"
+		  }
+		]
+	  }
+	],
+	"included": {
+	  "airports": {
+		"CCS": {
+		  "subType": "Airport",
+		  "name": "Simon Bolivar Intl",
+		  "iataCode": "CCS",
+		  "address": {
+			"countryCode": "VE",
+			"stateCode": "VE-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 10.60046,
+			"longitude": -66.99811
+		  }
+		},
+		"BJZ": {
+		  "subType": "Airport",
+		  "name": "Airport",
+		  "iataCode": "BJZ",
+		  "address": {
+			"countryCode": "ES",
+			"stateCode": "ES-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 38.89125,
+			"longitude": -6.821333
+		  }
+		},
+		"VLL": {
+		  "subType": "Airport",
+		  "name": "Airport",
+		  "iataCode": "VLL",
+		  "address": {
+			"countryCode": "ES",
+			"stateCode": "ES-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 41.706112,
+			"longitude": -4.851944
+		  }
+		},
+		"VLN": {
+		  "subType": "Airport",
+		  "name": "Arturo Michelena Intl",
+		  "iataCode": "VLN",
+		  "address": {
+			"countryCode": "VE",
+			"stateCode": "VE-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 10.14961,
+			"longitude": -67.92937
+		  }
+		},
+		"MTR": {
+		  "subType": "Airport",
+		  "name": "Los Garzones",
+		  "iataCode": "MTR",
+		  "address": {
+			"countryCode": "CO",
+			"stateCode": "CO-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 8.82374,
+			"longitude": -75.82583
+		  }
+		},
+		"VLC": {
+		  "subType": "Airport",
+		  "name": "Airport",
+		  "iataCode": "VLC",
+		  "address": {
+			"countryCode": "ES",
+			"stateCode": "ES-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 39.48931,
+			"longitude": -0.48162
+		  }
+		},
+		"GDL": {
+		  "subType": "Airport",
+		  "name": "Miguel Hidalgo Intl",
+		  "iataCode": "GDL",
+		  "address": {
+			"countryCode": "MX",
+			"stateCode": "MX-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 20.5218,
+			"longitude": -103.31117
+		  }
+		},
+		"QRO": {
+		  "subType": "Airport",
+		  "name": "Intercontinental",
+		  "iataCode": "QRO",
+		  "address": {
+			"countryCode": "MX",
+			"stateCode": "MX-ZZZ"
+		  },
+		  "geoCode": {
+			"latitude": 20.61729,
+			"longitude": -100.18566
+		  }
+		}
+	  }
+	}
+  }
