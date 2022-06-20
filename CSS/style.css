@@ -1,3 +1,4 @@
+@import url(./loading.css);
 /* todo */
 /* 
 *#############
@@ -25,13 +26,20 @@ main {
 form {
   /* debbug */
   border: 1px solid yellow;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }
+
+ul{
+  position:absolute;
+  margin: 0;
+  padding: 0;
+}
+
 section {
   display: flex;
   justify-content: center;
@@ -40,6 +48,7 @@ section {
 form input {
   height: fit-content;
   margin: 1rem;
+  width: 467px;
 }
 /* !IMPORTANTE llevar al ccs final */
 input:invalid:focus {
@@ -69,6 +78,11 @@ li {
   width: 100%;
   cursor: default;
   border-radius: 3px;
+}
+
+li:hover{
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;
 }
 /* 
 ^

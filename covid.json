@@ -1,0 +1,157 @@
+{
+	"meta" : {
+	  "links" : {
+		"self" : "https://test.api.amadeus.com/v1/diseases/covid19-area-report?cityCode=BCN&countryCode=ES"
+	  }
+	},
+	"data" : {
+	  "area" : {
+		"name" : "Spain",
+		"iataCode" : "ES",
+		"areaType" : "Country"
+	  },
+	  "subAreas" : [ {
+		"area" : {
+		  "name" : "Barcelona",
+		  "iataCode" : "BCN",
+		  "geoCode" : {
+			"latitude" : "41.38256",
+			"longitude" : "2.17714"
+		  },
+		  "areaType" : "City"
+		},
+		"diseaseRiskLevel" : "Moderate", 
+		"relatedArea" : [ {
+		  "methods" : [ "GET" ],
+		  "rel" : "Child"
+		} ]
+	  } ],
+	  "summary" : "<p>The COVID-19 outbreak in Spain caused one of the highest numbers of deaths in Europe. In October 2021, the total number of cases in the country surpassed 5 million. Most restrictions have been eased following the end of the state of alarm in May 2021. In December 2021, however, in response to the Omicron COVID-19 variant and an increase in the number of new cases, some domestic and entry restrictions were tightened. As of mid-April, at least 86 percent of the population have been fully vaccinated, restrictions have been gradually eased in most regions and international travel is allowed from all countries.</p>",
+	  "diseaseRiskLevel" : "Moderate",
+	  "diseaseInfection" : {
+		"date" : "2022-05-22",
+		"level" : "Extreme",
+		"rate" : 436.18
+	  },
+	  "diseaseCases" : {
+		"date" : "2022-05-31",
+		"deaths" : 106341,
+		"confirmed" : 12326264
+	  },
+	  "hotspots" : "<p>Community of Madrid</p>",
+	  "dataSources" : {
+		"covidDashboardLink" : "https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos",
+		"healthDepartementSiteLink" : "https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm",
+		"governmentSiteLink" : "https://cnecovid.isciii.es/"
+	  },
+	  "areaRestrictions" : [ {
+		"date" : "2022-05-24",
+		"text" : "<p>From 28 March, individuals aged 12 and over travelling to the Canary Islands by air and sea from another autonomous community in Spain no longer need to present proof of vaccination against COVID-19, a negative test or recovery between 11-180 days. </p>",
+		"restrictionType" : "Domestic Travel"
+	  }, {
+		"date" : "2022-05-24",
+		"text" : "<p>Effective 5 March, those who had close contact with individuals who tested positive for COVID-19 will no longer need to quarantine, regardless of their vaccination status. However, officials continue to recommend exercising social distancing for 10 days, particularly during contact with vulnerable groups.</p>",
+		"restrictionType" : "Others"
+	  } ],
+	  "areaAccessRestriction" : {
+		"transportation" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>International flights are operating at major airports, including Barcelona-El Prat (BCN/LEBL), Madrid–Barajas (MAD/LEMD), Ibiza (IBZ/LEIB), Menorca (MAH/LEMH), Tenerife South (TFS/GCTS), Alicante-Elche (ALC/LEAL), Region of Murcia (RMU/LEMI), Sevilla (SVQ/LEZL), Málaga (AGP/LEMG), Palma de Mallorca (PMI/LEPA) and Gran Canaria (LPA/GCLP).</p> <p>Following the European Union (EU) Commission announcement that all EU airspace will be closed to Russian-owned, Russian-registered and Russian-controlled aircraft, including private planes and for overflights, all flights to and from Russia will be banned until further notice, in line with EU sanctions on Russia over its invasion of Ukraine.</p>",
+		  "transportationType" : "FLIGHT",
+		  "isBanned" : "Partial",
+		  "throughDate" : "indef"
+		},
+		"declarationDocuments" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p><strong>Health Insurance document</strong><br> For travellers requiring the issuance of a Schengen visa to enter the country, they must purchase travel insurance with a minimum coverage plan of USD33,000.</p>\n<p><strong>Health document</strong><br>Travellers without an EUDCC or an equivalent document, including those in transit, must complete a health control form. If arriving by air, travellers must complete the form 48 hours prior to travel and obtain a QR code to present upon arrival. The form can also be completed on the mobile app &quot;Spain Travel Health APP&quot;.</p>\n<p><strong>Travel (PLF) document</strong><br>Travellers arriving in Galicia must provide contact details by completing a form if they visited a high COVID-19 risk area in the last 14 days.</p>\n",
+		  "documentRequired" : "Yes",
+		  "healthDocumentationLink" : "https://www.spth.gob.es/",
+		  "travelDocumentationLink" : "https://coronavirus.sergas.gal/viaxeiros/?ling=en"
+		},
+		"entry" : {
+		  "date" : "2022-06-01",
+		  "text" : "<p>All travellers are allowed entry with an EUDCC certificate or an equivalent document. Land borders with Morocco reopened on 17 May for EU and Schengen Area travellers, and on 1 June for cross-border workers.</p> <p>Cruise ships are permitted to dock in Spanish ports.</p>",
+		  "rules" : "https://www.sanidad.gob.es/en/profesionales/saludPublica/ccayes/alertasActual/nCov/spth.htm",
+		  "exemptions" : "https://www.sanidad.gob.es/en/profesionales/saludPublica/ccayes/alertasActual/nCov/spth.htm",
+		  "borderBan" : [ {
+			"borderType" : "maritimeBorderBan",
+			"status" : "Open"
+		  }, {
+			"borderType" : "landBorderBan",
+			"status" : "Partially Open"
+		  } ]
+		},
+		"diseaseTesting" : {
+		  "date" : "2022-05-31",
+		  "text" : "<p><strong>Before travel</strong></p><p>Unvaccinated travellers must present a certificate for a nucleic acid amplification test (PCR, TMA, LAMP, NEAR) that was taken within 72 hours or an antigen test that was taken within 24 hours before departure. The certificate must be in Spanish, English, French, or German.</p>\n<p>Children under 12 are exempt from testing as well as transiting passengers, provided that they do not leave the international zone.</p>\n",
+		  "isRequired" : "Yes",
+		  "when" : "Before travel",
+		  "requirement" : "Mandatory",
+		  "rules" : "https://www.spth.gob.es/info-pcr",
+		  "testType" : "PCR, NAAT, LAMP, TMA, NEAR, Antigen",
+		  "minimumAge" : 12,
+		  "validityPeriod" : {
+			"delay" : "P72H",
+			"referenceDateType" : "Departure"
+		  }
+		},
+		"tracingApplication" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>\"Radar Covid\" is an optional mobile app for contact tracing.</p>",
+		  "isRequired" : "Recommended",
+		  "iosUrl" : [ "https://apps.apple.com/es/app/radar-covid/id1520443509" ],
+		  "androidUrl" : [ "https://play.google.com/store/apps/details?id=es.gob.radarcovid&hl=en_US" ]
+		},
+		"quarantineModality" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>There is no requirement for international travellers to quarantine at this time.</p>",
+		  "eligiblePerson" : "None"
+		},
+		"mask" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>Masks are required only inside hospitals, other health centers and retirement homes as well as on public transport. The requirement to wear a mask in airports remains in place until further notice.</p>",
+		  "isRequired" : "Partial"
+		},
+		"exit" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>Non-essential travel abroad is discouraged.</p>",
+		  "specialRequirements" : "No",
+		  "rulesLink" : "https://www.mscbs.gob.es/en/profesionales/saludPublica/ccayes/alertasActual/nCov/spth.htm",
+		  "isBanned" : "No"
+		},
+		"otherRestriction" : { },
+		"diseaseVaccination" : {
+		  "date" : "2022-05-24",
+		  "text" : "<p>Fully vaccinated and recovered travellers are permitted entry regardless of purpose without restrictions. The vaccine must be approved by the European Medicines Agency (EMA) or the World Health Organization (WHO). Certificates with vaccines not authorised by the World Health Organisation and the European Medicines Agency are also accepted, but the last dose administered must be one of the authorised ones. </p> <p>Vaccination certificates must be written in Spanish, English, French or German. If not, they must be accompanied by a Spanish translation from an official body.</p> <p>Recovery Certificates must be issued by the competent authority or by medical service. They are accepted at least 11 days after the first positive NAAT or rapid antigen detection test and shall be valid until 180 days after the date of the first positive result. Only rapid antigen tests that appear on <a href=\"https://ec.europa.eu/health/system/files/2022-03/covid-19_rat_common-list_en_1.pdf\" target=\"_blank\" rel=\"noopener\">the list agreed by the European Union Health Security Committee</a> and have been carried out by qualified personnel will be accepted.</p>",
+		  "isRequired" : "No",
+		  "referenceLink" : "https://www.spth.gob.es/info-pcr",
+		  "acceptedCertificates" : [ "Paper Certificate", " EU Digital COVID Certificate", " NHS Covid Pass", " Turkey certificate", " North Macedonia certificate", " Ukraine certificate", " Albania certificate", " Andorra certificate", " Faroe Islands certificate", " Israel certificate", " Monaco certificate", " Morocco certificate", " Panama certificate", " Switzerland certificate", " Iceland certificate", " Liechtenstein certificate", " Norway certificate", " San Marino certificate", " Japan certificate", " CDC Covid Vaccination Card", " Georgia certificate", " Serbia certificate ", " Armenia certificate", " Moldova certificate", " New Zealand My Vaccine Pass", " Togo certificate" ],
+		  "qualifiedVaccines" : [ "Pfizer - 14 days after second dose.", "AstraZeneca (Vaxzevria) - 14 days after second dose.", "Vaxevria (South Korea) - 14 days after second dose.", "Covishield (India) - 14 days after second dose.", "Johnson & Johnson - 14 days after first dose.", "Sinopharm (Beijing) - 14 days after second dose.", "CoronaVac - 14 days after second dose.", "Moderna - 14 days after second dose.", "CanSinoBIO - 14 days after first dose.", "Covaxin - 14 days after second dose.", "Nuvaxovid (Novavax) - 14 days after second dose.", "Covovax (Novavax) - 14 days after second dose.", "Immunity through previous infection - positive test older than 11 days, not older than 6 months." ],
+		  "policy" : "Yes",
+		  "exemptions" : "Domestic Restrictions, Testing"
+		}
+	  },
+	  "areaPolicy" : {
+		"date" : "2022-05-24",
+		"text" : "<p>In some regions, a COVID-19 health pass may be required to access some venues, and limits on gatherings and business capacity may be in place.</p>",
+		"status" : "Open",
+		"startDate" : "2021-05-09",
+		"endDate" : "indef",
+		"referenceLink" : "https://www.mscbs.gob.es/en/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm"
+	  },
+	  "relatedArea" : [ {
+		"methods" : [ "GET" ],
+		"rel" : "Parent"
+	  } ],
+	  "areaVaccinated" : [ {
+		"date" : "2022-05-15",
+		"vaccinationDoseStatus" : "oneDose",
+		"percentage" : 87.035
+	  }, {
+		"date" : "2022-05-25",
+		"vaccinationDoseStatus" : "fully",
+		"percentage" : 86.63
+	  } ],
+	  "type" : "covid19-area-report"
+	}
+  }
