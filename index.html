@@ -21,7 +21,14 @@
           min="2022-01-01"
           max="2018-12-1"
         />
-        <input type="number" name="pasajeros" id="pasajeros" min="1" max="4" value="1"/> 
+        <input
+          type="number"
+          name="pasajeros"
+          id="pasajeros"
+          min="1"
+          max="4"
+          value="1"
+        />
         <div class="container origen">
           <div class="search-input">
             <a href="" target="_blank" hidden></a>
@@ -29,6 +36,7 @@
               type="text"
               placeholder="pulsa enter para buscar"
               minlength="3"
+              id="aeropuerto-salida"
             />
           </div>
           <div class="autocom-box">
@@ -44,6 +52,7 @@
               type="text"
               placeholder="pulsa enter para buscar"
               minlength="3"
+              id="aeropuerto-llegada"
             />
           </div>
           <div class="autocom-box">
@@ -53,9 +62,8 @@
           </div>
         </div>
       </form>
-
+      <div class="loading"></div>
       <section class="vuelos">
-        <div class="loading"></div>
         <!--  <article>
           <p>AER</p>
           <p>9:25 - 17:25</p>
