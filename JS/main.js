@@ -25,7 +25,7 @@ async function getToken() {
     const result_1 = await response.text();
     return JSON.parse(result_1).access_token;
   } catch (error) {
-    return console.log("error", error);                                   //TODO Control de errores
+    return console.log("error", error); //TODO Control de errores
   }
 }
 
@@ -47,8 +47,8 @@ function vuelosDisponibles(link, accessToken) {
       result = JSON.parse(result);
       return result;
     })
-    .catch((error) => console.log("error", error));                       //TODO Control de errores
-  //* devuelve listado de vuelos  
+    .catch((error) => console.log("error", error)); //TODO Control de errores
+  //* devuelve listado de vuelos
   return vuelos;
 }
 
@@ -57,46 +57,45 @@ function pintaVuelo(vuelo) {
   //* si el listado de vuelos esta vacio
   if (!vuelo) {
     //* busca si ya hay una tarjeta con error en pantalla
-    let errorClase = document.getElementsByClassName("error");  //~DOM
+    let errorClase = document.getElementsByClassName("error"); //~DOM
 
     //* si no hay tarjeta de error en pantalla pinta una
     if (errorClase.length === 0) {
-      let domElement = document.querySelector(".vuelos");       //~DOM
-      const newArticle = document.createElement("article");     //~DOM
-      newArticle.classList.add("error");                        
+      let domElement = document.querySelector(".vuelos"); //~DOM
+      const newArticle = document.createElement("article"); //~DOM
+      newArticle.classList.add("error");
       domElement.appendChild(newArticle);
 
       //*Pinta tarjetas de vuelo
-      newArticle.innerHTML = `<p>ERROR: no hay vuelos</p>`;               //TODO poner algo mas bonito
+      newArticle.innerHTML = `<p>ERROR: no hay vuelos</p>`; //TODO poner algo mas bonito
     }
-   //* si el listado no esta vacio pinta tarjeta 
+    //* si el listado no esta vacio pinta tarjeta
   } else {
-    let domElement = document.querySelector(".vuelos");          //~DOM
-    const newArticle = document.createElement("article");        //~DOM
+    let domElement = document.querySelector(".vuelos"); //~DOM
+    const newArticle = document.createElement("article"); //~DOM
 
     let aerolinea = vuelo.itineraries[0].segments[0].carrierCode;
     let escalas = vuelo.itineraries[0].segments.length - 1;
     let salida = vuelo.itineraries[0].segments[0].departure.at;
-    let llegada = vuelo.itineraries[0].segments[escalas].arrival.at;      //TODO: confirmar con dos o más escalas
+    let llegada = vuelo.itineraries[0].segments[escalas].arrival.at; //TODO: confirmar con dos o más escalas
     let duracion = vuelo.itineraries[0].duration;
     let precio = vuelo.price.grandTotal;
-    
+
     //* slice corta hora de salida y llegada
     salida = salida.slice(-8, -3);
     llegada = llegada.slice(-8, -3);
     duracion = duracion.slice(2);
-    
+
     //* añade un nuevo article al index.html
     domElement.appendChild(newArticle);
 
     //* pinta datos tarjetas de vuelo
-    newArticle.innerHTML += `<p>${aerolinea}</p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p>`;  //TODO: poner bien
+    newArticle.innerHTML += `<p>${aerolinea}</p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p>`; //TODO: poner bien
   }
 }
 
 //& Muestra aeropuertos por ciudad
 function tellAirports(text, token) {
-
   //* define cabeceras
   var myHeaders = new Headers();
   myHeaders.append("Content-type", "application/x-www-form-urlencoded");
@@ -117,7 +116,7 @@ function tellAirports(text, token) {
       //* devuelve listado de aeropiertos
       return [JSON.parse(result)];
     })
-    .catch((error) => console.log("error", error));                     //TODO Control de errores
+    .catch((error) => console.log("error", error)); //TODO Control de errores
 }
 
 //& Muestra sugerencias origen/destino [lugar - true:origen false: destino]
@@ -129,9 +128,9 @@ function showSuggestions(list, lugar) {
     for (let i = 0; i < list.length; i++) {
       //* crea un li nuevo
       listData += `<li id="${list[i]["iataCode"]}" class="icon">${list[i]["iataCode"]} - ${list[i]["detailedName"]},${list[i]["address"]["countryName"]} </li>`;
-      
+
       if (lugar) {
-        suggBoxORIGEN.innerHTML = listData;                   //TODO Funcion NO pura 
+        suggBoxORIGEN.innerHTML = listData; //TODO Funcion NO pura
       } else {
         suggBoxDESTINO.innerHTML = listData;
       }
@@ -151,17 +150,19 @@ function gestionInputs(origen, destino) {
   let fecha = document.getElementById("start");
   let numAdultos = document.getElementById("pasajeros");
   let tituloinputORIGEN = document.getElementById("origen");
-  
+
   let originLocation = origen;
   let destinationLocation = destino;
   let maxFlights = 11;
   let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${fecha.value}&adults=${numAdultos.value}&max=${maxFlights}`;
-  
+
   //* muestra loading
-  loadingState(true);                                         //! modificado inaki noche del domingo
-  
+  loadingState(true); //! modificado inaki noche del domingo
+
   //* Origen y destino rellenados, procede a buscar vuelos
   getToken().then((res) => {
+    const sect = document.querySelector(".vuelos");
+    sect.innerHTML = "";
     vuelosDisponibles(enlace, res).then((result) => {
       if (result.data.length === 0) {
         pintaVuelo(false);
@@ -170,30 +171,30 @@ function gestionInputs(origen, destino) {
           pintaVuelo(result.data[i]);
         }
       }
-      //* oculta loading                                        
-      loadingState(false);                                      //! modificado inaki noche del domingo
+      //* oculta loading
+      loadingState(false); //! modificado inaki noche del domingo
     });
   });
 }
 
 //& Carga la animacion de loading true:muestra false:oculta
-function loadingState(activo){                                    //! modificado inaki noche del domingo
+function loadingState(activo) {
+  //! modificado inaki noche del domingo
   let load = document.querySelector(".loading");
-  
+
   if (activo) {
     //* muestra loading
-    load.style.display ="block";
+    load.style.display = "block";
   } else {
     //* oculta loading
-    load.style.display ="none";
+    load.style.display = "none";
   }
 }
 
-
 /*
 !  __ __ __  __  __   __  __       __  __         
-! (_ /  /  \|__)|_   |__)|__)||\ |/  ||__) /\ |   
-! __)\__\__/|   |__  |   | \ || \|\__||   /--\|__ 
+! (_ /  /  \|__)|_   |__)|__)||\ |/   ||__) /\ |   
+! __)\__\__/|   |__  |   | \ || \|\__ ||   /--\|__ 
 
 ? originLocation-> origen del vuelo
 ? destinationLocation-> destino del vuelo
@@ -204,25 +205,25 @@ function loadingState(activo){                                    //! modificado
 
 //? SCOPE PRINCIPAL ORIGEN
 //TODO a una línea
-const searchWrapperORIGEN = document.querySelector(".origen .search-input"); //~DOM    
-const inputBoxORIGEN = searchWrapperORIGEN.querySelector("input");           //~DOM    
-const suggBoxORIGEN = document.querySelector(".origen .autocom-box ul");     //~DOM    
+const searchWrapperORIGEN = document.querySelector(".origen .search-input"); //~DOM
+const inputBoxORIGEN = searchWrapperORIGEN.querySelector("input"); //~DOM
+const suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
 //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
 let introducidoUsuarioORIGEN = [];
 let origen;
 
 //* defino función manejadora de li al hacer click en él
 const handleClickLiORIGEN = (event) => {
-  //* Pongo en el texto del imput lo que pone en el li del click                
-  let inputBoxORIGEN = document.querySelector(".origen .search-input input");   //! modificado inaki noche del domingo
-  inputBoxORIGEN.value = event.target.innerText;                                //! modificado inaki noche del domingo
+  //* Pongo en el texto del imput lo que pone en el li del click
+  let inputBoxORIGEN = document.querySelector(".origen .search-input input"); //! modificado inaki noche del domingo
+  inputBoxORIGEN.value = event.target.innerText; //! modificado inaki noche del domingo
 
-  //* Hago desaparecer todos los li's                                           
-  let suggBoxORIGEN = document.querySelector(".origen .autocom-box ul");        //! modificado inaki noche del domingo
-  suggBoxORIGEN.innerHTML = "";                                                 //! modificado inaki noche del domingo
-  
+  //* Hago desaparecer todos los li's
+  let suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //! modificado inaki noche del domingo
+  suggBoxORIGEN.innerHTML = ""; //! modificado inaki noche del domingo
+
   //* Guardo en el item el li donde hizo click el usuario
-  origen = event.target.id; 
+  origen = event.target.id;
   //* si hay valor en origen y destino y son diferentes
   if (origen && destino) {
     if (origen != destino) {
@@ -236,8 +237,9 @@ const handleClickLiORIGEN = (event) => {
 
 //* escucha el teclado
 inputBoxORIGEN.onkeyup = (e) => {
-  if (e.target.value.length >= 3) {                        //! modificado inaki noche del domingo
-//if (e.key === "Enter" && e.target.value.length >= 3) {   //! modificado inaki noche del domingo
+  if (e.target.value.length >= 3) {
+    //! modificado inaki noche del domingo
+    //if (e.key === "Enter" && e.target.value.length >= 3) {   //! modificado inaki noche del domingo
     console.log("e.targer.val", e.target.value);
     //* pedimos el token
     getToken()
@@ -258,29 +260,31 @@ inputBoxORIGEN.onkeyup = (e) => {
   }
 };
 
-
-
+//* limpia input de origen
+inputBoxORIGEN.onclick = (e) => {
+  document.getElementById("aeropuerto-salida").select();
+};
 
 //? SCOPE PRINCIPAL DESTINO
 //TODO a una línea
-const searchWrapperDESTINO = document.querySelector(".destino .search-input");  //~DOM 
-const inputBoxDESTINO = searchWrapperDESTINO.querySelector("input");            //~DOM 
-const suggBoxDESTINO = document.querySelector(".destino .autocom-box ul");      //~DOM 
+const searchWrapperDESTINO = document.querySelector(".destino .search-input"); //~DOM
+const inputBoxDESTINO = searchWrapperDESTINO.querySelector("input"); //~DOM
+const suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //~DOM
 //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
 let introducidoUsuarioDESTINO = [];
 let destino;
 
 //* defino función manejadora de li al hacer click en el
 const handleClickLiDESTINO = (event) => {
-   //* Pongo en el texto del imput lo que pone en el li del click                
-   let inputBoxDESTINO = document.querySelector(".destino .search-input input");   //! modificado inaki noche del domingo
-   inputBoxDESTINO.value = event.target.innerText;                                 //! modificado inaki noche del domingo
-  
-  //* Hago desaparecer todos los li's                                           
-  let suggBoxDESTINO = document.querySelector(".destino .autocom-box ul");        //! modificado inaki noche del domingo
-  suggBoxDESTINO.innerHTML = "";                                                  //! modificado inaki noche del domingo
-  
-   //* guardo en item el li donde hizo click el usuario
+  //* Pongo en el texto del imput lo que pone en el li del click
+  let inputBoxDESTINO = document.querySelector(".destino .search-input input"); //! modificado inaki noche del domingo
+  inputBoxDESTINO.value = event.target.innerText; //! modificado inaki noche del domingo
+
+  //* Hago desaparecer todos los li's
+  let suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //! modificado inaki noche del domingo
+  suggBoxDESTINO.innerHTML = ""; //! modificado inaki noche del domingo
+
+  //* guardo en item el li donde hizo click el usuario
   destino = event.target.id;
   if (origen && destino) {
     if (origen != destino) {
@@ -295,8 +299,9 @@ const handleClickLiDESTINO = (event) => {
 
 //* escucha el teclado
 inputBoxDESTINO.onkeyup = (e) => {
-  if (e.target.value.length >= 3) {                                             //! modificado inaki noche del domingo
-  //if (e.key === "Enter" && e.target.value.length >= 3) {                      //! modificado inaki noche del domingo
+  if (e.target.value.length >= 3) {
+    //! modificado inaki noche del domingo
+    //if (e.key === "Enter" && e.target.value.length >= 3) {                      //! modificado inaki noche del domingo
     //* pedimos el token
     getToken()
       .then((res) => {
@@ -316,7 +321,11 @@ inputBoxDESTINO.onkeyup = (e) => {
   }
 };
 
+//* limpia input de destino
+inputBoxDESTINO.onclick = (e) => {
+  document.getElementById("aeropuerto-llegada").select();
+};
 //?BONUS
 //todo solicitar el token una vez y guardar FUNCIÓN > VARIABLE GLOBAL
- //! modificado inaki noche del domingo
-//TODO las const en mayusculas y con _                                          
+//! modificado inaki noche del domingo
+//TODO las const en mayusculas y con _
