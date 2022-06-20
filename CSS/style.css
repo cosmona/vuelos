@@ -1,3 +1,4 @@
+@import url(./loading.css);
 /* todo */
 /* 
 *#############
@@ -25,39 +26,63 @@ main {
 form {
   /* debbug */
   border: 1px solid yellow;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }
+
+ul{
+  position:absolute;
+  margin: 0;
+  padding: 0;
+}
+
 section {
   display: flex;
   justify-content: center;
 }
 
-
 form input {
   height: fit-content;
   margin: 1rem;
+  width: 467px;
+}
+/* !IMPORTANTE llevar al ccs final */
+input:invalid:focus {
+  color: red;
 }
 button {
   width: fit-content;
 }
-.vuelos{
+.vuelos {
   display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 0 auto;
-    gap: 1rem;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
-article{
+article {
   border: 1px solid rgb(62, 61, 61);
   background-color: #ffffff80;
   border-radius: 5px;
   width: 85vw;
+}
+li {
+  background-color: rgb(224, 252, 252, 50);
+  list-style: none;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+
+li:hover{
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;
 }
 /* 
 ^

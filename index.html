@@ -6,21 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./CSS/style.css" />
+    <!--     <link rel="stylesheet" href="./CSS/airports.css" /> -->
     <title>FlightFinder</title>
   </head>
   <body>
     <header><h1>Flight finder</h1></header>
     <main>
       <form name="flightForm" id="flightForm">
-        <label>Origen</label>
-        <input type="text" name="origen" id="origen" />
-        <label>Destino</label>
-        <input type="text" name="destino" id="destino" />
-        <button type="submit">Buscar!</button>
+        <input
+          type="date"
+          id="start"
+          name="trip-start"
+          value="2022-07-22"
+          min="2022-01-01"
+          max="2018-12-1"
+        />
+        <input type="number" name="pasajeros" id="pasajeros" min="1" max="4" value="1"/> 
+        <div class="container origen">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input
+              type="text"
+              placeholder="pulsa enter para buscar"
+              minlength="3"
+            />
+          </div>
+          <div class="autocom-box">
+            <ul>
+              <!-- lista insertada -->
+            </ul>
+          </div>
+        </div>
+        <div class="container destino">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input
+              type="text"
+              placeholder="pulsa enter para buscar"
+              minlength="3"
+            />
+          </div>
+          <div class="autocom-box">
+            <ul>
+              <!-- lista insertada -->
+            </ul>
+          </div>
+        </div>
       </form>
 
       <section class="vuelos">
-       <!--  <article>
+        <div class="loading"></div>
+        <!--  <article>
           <p>AER</p>
           <p>9:25 - 17:25</p>
           <p>1 escala</p>
