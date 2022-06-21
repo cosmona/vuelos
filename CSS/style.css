@@ -64,7 +64,7 @@ section {
 form input {
   height: fit-content;
   margin: 1rem;
-  width: 40vw;
+  width: 50vw;
   min-width: 300px;
   height: 2.5rem;
   outline: none;
