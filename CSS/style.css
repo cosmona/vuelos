@@ -4,8 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
-  --selective-yellow: #ffbc00ff;
+  --selective-yellow: rgba(250, 192, 0, 0.993);
   --alabaster: #ebe5dcff;
   --camel: #b59779ff;
   --liver-organ: #642919ff;
@@ -24,10 +25,11 @@ body {
 }
 header h1 {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
   background-color: var(--selective-yellow);
-  color: whitesmoke;
+  color: rgb(95, 204, 247);
   box-shadow: 10px 5px 5px black;
+  text-shadow: 0 0 5 px black;
 }
 
 main {
@@ -47,9 +49,11 @@ form {
   background-image: url(../IMG/cabecera.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   align-items: center;
 }
 /*media query + 390px*/
+
 ul {
   position: absolute;
   margin: 0;
@@ -74,6 +78,11 @@ form input {
   font-size: 12px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
+
+#pasajeros::before {
+  content: "🕴";
+}
+
 /* !IMPORTANTE llevar al ccs final */
 input:invalid:focus {
   color: red;
@@ -171,4 +180,22 @@ article p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
+}
+
+/*
+*########*/
+
+@media (min-width: 900px) {
+  form input {
+    max-width: 600px;
+  }
+  form {
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 1500px) {
+  form input {
+    margin-right: 5rem;
+  }
 }
