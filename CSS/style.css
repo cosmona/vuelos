@@ -64,14 +64,14 @@ section {
 form input {
   height: fit-content;
   margin: 1rem;
-  width: 35vw;
+  width: 40vw;
   min-width: 300px;
   height: 2.5rem;
   outline: none;
   border: none;
   border-radius: 5px;
   text-align: center;
-  font-size: 18px;
+  font-size: 12px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
 /* !IMPORTANTE llevar al ccs final */
