@@ -90,38 +90,40 @@ function pintaVuelo(vuelo) {
     domElement.appendChild(newArticle);
 
     //* pinta datos tarjetas de vuelo
-    newArticle.innerHTML += `<p>${aerolinea}</p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p>`; //TODO: poner bien
+    newArticle.innerHTML += `<p><img class="logo" src="https://daisycon.io/images/airline/?width=300&height=150&color=ffffff&iata=${aerolinea}" alt=""></p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p>`; //TODO: poner bien
   }
 }
 
 //& Muestra aeropuertos por ciudad
-function tellAirports(text, token) {
+async function tellAirports(text, token) {
   //* define cabeceras
-  var myHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append("Content-type", "application/x-www-form-urlencoded");
   myHeaders.append("Authorization", `Bearer ${token}`);
 
-  var requestOptions = {
+  const requestOptions = {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
   };
 
-  return fetch(
-    `https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT`,
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then((result) => {
-      //* devuelve listado de aeropiertos
-      return [JSON.parse(result)];
-    })
-    .catch((error) => console.log("error", error)); //TODO Control de errores
+  try {
+    const response = await fetch(
+      `https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT`,
+      requestOptions
+    );
+    const result_1 = await response.text();
+    return [JSON.parse(result_1)];
+  } catch (error) {
+    return console.log("error", error);
+  } //TODO Control de errores
 }
 
 //& Muestra sugerencias origen/destino [lugar - true:origen false: destino]
 function showSuggestions(list, lugar) {
   let listData = ""; //! si no se inicializa a string vacio en las predicciones pone un undefined
+  const suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
+  const suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //~DOM
 
   //* si la lista no esta vacia
   if (list.length) {
@@ -190,20 +192,10 @@ function loadingState(activo) {
     load.style.display = "none";
   }
 }
-
-/*
-!  __ __ __  __  __   __  __       __  __         
-! (_ /  /  \|__)|_   |__)|__)||\ |/   ||__) /\ |   
-! __)\__\__/|   |__  |   | \ || \|\__ ||   /--\|__ 
-
-? originLocation-> origen del vuelo
-? destinationLocation-> destino del vuelo
-? deptDate-> fecha de salida
-? numAdultos-> numero de personas que vuelan, al principio solo 1
-? maxFlights-> numero de vuelos que se obtendran con el API, se puede obtener 250
-? flightClass-> Economy porque no hay plata*/
-
+//& Funcion principal
+async function main(){
 //? SCOPE PRINCIPAL ORIGEN
+
 //TODO a una línea
 const searchWrapperORIGEN = document.querySelector(".origen .search-input"); //~DOM
 const inputBoxORIGEN = searchWrapperORIGEN.querySelector("input"); //~DOM
@@ -211,6 +203,8 @@ const suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
 //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
 let introducidoUsuarioORIGEN = [];
 let origen;
+//* pedimos token
+let res =  await getToken();
 
 //* defino función manejadora de li al hacer click en él
 const handleClickLiORIGEN = (event) => {
@@ -236,33 +230,67 @@ const handleClickLiORIGEN = (event) => {
 };
 
 //* escucha el teclado
-inputBoxORIGEN.onkeyup = (e) => {
+inputBoxORIGEN.onkeyup = async (e) => {
   if (e.target.value.length >= 3) {
-    //! modificado inaki noche del domingo
-    //if (e.key === "Enter" && e.target.value.length >= 3) {   //! modificado inaki noche del domingo
-    console.log("e.targer.val", e.target.value);
     //* pedimos el token
-    getToken()
-      .then((res) => {
-        return tellAirports(inputBoxORIGEN.value.toString(), res);
-      })
-      .then((result) => {
-        showSuggestions(result[0].data, true);
-        //* seleciona los li de ul
-        const listLi = document.querySelectorAll(".origen .autocom-box ul li");
-        //* asocio a cada li la funcion manejadora handleClickLi
-        for (const li of listLi) {
-          li.addEventListener("click", handleClickLiORIGEN);
-        }
-      });
+    let result = await tellAirports(inputBoxORIGEN.value.toString(), res);
+    
+    if (e.key != 'ArrowUp'){                                               
+      if (e.key != 'ArrowDown'){                                                
+            showSuggestions(result[0].data, true);
+      }
+    }
+    
+    //* seleciona los li de ul
+    const listLi = document.querySelectorAll(".origen .autocom-box ul li");
+    //* asocio a cada li la funcion manejadora handleClickLi
+    for (const li of listLi) {
+      li.addEventListener("click", handleClickLiORIGEN);
+    }
+    //!subir bajar en suguerencias con teclado
+        // Saber si alguno está activo
+        document.querySelector('#aeropuerto-salida').addEventListener('keydown', e => {
+            let actual = Array.from(listLi).findIndex(item => item.classList.contains('active'));
+           // Analizar tecla pulsada
+            if (e.key == 'Enter' && origen && destino) {
+                // Tecla Enter, evitar que se procese el formulario
+                e.preventDefault();
+                // ¿Hay un elemento activo?
+                if(listLi[actual]) {
+                // Hacer clic
+                listLi[actual].click();
+                }
+              } if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
+                    // Flecha arriba (restar) o abajo (sumar)
+                    if(listLi[actual]) {
+                      // Solo si hay un elemento activo, eliminar clase
+                      listLi[actual].classList.remove('active');
+                    }
+                    // Calcular posición del siguiente
+                    actual += (e.keyCode == 38) ? -1 : 1;
+                    console.log('actualelement',actual)
+                    // Asegurar que está dentro de los límites
+                   /*  if(actual < 0) {
+                      actual = 0;
+                    } else if(actual >= listLi.length) {
+                      actual = listLi.length - 1;
+                    } */
+                    // Asignar clase activa
+                    listLi[actual].classList.add('active');
+            }
+        });
+      
+          //!fin subir bajar en suguerencias con teclado
+      
+      
   } else {
     introducidoUsuarioORIGEN += [e.key];
   }
 };
 
 //* limpia input de origen
-inputBoxORIGEN.onclick = (e) => {
-  document.getElementById("aeropuerto-salida").select();
+inputBoxORIGEN.onclick = () => {
+  inputBoxORIGEN.select();
 };
 
 //? SCOPE PRINCIPAL DESTINO
@@ -277,12 +305,12 @@ let destino;
 //* defino función manejadora de li al hacer click en el
 const handleClickLiDESTINO = (event) => {
   //* Pongo en el texto del imput lo que pone en el li del click
-  let inputBoxDESTINO = document.querySelector(".destino .search-input input"); //! modificado inaki noche del domingo
-  inputBoxDESTINO.value = event.target.innerText; //! modificado inaki noche del domingo
+  let inputBoxDESTINO = document.querySelector(".destino .search-input input"); 
+  inputBoxDESTINO.value = event.target.innerText; 
 
   //* Hago desaparecer todos los li's
-  let suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //! modificado inaki noche del domingo
-  suggBoxDESTINO.innerHTML = ""; //! modificado inaki noche del domingo
+  let suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); 
+  suggBoxDESTINO.innerHTML = ""; 
 
   //* guardo en item el li donde hizo click el usuario
   destino = event.target.id;
@@ -298,34 +326,49 @@ const handleClickLiDESTINO = (event) => {
 };
 
 //* escucha el teclado
-inputBoxDESTINO.onkeyup = (e) => {
+inputBoxDESTINO.onkeyup = async(e) => {
   if (e.target.value.length >= 3) {
-    //! modificado inaki noche del domingo
-    //if (e.key === "Enter" && e.target.value.length >= 3) {                      //! modificado inaki noche del domingo
-    //* pedimos el token
-    getToken()
-      .then((res) => {
-        return tellAirports(inputBoxDESTINO.value.toString(), res);
-      })
-      .then((result) => {
+    //* pedimos listado de aeropuertos pasandole el token
+    let result = await tellAirports(inputBoxDESTINO.value.toString(), res);
+    if (e.key != 'ArrowUp'){                                               
+      if (e.key != 'ArrowDown'){      
         showSuggestions(result[0].data, false);
-        //* seleciona los li de ul
-        const listLi = document.querySelectorAll(".destino ul li");
-        //* asocio a cada li la funcion manejadora handleClickLi
-        for (const li of listLi) {
-          li.addEventListener("click", handleClickLiDESTINO);
-        }
-      });
+      }
+    }
+    //* seleciona los li de ul
+    const listLi = document.querySelectorAll(".destino ul li");
+    //* asocio a cada li la funcion manejadora handleClickLi
+    for (const li of listLi) {
+      li.addEventListener("click", handleClickLiDESTINO);
+    }
+      
   } else {
     introducidoUsuarioDESTINO += [e.key];
   }
 };
 
 //* limpia input de destino
-inputBoxDESTINO.onclick = (e) => {
-  document.getElementById("aeropuerto-llegada").select();
+inputBoxDESTINO.onclick = () => {
+  inputBoxDESTINO.select();
 };
 //?BONUS
 //todo solicitar el token una vez y guardar FUNCIÓN > VARIABLE GLOBAL
 //! modificado inaki noche del domingo
 //TODO las const en mayusculas y con _
+
+}
+
+/*
+!  __ __ __  __  __   __  __       __  __         
+! (_ /  /  \|__)|_   |__)|__)||\ |/   ||__) /\ |   
+! __)\__\__/|   |__  |   | \ || \|\__ ||   /--\|__ 
+
+? originLocation-> origen del vuelo
+? destinationLocation-> destino del vuelo
+? deptDate-> fecha de salida
+? numAdultos-> numero de personas que vuelan, al principio solo 1
+? maxFlights-> numero de vuelos que se obtendran con el API, se puede obtener 250
+? flightClass-> Economy porque no hay plata*/
+
+//? SCOPE PRINCIPAL ORIGEN
+main();

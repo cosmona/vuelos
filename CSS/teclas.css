@@ -1,0 +1,16 @@
+.list-group {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.list-group li {
+    background: #eee;
+    border: 1px #aaa solid;
+    margin: 0;
+    padding: 5px 10px;
+}
+.list-group li.active {
+    color: #008;
+    background: #cef;
+    border: 1px #008, solid;
+}
