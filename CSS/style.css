@@ -34,8 +34,8 @@ form {
   width: 500px;
 }
 
-ul{
-  position:absolute;
+ul {
+  position: absolute;
   margin: 0;
   padding: 0;
 }
@@ -86,13 +86,25 @@ li {
   border: 1px #008, solid;
 }
 
-li:hover{
+li:hover {
   background-color: rgba(0, 0, 0, 0.717);
   color: white;
 }
-.logo{
+.logo {
   height: 48px;
 }
+/*
+!la imagen trae franjas blancas 
+ */
+img {
+  margin-left: 0.5;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+/* p:first-child {
+  background-color: white;
+
+} */
 /* 
 ^
 ^Tarjetas
