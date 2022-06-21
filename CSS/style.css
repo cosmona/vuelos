@@ -80,9 +80,18 @@ li {
   border-radius: 3px;
 }
 
+.autocom-box ul li.active {
+  color: #008;
+  background: #cef;
+  border: 1px #008, solid;
+}
+
 li:hover{
   background-color: rgba(0, 0, 0, 0.717);
   color: white;
+}
+.logo{
+  height: 48px;
 }
 /* 
 ^
