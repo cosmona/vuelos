@@ -25,6 +25,9 @@ async function gestionInputs(origen, destino, token) {
   if (result.data.length === 0) {
     pintaVuelo(false);
   } else {
+    let domElement = document.querySelector(".vuelos"); //~DOM
+    //newArticle.style.justifyContent = "space-around"; //! estilo de la tarjeta guia
+    //console.log("newArticle", newArticle);
     for (let i = 0; i < result.data.length; i++) {
       pintaVuelo(result.data[i]);
     }
