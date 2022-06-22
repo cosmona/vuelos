@@ -32,6 +32,7 @@ function pintaVuelo(vuelo) {
     let llegada = vuelo.itineraries[0].segments[escalas].arrival.at; //TODO: confirmar con dos o más escalas
     let duracion = vuelo.itineraries[0].duration;
     let precio = vuelo.price.grandTotal;
+    let idVuelo = vuelo.id;
 
     //* slice corta hora de salida y llegada
     salida = salida.slice(-8, -3);
@@ -40,9 +41,41 @@ function pintaVuelo(vuelo) {
 
     //* añade un nuevo article al index.html
     domElement.appendChild(newArticle);
+    newArticle.classList.add(idVuelo);
+    // newArticle.setAttribute(
+    //   "onClick",
+    //   "handleDetails(this.getAttribute ('class'))"
+    // );
+    //console.log("idVuelo", idVuelo);
 
     //* pinta datos tarjetas de vuelo
-    newArticle.innerHTML += `<p><img class="logo" src="https://daisycon.io/images/airline/?width=300&height=150&color=ffffff&iata=${aerolinea}" alt=""></p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p>`; //TODO: poner bien
+    newArticle.innerHTML += `<article><p><img class="logo" src="https://daisycon.io/images/airline/?width=300&height=150&color=ffffff&iata=${aerolinea}" alt=""></p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p> </article>`; //TODO: poner bien
+
+    // console.log("vuelo: ", vuelo);
+    let segmentos = vuelo.itineraries[0].segments;
+
+    for (let i = 0; i < segmentos.length; i++) {
+      console.log(segmentos[i]);
+
+      let detalleSect = document.createElement("section");
+      newArticle.appendChild(detalleSect);
+      detalleSect.innerHTML += `         
+      <p>Logo Aerolinea</p>
+      <p>Iberia</p>
+      <p>Codigo ese</p>
+      <p>Salida</p>
+      <p>9:25</p>
+      <p>Madrid (MAD)</p>
+      <p>✈️</p>
+      <p>15h 00m</p>
+      <p>AIRBUS A321</p>
+      <p>Llegada</p>
+      <p>17:15</p>
+      <p>Doha (DOH)</p>
+    `;
+    }
+
+    console.log("segmentos", segmentos);
   }
 }
 
@@ -73,4 +106,8 @@ function showSuggestions(list, lugar) {
     }
   }
 }
+
+//& Pinta los detalles de las tarjetas
+function pintaDetalles(vuelo) {}
+
 export { pintaVuelo, showSuggestions };

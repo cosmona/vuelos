@@ -1,4 +1,17 @@
 @import url(./loading.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --selective-yellow: rgba(250, 192, 0, 0.993);
+  --alabaster: #ebe5dcff;
+  --camel: #b59779ff;
+  --liver-organ: #642919ff;
+  --liver-dogs: #b56a2dff;
+}
 /* todo */
 /* 
 *#############
@@ -7,11 +20,17 @@
 */
 body {
   margin: 0 auto;
-  background-color: rgb(133, 204, 254);
+  background-color: var(--color2);
   height: 100vh;
 }
 header h1 {
+  padding: 1rem;
   text-align: center;
+  background-color: rgba(141, 141, 141, 0.185);
+  color: rgba(250, 192, 0, 0.644);
+  -webkit-text-stroke: 0.7px black;
+  box-shadow: 10px 5px 5px black;
+  text-shadow: 0 0 5 px black;
 }
 
 main {
@@ -19,20 +38,25 @@ main {
   flex-direction: column;
   min-height: 80vh;
   align-items: center;
-  padding: 1rem;
   /* justify-content: center; */
 }
 
 form {
   /* debbug */
-  border: 1px solid yellow;
-  align-items: stretch;
-  flex-wrap: wrap;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 100vw;
+  background-image: url(../IMG/cabecera.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-items: center;
+  box-shadow: rgba(0.25, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0.12, 0, 0, 0.12) 0px -12px 30px, rgba(0.12, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0.12, 0, 0, 0.17) 0.12px 12px 13px, rgba(0.12, 0, 0, 0.09) 0px -3px 5px;
 }
+/*media query + 390px*/
 
 ul {
   position: absolute;
@@ -48,8 +72,21 @@ section {
 form input {
   height: fit-content;
   margin: 1rem;
-  width: 467px;
+  width: 50vw;
+  min-width: 300px;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
+
+#pasajeros::before {
+  content: "🕴";
+}
+
 /* !IMPORTANTE llevar al ccs final */
 input:invalid:focus {
   color: red;
@@ -67,7 +104,7 @@ button {
 
 article {
   border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff80;
+  background-color: #ffffff;
   border-radius: 5px;
   width: 85vw;
 }
@@ -83,7 +120,6 @@ li {
 .autocom-box ul li.active {
   color: #008;
   background: #cef;
-  border: 1px #008, solid;
 }
 
 li:hover {
@@ -112,8 +148,10 @@ img {
 */
 article {
   /* debbug */
+  padding-top: 1rem;
+  margin-top: 1rem;
   border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff80;
+  background-color: #ffffff;
   border-radius: 5px;
   list-style: none;
   width: 85vw;
@@ -146,4 +184,22 @@ article p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
+}
+
+/*
+*########*/
+
+@media (min-width: 900px) {
+  form input {
+    max-width: 600px;
+  }
+  form {
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 1500px) {
+  form input {
+    margin-right: 5rem;
+  }
 }
