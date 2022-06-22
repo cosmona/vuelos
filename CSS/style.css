@@ -26,8 +26,9 @@ body {
 header h1 {
   padding: 1rem;
   text-align: center;
-  background-color: var(--selective-yellow);
-  color: rgb(95, 204, 247);
+  background-color: rgba(141, 141, 141, 0.185);
+  color: rgba(250, 192, 0, 0.644);
+  -webkit-text-stroke: 0.7px black;
   box-shadow: 10px 5px 5px black;
   text-shadow: 0 0 5 px black;
 }
@@ -51,6 +52,9 @@ form {
   background-repeat: no-repeat;
   background-position: center;
   align-items: center;
+  box-shadow: rgba(0.25, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0.12, 0, 0, 0.12) 0px -12px 30px, rgba(0.12, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0.12, 0, 0, 0.17) 0.12px 12px 13px, rgba(0.12, 0, 0, 0.09) 0px -3px 5px;
 }
 /*media query + 390px*/
 
@@ -100,7 +104,7 @@ button {
 
 article {
   border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff80;
+  background-color: #ffffff;
   border-radius: 5px;
   width: 85vw;
 }
@@ -147,7 +151,7 @@ article {
   padding-top: 1rem;
   margin-top: 1rem;
   border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff80;
+  background-color: #ffffff;
   border-radius: 5px;
   list-style: none;
   width: 85vw;
