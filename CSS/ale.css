@@ -22,13 +22,14 @@ body {
   margin: 0 auto;
   background-color: var(--color2);
   height: 100vh;
+  background-color: rgb(249, 215, 181);
 }
+
 header h1 {
   padding: 1rem;
   text-align: center;
-  background-color: rgba(141, 141, 141, 0.185);
-  color: rgba(250, 192, 0, 0.644);
-  -webkit-text-stroke: 0.7px black;
+  font-weight: bold;
+  color: rgb(95, 204, 247);
   box-shadow: 10px 5px 5px black;
   text-shadow: 0 0 5 px black;
 }
@@ -38,9 +39,12 @@ main {
   flex-direction: column;
   min-height: 80vh;
   align-items: center;
+
   /* justify-content: center; */
 }
-
+/*
+     &formulario 
+ */
 form {
   /* debbug */
   padding: 1rem;
@@ -52,22 +56,8 @@ form {
   background-repeat: no-repeat;
   background-position: center;
   align-items: center;
-  box-shadow: rgba(0.25, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0.12, 0, 0, 0.12) 0px -12px 30px, rgba(0.12, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0.12, 0, 0, 0.17) 0.12px 12px 13px, rgba(0.12, 0, 0, 0.09) 0px -3px 5px;
 }
 /*media query + 390px*/
-
-ul {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-}
-
-section {
-  display: flex;
-  justify-content: center;
-}
 
 form input {
   height: fit-content;
@@ -83,36 +73,17 @@ form input {
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-#pasajeros::before {
-  content: "🕴";
+ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
 }
 
-/* !IMPORTANTE llevar al ccs final */
-input:invalid:focus {
-  color: red;
-}
-button {
-  width: fit-content;
-}
-.vuelos {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  margin: 0 auto;
-  gap: 1rem;
-}
-
-article {
-  border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff;
-  border-radius: 5px;
-  width: 85vw;
-}
 li {
   background-color: rgb(224, 252, 252, 50);
   list-style: none;
   padding: 8px 12px;
-  width: 100%;
+  width: 75%;
   cursor: default;
   border-radius: 3px;
 }
@@ -126,46 +97,85 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.717);
   color: white;
 }
+#pasajeros::before {
+  content: "🕴";
+}
+
+/* !IMPORTANTE llevar al ccs final */
+input:invalid:focus {
+  color: red;
+}
+
+button {
+  width: fit-content;
+}
+/*
+     &Tarjeta de vuelo
+ */
+
+.vuelos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  gap: 1rem;
+}
+article {
+  margin-top: 1rem;
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  /* 
+    ^flex section
+  */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.vuelos article section {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  /* 
+    ^flex section
+  */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .logo {
   height: 48px;
 }
+.aerolinea {
+  background-color: blue;
+  /*justify-content: space-between; */
+  /* justify-content: space-evenly; */
+  /* justify-content: space-around; */
+}
 /*
-!la imagen trae franjas blancas 
- */
+     !la imagen trae franjas blancas 
+*/
 img {
   margin-left: 0.5;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
 }
-/* p:first-child {
-  background-color: white;
 
-} */
-/* 
-^
-^Tarjetas
-^
-*/
-article {
-  /* debbug */
-  padding-top: 1rem;
-  margin-top: 1rem;
-  border: 1px solid rgb(62, 61, 61);
-  background-color: #ffffff;
-  border-radius: 5px;
-  list-style: none;
-  width: 85vw;
-  /* 
-    & flex section
-    */
-  display: flex;
-  justify-content: space-between;
-}
 article p {
-  /* display: flex; */
   padding: 0.5rem;
 }
-
+/* article p:last-child {
+  height: 100%;
+  background-color: #bdbdbdb3;
+} */
 /* 
 *#############
 * vuelo.html
@@ -186,9 +196,26 @@ article p {
   justify-items: center;
 }
 
-/*
-*########*/
+/* 
+*#############
+* Media queries
+*#############
+*/
 
+/* !nuevo
+  &para pantallas de ancho menor a 350
+*/
+@media (max-width: 350px) {
+  .logo {
+    height: 30px;
+  }
+  article {
+    font-size: 12px;
+  }
+}
+/* 
+  &para pantallas de ancho mayor a 900px
+*/
 @media (min-width: 900px) {
   form input {
     max-width: 600px;
@@ -197,7 +224,9 @@ article p {
     align-items: flex-end;
   }
 }
-
+/* 
+  &para pantallas de ancho mayor a 1500px
+*/
 @media (min-width: 1500px) {
   form input {
     margin-right: 5rem;
