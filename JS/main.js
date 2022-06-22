@@ -120,7 +120,8 @@ async function main() {
   let destino;
 
   //* defino función manejadora de li al hacer click en el
-  const handleClickLiDESTINO = (event) => {
+  const handleClickLiDESTINO = async (event) => {
+    //!ALE agregado async
     //* Pongo en el texto del imput lo que pone en el li del click
     let inputBoxDESTINO = document.querySelector(
       ".destino .search-input input"
@@ -169,6 +170,7 @@ async function main() {
   inputBoxDESTINO.onclick = () => {
     inputBoxDESTINO.select();
   };
+
   //?BONUS
   //todo solicitar el token una vez y guardar FUNCIÓN > VARIABLE GLOBAL
   //! modificado inaki noche del domingo

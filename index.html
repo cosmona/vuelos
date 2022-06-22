@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="stylesheet" href="./CSS/ale.css" />
     <!--     <link rel="stylesheet" href="./CSS/airports.css" /> -->
     <title>FlightFinder</title>
   </head>
@@ -13,22 +13,6 @@
     <header><h1>Flight finder</h1></header>
     <main>
       <form name="flightForm" id="flightForm">
-        <input
-          type="date"
-          id="start"
-          name="trip-start"
-          value="2022-07-22"
-          min="2022-01-01"
-          max="2018-12-1"
-        />
-        <input
-          type="number"
-          name="pasajeros"
-          id="pasajeros"
-          min="1"
-          max="4"
-          value="1"
-        />a
         <div class="container origen">
           <div class="search-input">
             <a href="" target="_blank" hidden></a>
@@ -39,11 +23,11 @@
               id="aeropuerto-salida"
               autocomplete="off"
             />
-          </div>
-          <div class="autocom-box">
-            <ul>
-              <!-- lista insertada -->
-            </ul>
+            <div class="autocom-box">
+              <ul>
+                <!-- lista insertada -->
+              </ul>
+            </div>
           </div>
         </div>
         <div class="container destino">
@@ -83,18 +67,48 @@
         />
       </form>
       <div class="loading"></div>
+      <section></section>
       <section class="vuelos">
-        <!--  <article>
+        <!-- <article onClick=detailHandler();>
           <p>AER</p>
-          <p>9:25 - 17:25</p>
-          <p>1 escala</p>
-          <p>24h 00m</p>
-          <p>1664€</p> 
-        
-        </article>-->
+          <p>Salida - Llegada</p>
+          <p>Escalas</p>
+          <p>Tiempo de Vuelo</p>
+          <p>Precio</p>
+        </article> -->
+        <!-- <section>
+          <section>
+            <p>Logo Aerolinea</p>
+            <p>Iberia</p>
+            <p>Codigo ese</p>
+            <p>Salida</p>
+            <p>9:25</p>
+            <p>Madrid (MAD)</p>
+            <p>✈️</p>
+            <p>15h 00m</p>
+            <p>AIRBUS A321</p>
+            <p>Llegada</p>
+            <p>17:15</p>
+            <p>Doha (DOH)</p>
+          </section>
+          <section>
+            <p>Logo Aerolinea</p>
+            <p>Iberia</p>
+            <p>Codigo ese</p>
+            <p>Salida</p>
+            <p>9:25</p>
+            <p>Madrid (MAD)</p>
+            <p>✈️</p>
+            <p>15h 00m</p>
+            <p>AIRBUS A321</p>
+            <p>Llegada</p>
+            <p>17:15</p>
+            <p>Doha (DOH)</p>
+          </section>
+        </section> -->
       </section>
     </main>
-    <footer>foot</footer>
+    <!-- <footer>foot</footer> -->
     <script src="./JS/main.js" type="module"></script>
   </body>
 </html>
