@@ -25,6 +25,23 @@ async function gestionInputs(origen, destino, token) {
   if (result.data.length === 0) {
     pintaVuelo(false);
   } else {
+    /*     //! NUEVO
+    
+    let domElement = document.querySelector(".vuelos"); //~DOM
+    const newArticle = document.createElement("article"); //~DOM
+
+    domElement.appendChild(newArticle);
+    newArticle.innerHTML = `
+      <p id="aerolinea">Aerolinea</p>
+      <p>Salida - Llegada</p>
+      <p>Escalas</p>
+      <p>Tiempo de Vuelo</p>
+      <p>Precio</p>
+    `;
+    newArticle.style.justifyContent = "space-around"; //! estilo de la tarjeta guia
+    console.log("newArticle", newArticle);
+     */
+
     for (let i = 0; i < result.data.length; i++) {
       pintaVuelo(result.data[i]);
     }
@@ -48,6 +65,7 @@ async function gestionInputs(origen, destino, token) {
       loadingState(false); //! modificado inaki noche del domingo
     });
   }); */
+  return result; //!ALE
 }
 
 export { gestionInputs };
