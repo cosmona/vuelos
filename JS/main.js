@@ -22,19 +22,21 @@ async function main() {
   //* defino función manejadora de li al hacer click en él
   const handleClickLiORIGEN = (event) => {
     //* Pongo en el texto del imput lo que pone en el li del click
-    let inputBoxORIGEN = document.querySelector(".origen .search-input input"); //! modificado inaki noche del domingo
-    inputBoxORIGEN.value = event.target.innerText; //! modificado inaki noche del domingo
+    let inputBoxORIGEN = document.querySelector(".origen .search-input input");
+    inputBoxORIGEN.value = event.target.innerText;
 
     //* Hago desaparecer todos los li's
-    //!DUPLICADO
-    //let suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //! modificado inaki noche del domingo
+    //let suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //!DUPLICADO
     suggBoxORIGEN.innerHTML = ""; //! modificado inaki noche del domingo
 
     //* Guardo en el item el li donde hizo click el usuario
     origen = event.target.id;
     //* si hay valor en origen y destino y son diferentes
+    console.log("origen", origen);
+    console.log("destino", destino);
     if (origen && destino) {
       if (origen != destino) {
+        console.log("Hioputa");
         gestionInputs(origen, destino, res); //! TOKEN ADDED
       } else {
         console.error("Origen y destino igual (origen)");
@@ -42,6 +44,58 @@ async function main() {
       }
     }
   };
+  //!TECLAS ORIGEN
+  // Obtener la lista, para recorrer cada elemento
+  let listGroupORIGEN = document.querySelector(".origen .autocom-box ul");
+  console.log("listGroup", listGroupORIGEN);
+  // Asignar evento al campo de texto
+  document
+    .querySelector("#aeropuerto-salida")
+    .addEventListener("keydown", (e) => {
+      console.log("dentro");
+
+      if (!listGroupORIGEN) {
+        return; // No existe la lista
+      }
+      // Obtener todos los elementos
+      let items = listGroupORIGEN.querySelectorAll("li");
+      console.log("items", items);
+      // Saber si alguno está activo
+      let actual = Array.from(items).findIndex((item) =>
+        item.classList.contains("active")
+      );
+      console.log("actual", actual);
+      // Analizar tecla pulsada
+      if (e.key == "Enter") {
+        // Tecla Enter, evitar que se procese el formulario
+        e.preventDefault();
+        // ¿Hay un elemento activo?
+        if (items[actual]) {
+          console.log("items[actual", items[actual]);
+          // Hacer clic
+          items[actual].click();
+        }
+      }
+      if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+        // Flecha arriba (restar) o abajo (sumar)
+        if (items[actual]) {
+          // Solo si hay un elemento activo, eliminar clase
+          items[actual].classList.remove("active");
+        }
+        // Calcular posición del siguiente
+        actual += e.key == "ArrowUp" ? -1 : 1;
+        // Asegurar que está dentro de los límites
+        if (actual < 0) {
+          actual = 0;
+        } else if (actual >= items.length) {
+          actual = items.length - 1;
+        }
+        // Asignar clase activa
+        items[actual].classList.add("active");
+      }
+    });
+
+  //!FIN TECLA
 
   //* escucha el teclado
   inputBoxORIGEN.onkeyup = async (e) => {
@@ -49,6 +103,7 @@ async function main() {
       //* pedimos el token
       let result = await tellAirports(inputBoxORIGEN.value.toString(), res);
 
+      //TODO revisar error undefined reading length
       if (e.key != "ArrowUp") {
         if (e.key != "ArrowDown") {
           showSuggestions(result[0].data, true);
@@ -62,42 +117,6 @@ async function main() {
         li.addEventListener("click", handleClickLiORIGEN);
       }
       //!subir bajar en suguerencias con teclado
-      // Saber si alguno está activo
-      document
-        .querySelector("#aeropuerto-salida")
-        .addEventListener("keydown", (e) => {
-          let actual = Array.from(listLi).findIndex((item) =>
-            item.classList.contains("active")
-          );
-          // Analizar tecla pulsada
-          if (e.key == "Enter" && origen && destino) {
-            // Tecla Enter, evitar que se procese el formulario
-            e.preventDefault();
-            // ¿Hay un elemento activo?
-            if (listLi[actual]) {
-              // Hacer clic
-              listLi[actual].click();
-            }
-          }
-          if (e.key == "ArrowUp" || e.key == "ArrowDown") {
-            // Flecha arriba (restar) o abajo (sumar)
-            if (listLi[actual]) {
-              // Solo si hay un elemento activo, eliminar clase
-              listLi[actual].classList.remove("active");
-            }
-            // Calcular posición del siguiente
-            actual += e.keyCode == 38 ? -1 : 1;
-            console.log("actualelement", actual);
-            // Asegurar que está dentro de los límites
-            /*  if(actual < 0) {
-                      actual = 0;
-                    } else if(actual >= listLi.length) {
-                      actual = listLi.length - 1;
-                    } */
-            // Asignar clase activa
-            listLi[actual].classList.add("active");
-          }
-        });
 
       //!fin subir bajar en suguerencias con teclado
     } else {
@@ -143,6 +162,58 @@ async function main() {
       }
     }
   };
+
+  //!TECLAS DESTINO
+  // Obtener la lista, para recorrer cada elemento
+  let listGroupDestino = document.querySelector(".destino .autocom-box ul");
+  console.log("listGroup", listGroupDestino);
+  // Asignar evento al campo de texto
+  document
+    .querySelector("#aeropuerto-llegada")
+    .addEventListener("keydown", (e) => {
+      console.log("dentro");
+
+      if (!listGroupDestino) {
+        return; // No existe la lista
+      }
+      // Obtener todos los elementos
+      let items = listGroupDestino.querySelectorAll("li");
+      console.log("items", items);
+      // Saber si alguno está activo
+      let actuald = Array.from(items).findIndex((item) =>
+        item.classList.contains("active")
+      );
+      console.log("actual", actuald);
+      // Analizar tecla pulsada
+      if (e.key == "Enter") {
+        // Tecla Enter, evitar que se procese el formulario
+        e.preventDefault();
+        // ¿Hay un elemento activo?
+        if (items[actuald]) {
+          // Hacer clic
+          items[actuald].click();
+        }
+      }
+      if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+        // Flecha arriba (restar) o abajo (sumar)
+        if (items[actuald]) {
+          // Solo si hay un elemento activo, eliminar clase
+          items[actuald].classList.remove("active");
+        }
+        // Calcular posición del siguiente
+        actuald += e.key == "ArrowUp" ? -1 : 1;
+        // Asegurar que está dentro de los límites
+        if (actuald < 0) {
+          actuald = 0;
+        } else if (actuald >= items.length) {
+          actuald = items.length - 1;
+        }
+        // Asignar clase activa
+        items[actuald].classList.add("active");
+      }
+    });
+
+  //!FIN TECLA
 
   //* escucha el teclado
   inputBoxDESTINO.onkeyup = async (e) => {
