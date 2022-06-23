@@ -16,12 +16,15 @@ async function tellAirports(text, token) {
     headers: myHeaders,
     redirect: "follow",
   };
-
+  //console.log(`https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT&view=FULL`);
   try {
     const response = await fetch(
-      `https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT&view=FULL`, 
+      `https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT&view=FULL`,
       requestOptions
     );
+
+    //console.log("response", response);
+
     const result_1 = await response.text();
     return [JSON.parse(result_1)];
   } catch (error) {

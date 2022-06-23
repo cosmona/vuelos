@@ -1,15 +1,14 @@
 "use strict";
 //& Obtiene el Token
 async function getToken() {
-  
   //* define cabeceras
   let myHeaders = new Headers();
   myHeaders.append("Content-type", "application/x-www-form-urlencoded");
 
   let urlencoded = new URLSearchParams();
   urlencoded.append("grant_type", "client_credentials");
-  urlencoded.append("client_id", "5djtWLIBBsUkJkex393hCuXKE28UiGZE");
-  urlencoded.append("client_secret", "Nk2jwYlQnf9WYuVr");
+  urlencoded.append("client_id", "gjsb6bHgdlQQJAOPOtcPK7DrRtPy2Prq");
+  urlencoded.append("client_secret", "AygoznGhNS18LpA4");
 
   let requestOptions = {
     method: "POST",
