@@ -130,21 +130,17 @@ async function pintaVuelo(vuelo) {
             redirect: 'follow'
           }; */
 
-        /* const response = await fetch(
+        const response = await fetch(
           "https://62b432cca36f3a973d2e4b86.mockapi.io/api/v1/country",
           requestOptions
-        ); */
+        );
         //!mockupapi.io!
 
-        console.log(
-          "`fetch`",
-          `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`
-        );
-        const response = await fetch(
+        /* const response = await fetch(
           `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`,
 
           requestOptions
-        );
+        ); */
 
         console.log("response", response);
         const result_1 = await response.text();
