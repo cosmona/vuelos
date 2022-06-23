@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,600&display=swap');
 @import url(./loading.css);
+
+/* 
+font-family: 'Fredoka One', cursive;
+font-family: 'Source Serif 4', serif;
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +18,7 @@ html {
   --camel: #b59779ff;
   --liver-organ: #642919ff;
   --liver-dogs: #b56a2dff;
+  font-family: 'Source Serif 4', serif;
 }
 /* todo */
 /* 
@@ -27,9 +35,10 @@ body {
 
 header h1 {
   padding: 1rem;
+  font-family: 'Fredoka One';
   text-align: center;
   font-weight: bold;
-  color: rgb(95, 204, 247);
+  color: var(--liver-dogs);
   box-shadow: 10px 5px 5px black;
   text-shadow: 0 0 5 px black;
 }
@@ -176,6 +185,14 @@ img {
 
 article p {
   padding: 0.5rem;
+}
+
+/**!Añadiddo iñaki noche del miercoles*/
+.vuelos .idVuelo .covid{ 
+  display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 3rem;
 }
 /* article p:last-child {
   height: 100%;
