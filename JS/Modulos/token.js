@@ -25,7 +25,7 @@ async function getToken() {
     const result_1 = await response.text();
     return JSON.parse(result_1).access_token;
   } catch (error) {
-    return console.log("error", error); //TODO Control de errores
+    return console.log("TOKEN ERROR:", error);
   }
 }
 

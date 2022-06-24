@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,600&display=swap");
+@import url(./loading.css);
+
+/* 
+font-family: 'Fredoka One', cursive;
+font-family: 'Source Serif 4', serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --selective-yellow: rgba(242, 186, 4, 0.993);
+  --alabaster: #ebe5dcff;
+  --camel: #b59779ff;
+  --liver-organ: #642919ff;
+  --liver-dogs: #b56a2dff;
+  font-family: "Source Serif 4", serif;
+}
+/* todo */
+/* 
+*#############
+* index.html
+*#############
+*/
+body {
+  margin: 0 auto;
+  background-color: var(--color2);
+  height: 100vh;
+  background-color: rgb(164, 164, 164);
+  background-image: url(../IMG/top-view-white-plane-on-green-background1.jpg);
+  background-position: initial;
+}
+
+header h1 {
+  padding: 1rem;
+  font-family: "Fredoka One";
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.7rem;
+  -webkit-text-stroke: 0.5px black;
+  color: transparent; 
+  color: var(--selective-yellow);
+  box-shadow: 10px 5px 5px black;
+  text-shadow: 1 1 5 px black;
+  background-color: rgb(135, 135, 135);
+  background-image: url(../IMG/top-view-white-plane-on-green-background1.jpg);
+  background-position: initial;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  align-items: center;
+
+  /* justify-content: center; */
+}
+/*
+     &formulario 
+ */
+form {
+  /* debbug */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background-image: url(../IMG/cabecera.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-items: center;
+}
+/*media query + 390px*/
+
+form input {
+  height: fit-content;
+  margin: 1rem;
+  width: 50vw;
+  min-width: 300px;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: rgb(224, 252, 252, 50);
+  list-style: none;
+  padding: 8px 12px;
+  width: 75%;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.autocom-box ul li.active {
+  color: #008;
+  background: rgb(128, 233, 147);
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;
+}
+#pasajeros::before {
+  content: "🕴";
+}
+
+/* !IMPORTANTE llevar al ccs final */
+input:invalid:focus {
+  color: red;
+}
+
+button {
+  width: fit-content;
+}
+/*
+     &Tarjeta de vuelo
+ */
+
+.error {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+
+.vuelos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  gap: 1rem;
+}
+article {
+  margin-top: 1rem;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  /* 
+    ^flex section
+  */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.vuelos article section {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.idVuelo > section.detalle {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  opacity: 0;
+  height:0;
+}
+
+.idVuelo > section.detalle.notHide {
+  opacity: 1;
+  height: fit-content;
+}
+
+.idVuelo {
+  display: flex;
+
+  flex-direction: column;
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+.idVuelo article {
+  padding: 0.5rem;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+}
+.idVuelo article:first-child {
+  font-weight: bold;
+}
+.logo {
+  height: 48px;
+}
+
+/*
+     !la imagen trae franjas blancas 
+*/
+img {
+  margin-left: 0.5;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+article p {
+  padding: 0.5rem;
+}
+
+/**!Añadiddo iñaki noche del miercoles*/
+.vuelos .idVuelo .covid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-left: 3rem;
+}
+
+.covidCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.vuelos .idVuelo .detallesCovid {
+  opacity: 0;
+  height: 0;
+}
+
+.vuelos .idVuelo .notHide {
+  opacity: 1;
+  height: fit-content;
+}
+
+footer {
+    text-align: center;
+    padding-bottom: 0.1rem;
+}
+/* 
+*#############
+* Media queries
+*#############
+*/
+
+/* !nuevo
+  &para pantallas de ancho menor a 350
+*/
+@media (max-width: 350px) {
+  .logo {
+    height: 30px;
+  }
+  article {
+    font-size: 12px;
+  }
+}
+/* 
+  &para pantallas de ancho mayor a 900px
+*/
+@media (min-width: 900px) {
+  form input {
+    max-width: 600px;
+  }
+  form {
+    align-items: flex-end;
+  }
+}
+/* 
+  &para pantallas de ancho mayor a 1500px
+*/
+@media (min-width: 1500px) {
+  form input {
+    margin-right: 5rem;
+  }
+}

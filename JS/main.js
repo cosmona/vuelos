@@ -105,10 +105,13 @@ async function main() {
 
       //TODO revisar error undefined reading length
       //* si no ha pulsado ni subir ni bajar (evitar consultas api innecesarias), llama a enseñar sugerencias
-      if (e.key != "ArrowUp") {
+      /*       if (e.key != "ArrowUp") {
         if (e.key != "ArrowDown") {
-          showSuggestions(result[0].data, true);
+          showSuggestions(result[0].data, true);  //!MAYBE ERROR
         }
+      } */
+      if (e.key != "ArrowUp" && e.key != "ArrowDown") {
+        showSuggestions(result[0].data, true);
       }
 
       //* seleciona los li de ul de sugerencias
@@ -220,13 +223,17 @@ async function main() {
     //* especifica min 3 caracteres
     if (e.target.value.length >= 3) {
       //* pide listado de aeropuertos pasandole el token
+
       let result = await tellAirports(inputBoxDESTINO.value.toString(), res);
 
       //TODO revisar error undefined reading length
-      if (e.key != "ArrowUp") {
+      /*       if (e.key != "ArrowUp") {
         if (e.key != "ArrowDown") {
-          showSuggestions(result[0].data, false);
+          showSuggestions(result[0].data, false); //!ERROR maybe?
         }
+      } */
+      if (e.key != "ArrowUp" && e.key != "ArrowDown") {
+        showSuggestions(result[0].data, false);
       }
       //* seleciona los li de ul
       const listLi = document.querySelectorAll(".destino ul li"); //~DOM
