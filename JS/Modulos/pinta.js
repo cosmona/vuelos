@@ -102,10 +102,10 @@ async function pintaVuelo(vuelo) {
       document.getElementByClass("detalle").style.display = 'block'; // to show //~DOM
       } */
 
-      //const pescador2 = document.getSelection("."+ idVuelo)
+      //const pescador2 = document.querySelector("#"+ idVuelo)
 
       /* pescador2.addEventListener("click", async (e) => {
-        const pescador = await document.getSelection(".idVuelo .detalle")
+        //const pescador = document.querySelector(".idVuelo .detalle")
         console.log('e', idVuelo);
       }) */ 
        // hideDetalleSect();
@@ -191,30 +191,46 @@ async function pintaVuelo(vuelo) {
 
         //* añade a el vuelo la seccion de covid y mete los datos
         newArticle.appendChild(detalleSect2);
+        detalleSect2.classList.add("covidCard");
         //TODO meter en variables
         detalleSect2.innerHTML += `
-         <p><img class="logo" src="https://www.chg.org.uk/wp-content/uploads/2020/03/Website-covid-icons-01.png" alt=""></p>
-         ${covid.data.area.name}
-         <details>
-            <summary>Mask</summary>
-            <h2>${covidRest.mask.isRequired}</h2>
-            <p>${covidRest.mask.text}</p>
-         </details>
-         <details>
-            <summary>Documents</summary>
-            <h2>${covidRest.declarationDocuments.documentRequired}</h2>
-            <p>${covidRest.declarationDocuments.text}</p>
-         </details>
-         <details>
-         <summary>Test</summary>
-         <h2>Required:${covidRest.diseaseTesting.isRequired}</h2>
-         <p>Min age:${covidRest.diseaseTesting.minimumAge}</p>
-         <p>Min age:${covidRest.diseaseTesting.testType}</p>
-         <p>Test type:${covidRest.diseaseTesting.testType}</p>
-         <p>${covidRest.diseaseTesting.text}</p>
-         </details>`;
-      }
-      //~ FIN COVID
+        <section id="cabeceraCovid${idVuelo}" class="">
+          <p>
+            <img class="logo" src="https://www.chg.org.uk/wp-content/uploads/2020/03/Website-covid-icons-01.png" alt="">
+          </p>
+        </section>
+        <section class="detallesCovid">
+            ${covid.data.area.name}
+            <details>
+              <summary>Mask</summary>
+              <h2>${covidRest.mask.isRequired}</h2>
+              <p>${covidRest.mask.text}</p>
+            </details>
+            <details>
+              <summary>Documents</summary>
+              <h2>${covidRest.declarationDocuments.documentRequired}</h2>
+              <p>${covidRest.declarationDocuments.text}</p>
+            </details>
+            <details>
+              <summary>Test</summary>
+              <h2>Required:${covidRest.diseaseTesting.isRequired}</h2>
+              <p>Min age:${covidRest.diseaseTesting.minimumAge}</p>
+              <p>Min age:${covidRest.diseaseTesting.testType}</p>
+              <p>Test type:${covidRest.diseaseTesting.testType}</p>
+              <p>${covidRest.diseaseTesting.text}</p>
+            </details>
+          </section>`;
+          
+          detalleSect2.addEventListener("click",(e)=>{
+            console.log("HOLA",e.target.id)
+          //  let pescador = querySelector(`.${e.target.id}`);
+          let pescador = document.querySelector(`#${e.target.id} + section`);
+          console.log('pescador', pescador)
+          pescador.classList.toggle ("notHide")
+            
+          });
+        }
+        //~ FIN COVID
       console.log("FIN IF");
     } //end FOR
   }

@@ -203,6 +203,21 @@ article p {
   padding-left: 3rem;
 }
 
+.covidCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.vuelos .idVuelo .detallesCovid {
+  opacity: 0;
+  height: 0;
+}
+
+.vuelos .idVuelo .notHide {
+  opacity: 1;
+  height: fit-content;
+}
+
 /* 
 *#############
 * Media queries
