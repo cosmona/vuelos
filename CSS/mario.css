@@ -107,7 +107,7 @@ li {
 
 .autocom-box ul li.active {
   color: #008;
-  background: #cef;
+  background: rgb(128, 233, 147);
 }
 
 li:hover {
@@ -129,6 +129,18 @@ button {
 /*
      &Tarjeta de vuelo
  */
+
+.error {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
 
 .vuelos {
   display: flex;
