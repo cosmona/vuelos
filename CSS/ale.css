@@ -158,6 +158,13 @@ article {
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+  opacity: 0;
+  height:0;
+}
+
+.idVuelo > section.detalle.notHide {
+  opacity: 1;
+  height: fit-content;
 }
 
 .idVuelo {
@@ -201,6 +208,21 @@ article p {
   flex-direction: column;
   align-items: stretch;
   padding-left: 3rem;
+}
+
+.covidCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.vuelos .idVuelo .detallesCovid {
+  opacity: 0;
+  height: 0;
+}
+
+.vuelos .idVuelo .notHide {
+  opacity: 1;
+  height: fit-content;
 }
 
 /* 
