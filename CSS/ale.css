@@ -121,7 +121,17 @@ button {
 /*
      &Tarjeta de vuelo
  */
-
+.error {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
 .vuelos {
   display: flex;
   flex-direction: column;
@@ -159,7 +169,7 @@ article {
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   opacity: 0;
-  height:0;
+  height: 0;
 }
 
 .idVuelo > section.detalle.notHide {
@@ -169,7 +179,6 @@ article {
 
 .idVuelo {
   display: flex;
-
   flex-direction: column;
   border: 1px solid rgb(62, 61, 61);
   background-color: #ffffff;
@@ -188,7 +197,6 @@ article {
 .logo {
   height: 48px;
 }
-
 /*
      !la imagen trae franjas blancas 
 */
