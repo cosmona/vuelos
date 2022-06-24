@@ -51,28 +51,28 @@ async function pintaVuelo(vuelo) {
     //* añade la clase idVuelo (numero) y el literal "idVuelo" y lo pinta
     newArticle.classList.add(idVuelo);
     newArticle.classList.add(`idVuelo`);
+    
     //* pinta cabecera literal
     // TODO meter cabecera dentro de tarjeta
     newArticle.innerHTML = `
-     <article> <p id="aerolinea"></p>
-      <p>Sal/Lleg</p>
-      <p>Escalas</p>
-      <p>Duracion</p>
-      <p>Precio</p> </article>`;
+    <article> <p id="aerolinea"></p>
+    <p>Sal/Lleg</p>
+    <p>Escalas</p>
+    <p>Duracion</p>
+    <p>Precio</p> </article>`;
     //* pinta el logo
     newArticle.innerHTML += `<article><p><img class="logo" src="https://daisycon.io/images/airline/?width=300&height=150&color=ffffff&iata=${aerolinea}" alt=""></p><p> ${salida} - ${llegada}</p><p>${escalas}</p><p>${duracion}</p><p>${precio} € </p> </article>`; //TODO: poner bien
-
+    
     //* busca las escalas
     let segmentos = vuelo.itineraries[0].segments;
     console.log("segmentos", segmentos);
-
+    
     //* por cada escala prepara el section y guarda el codigo de aerolinea e iataCode
     for (let i = 0; i < segmentos.length; i++) {
       let detalleSect = document.createElement("section");
       let aerolinea = segmentos[i].carrierCode;
       let iata = segmentos[i].arrival.iataCode;
-
-      //!ALE
+      
       //* informacion de salida
       let sal = segmentos[i].departure;
       let salTiempo = sal.at;
@@ -84,12 +84,36 @@ async function pintaVuelo(vuelo) {
       //* duracion del vuelo
       let durac = segmentos[i].duration;
       durac = durac.slice(2);
-
+      
       let avion = segmentos[i].aircraft.code;
-
+      
+      //let cardClass = vuelo.id+  " idVuelo" //!Mario
       //* añade al vuelo la seccion de escala y mete los datos
       newArticle.appendChild(detalleSect);
       detalleSect.classList.add("detalle");
+      //document.getElementByClassName("detalle").style.heigth = "1rem"; //to hide //!Mario
+      //const card = document.getElementsByClassName("detalle") //!Mario Peta
+
+      //console.log('hello', card);
+      //! Hide panel
+      
+      /* const hideDetalleSect = (e) => {
+        console.log('Detalle Holis')
+      document.getElementByClass("detalle").style.display = 'block'; // to show //~DOM
+      } */
+
+      //const pescador2 = document.getSelection("."+ idVuelo)
+
+      /* pescador2.addEventListener("click", async (e) => {
+        const pescador = await document.getSelection(".idVuelo .detalle")
+        console.log('e', idVuelo);
+      }) */ 
+       // hideDetalleSect();
+       //!Mario
+      //numAdultos.addEventListener("input", inputAdultsDate);
+      
+      //! Fin Hide Panel
+
       //TODO RELLENAR
       detalleSect.innerHTML += `         
       <p>Salida</p>
@@ -102,6 +126,7 @@ async function pintaVuelo(vuelo) {
       <p>${avion}</p>
       <p>${llegTiempo}</p>
       `;
+
 
       //~ COVID
       //^callback (funcion de flecha)=> consulta covid
@@ -130,21 +155,17 @@ async function pintaVuelo(vuelo) {
             redirect: 'follow'
           }; */
 
-        /* const response = await fetch(
+        const response = await fetch(
           "https://62b432cca36f3a973d2e4b86.mockapi.io/api/v1/country",
           requestOptions
-        ); */
+        );
         //!mockupapi.io!
 
-        console.log(
-          "`fetch`",
-          `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`
-        );
-        const response = await fetch(
+        /* const response = await fetch(
           `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`,
 
           requestOptions
-        );
+        ); */
 
         console.log("response", response);
         const result_1 = await response.text();
@@ -191,7 +212,7 @@ async function pintaVuelo(vuelo) {
          <p>Min age:${covidRest.diseaseTesting.testType}</p>
          <p>Test type:${covidRest.diseaseTesting.testType}</p>
          <p>${covidRest.diseaseTesting.text}</p>
-      </details>`;
+         </details>`;
       }
       //~ FIN COVID
       console.log("FIN IF");
