@@ -15,22 +15,22 @@ async function main() {
   //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
   let origen;
 
-  //* pedimos token
+  //* Solicita token
   let res = await getToken();
 
   //^ defino función manejadora de li al hacer click en él
   const handleClickLiORIGEN = (event) => {
-    //* Pongo en el texto del imput lo que pone en el li del click
+    //* Pone en el texto del imput lo que pone en el li del click
     let inputBoxORIGEN = document.querySelector(".origen .search-input input"); //~DOM
     inputBoxORIGEN.value = event.target.innerText;
 
-    //* Hago desaparecer todos los li's
+    //* Hace desaparecer todos los li's
     suggBoxORIGEN.innerHTML = "";
 
-    //* Guardo en el origen el li donde hizo click el usuario
+    //* Guarda en el origen el li donde hizo click el usuario
     origen = event.target.id;
 
-    //* si hay valor en origen y destino y son diferentes
+    //* Si hay valor en origen y destino y son diferentes
     if (origen && destino) {
       if (origen != destino) {
         gestionInputs(origen, destino, res);
@@ -100,7 +100,7 @@ async function main() {
   inputBoxORIGEN.onkeyup = async (e) => {
     //* especifica min 3 caracteres
     if (e.target.value.length >= 3) {
-      //* pedimos listado de aeropuertos pasandole el token
+      //* Pide listado de aeropuertos pasandole el token
       let result = await tellAirports(inputBoxORIGEN.value.toString(), res);
 
       //TODO revisar error undefined reading length
@@ -114,14 +114,14 @@ async function main() {
       //* seleciona los li de ul de sugerencias
       const listLi = document.querySelectorAll(".origen .autocom-box ul li"); //~DOM
 
-      //* asocio a cada li la funcion manejadora handleClickLi
+      //* asocia a cada li la funcion manejadora handleClickLi
       for (const li of listLi) {
         li.addEventListener("click", handleClickLiORIGEN);
       }
     }
   };
 
-  //* cuando se clicka el input selecciona todo el texto
+  //* cuando se clica el input selecciona todo el texto
   inputBoxORIGEN.onclick = () => {
     inputBoxORIGEN.select();
   };
@@ -136,16 +136,16 @@ async function main() {
 
   //^ defino función manejadora de li al hacer click en el
   const handleClickLiDESTINO = (event) => {
-    //* Pongo en el texto del imput lo que pone en el li del click
+    //* Pone en el texto del imput lo que pone en el li del click
     let inputBoxDESTINO = document.querySelector(
       ".destino .search-input input"
     );
     inputBoxDESTINO.value = event.target.innerText;
 
-    //* Hago desaparecer todos los li's
+    //* Hace desaparecer todos los li's
     suggBoxDESTINO.innerHTML = "";
 
-    //* guardo en destino el li donde hizo click el usuario
+    //* guarda en destino el li donde hizo click el usuario
     destino = event.target.id;
 
     //* si hay valor en origen y destino y son diferentes
@@ -219,7 +219,7 @@ async function main() {
   inputBoxDESTINO.onkeyup = async (e) => {
     //* especifica min 3 caracteres
     if (e.target.value.length >= 3) {
-      //* pedimos listado de aeropuertos pasandole el token
+      //* pide listado de aeropuertos pasandole el token
       let result = await tellAirports(inputBoxDESTINO.value.toString(), res);
 
       //TODO revisar error undefined reading length
@@ -231,14 +231,14 @@ async function main() {
       //* seleciona los li de ul
       const listLi = document.querySelectorAll(".destino ul li"); //~DOM
 
-      //* asocio a cada li la funcion manejadora handleClickLi
+      //* asocia a cada li la funcion manejadora handleClickLi
       for (const li of listLi) {
         li.addEventListener("click", handleClickLiDESTINO);
       }
     }
   };
 
-  //* cuando se clicka el input selecciona todo el texto
+  //* cuando se clica el input selecciona todo el texto
   inputBoxDESTINO.onclick = () => {
     inputBoxDESTINO.select();
   };
@@ -261,7 +261,7 @@ async function main() {
   const numAdultos = document.getElementById("pasajeros"); //~DOM
   numAdultos.addEventListener("input", inputAdultsDate);
 
-  //* cuando se clicka el input selecciona todo el texto
+  //* cuando se clica el input selecciona todo el texto
   numAdultos.onclick = () => {
     numAdultos.select();
   };
