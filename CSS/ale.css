@@ -158,6 +158,13 @@ article {
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+  opacity: 0;
+  height:0;
+}
+
+.idVuelo > section.detalle.notHide {
+  opacity: 1;
+  height: fit-content;
 }
 
 .idVuelo {
