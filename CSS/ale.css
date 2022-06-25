@@ -39,8 +39,8 @@ header h1 {
   text-align: center;
   font-weight: bold;
   color: var(--liver-dogs);
-  box-shadow: 10px 5px 5px black;
-  text-shadow: 0 0 5 px black;
+  /* box-shadow: 10px 5px 5px black; */
+  text-shadow: 1px 1px 1px black;
 }
 
 main {
@@ -250,6 +250,18 @@ article p {
     font-size: 12px;
   }
 }
+/* !nuevo
+  &para pantallas de ancho menor a 350
+*/
+@media (max-width: 600px) {
+  ul {
+    width: 80vw;
+    margin-left: 2.1rem;
+  }
+  li {
+    width: 80vw;
+  }
+}
 /* 
   &para pantallas de ancho mayor a 900px
 */
@@ -259,6 +271,9 @@ article p {
   }
   form {
     align-items: flex-end;
+  }
+  ul {
+    width: 56vw;
   }
 }
 /* 
