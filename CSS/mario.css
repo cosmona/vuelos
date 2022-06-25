@@ -97,22 +97,22 @@ ul {
 }
 
 li {
-  background-color: rgb(224, 252, 252, 50);
+  background-color: rgba(245, 208, 87, 0.97);
   list-style: none;
   padding: 8px 12px;
   width: 75%;
   cursor: default;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .autocom-box ul li.active {
   color: #008;
-  background: rgb(128, 233, 147);
+  background: rgb(113, 222, 133);
 }
 
 li:hover {
-  background-color: rgba(0, 0, 0, 0.717);
-  color: white;
+  background-color: rgba(98, 200, 133, 0.966);
+  color: rgb(0, 0, 0);
 }
 #pasajeros::before {
   content: "🕴";
@@ -247,7 +247,6 @@ article p {
 
 footer {
     text-align: center;
-    padding-bottom: 0.1rem;
 }
 /* 
 *#############
@@ -275,6 +274,9 @@ footer {
   }
   form {
     align-items: flex-end;
+  }
+  ul {
+    width: 56vw;
   }
 }
 /* 
