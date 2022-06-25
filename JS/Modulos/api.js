@@ -18,11 +18,16 @@ async function tellAirports(text, token) {
   };
 
   try {
+   /*  if (text.length > 3){
+      console.log('textantes', text)
+      text = text.slice(0,3);
+      console.log('textdespues', text)
+    } */
     const response = await fetch(
       `https://test.api.amadeus.com/v1/reference-data/locations?keyword=${text}&subType=AIRPORT&view=FULL`,
       requestOptions
-    );
-
+      );
+      
     const result_1 = await response.text();
     return [JSON.parse(result_1)];
   } catch (error) {

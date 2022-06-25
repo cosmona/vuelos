@@ -19,7 +19,8 @@ async function pintaVuelo(vuelo) {
       domElement.appendChild(newArticle);
 
       //* pinta tarjeta de errorde vuelo
-      newArticle.innerHTML = `<p>ERROR: no hay vuelos</p>`; //TODO poner algo mas bonito
+      newArticle.innerHTML = `<p>No hay vuelos</p>
+      <p><img src="https://www.dictionary.com/e/wp-content/uploads/2018/03/its-a-trap.gif"></p>`; //TODO poner algo mas bonito
     }
     //* si el listado no esta vacio pinta la tarjeta de vuelo
   } else {
@@ -128,16 +129,16 @@ async function pintaVuelo(vuelo) {
             redirect: 'follow'
           }; */
 
-          /*          response = await fetch(
+                   response = await fetch(
           "https://62b432cca36f3a973d2e4b86.mockapi.io/api/v1/country",
           requestOptions
-        ); */
+        );
           //!mockupapi.io!
-          response = await fetch(
+        /*   response = await fetch(
             `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`,
 
             requestOptions
-          );
+          ); */
         } catch (error) {
           console.error("COVID ERROR: ", error);
         }
