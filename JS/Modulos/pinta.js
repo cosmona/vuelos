@@ -101,9 +101,32 @@ async function pintaVuelo(vuelo, access_token) {
       <p>${avion}</p>
       <p>${llegTiempo}</p>`;
 
-      //~ COVID
+      //* escucha click en cada (o solo una?) tarjeta del vuelo para plegar/desplegar escalas
+      let pescadorVuelo = document.querySelector(`#cabeceraVuelo${idVuelo}`);
+      pescadorVuelo.addEventListener("click", (e) => { 
+        //* pesca los detalles del vuelo
+        let pescadorDetalle = document.querySelectorAll(
+          `#cabeceraVuelo${idVuelo} ~ .detalle`
+        );
+        
+        //* oculta/muestra cada detalle del vuelo
+        pescadorDetalle.forEach((x) => {
+          if (!x.classList.contains("notHide")) {
+            x.classList.add("notHide");
+          } else if (x.classList.contains("notHide")) {
+            x.classList.remove("notHide");
+          }
+        });
+        e.stopImmediatePropagation();
+      });
+
+      
+
+      
+    }
+    //~ COVID
       //^callback (funcion de flecha)=> consulta covid
-      const datosCovid = async (access_token, aeropuerto) => {
+      const datosCovid = async (access_token, aeropuertoParam) => {
 
         //* fech covid
         let myHeaders = new Headers();
@@ -117,28 +140,33 @@ async function pintaVuelo(vuelo, access_token) {
           redirect: "follow",
         };
         try {
-        /*response = await fetch("https://62b432cca36f3a973d2e4b86.mockapi.io/api/v1/country",requestOptions);*/ //!mockupapi.io! //!DOC
-          
-          response = await fetch(
-            `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuerto[0].data[0].address.countryCode}&cityCode=${aeropuerto[0].data[0].address.cityCode}`,requestOptions); //! Api Covid //!DOC
-        
+        response = await fetch("https://62b432cca36f3a973d2e4b86.mockapi.io/api/v1/country",requestOptions); //!mockupapi.io! 
+        /*   response = await fetch(
+            `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${aeropuertoParam[0].data[0].address.countryCode}&cityCode=${aeropuertoParam[0].data[0].address.cityCode}`,requestOptions); 
+           */ 
           } catch (error) {
-          console.error("COVID ERROR: ", error);
-        } 
-        const result_1 = await response.text();
-        //* Return datos covid parseados
-        return JSON.parse(result_1);
-      };
-
-    
+            console.error("COVID ERROR: ", error);
+          } 
+          console.log(`response${idVuelo}`, response)
+         /*  console.log('await response.text()', await response.text()) */
+          const result_1 = await response.text();
+          //* Return datos covid parseados
+          return JSON.parse(result_1);
+        };
+        
+    //!---------------------------------------------------------------------------------------
       //* pide datos del aeropuerto pasandole el codido iata
-      let aeropuerto = await tellAirports(iata, access_token);
+      let aeropuerto = await tellAirports(vuelo.itineraries[0].segments[escalas].arrival.iataCode, access_token);
+      console.log(`aeropuerto${idVuelo}`, aeropuerto)
+   
 
       //* prepara el seccion de covid
       //* llama a la funcion callback pasandole token y el objeto aeropuerto
       let detalleSect2 = document.createElement("section");
-      if (aeropuerto[0].data.length !== 0) {
+      if (!aeropuerto[0].error) {
+        console.log('cojones')
         let covid = await datosCovid(access_token, aeropuerto);
+        console.log(`covid${idVuelo}`, covid)
         let covidRest = covid.data.areaAccessRestriction;
 
 
@@ -182,27 +210,6 @@ async function pintaVuelo(vuelo, access_token) {
         }); */
       }
       //~ FIN COVID
-
-      //* escucha click en cada (o solo una?) tarjeta del vuelo para plegar/desplegar escalas
-      let pescadorVuelo = document.querySelector(`#cabeceraVuelo${idVuelo}`);
-      pescadorVuelo.addEventListener("click", (e) => {
-        
-        //* pesca los detalles del vuelo
-        let pescadorDetalle = document.querySelectorAll(
-          `#cabeceraVuelo${idVuelo} ~ .detalle`
-        );
-         
-        //* oculta/muestra cada detalle del vuelo
-        pescadorDetalle.forEach((x) => {
-          if (!x.classList.contains("notHide")) {
-            x.classList.add("notHide");
-          } else if (x.classList.contains("notHide")) {
-            x.classList.remove("notHide");
-          }
-        });
-        e.stopImmediatePropagation();
-      });
-    }
   }
 };
 
