@@ -7,8 +7,8 @@ async function getToken() {
 
   let urlencoded = new URLSearchParams();
   urlencoded.append("grant_type", "client_credentials");
-  urlencoded.append("client_id", "gjsb6bHgdlQQJAOPOtcPK7DrRtPy2Prq");
-  urlencoded.append("client_secret", "AygoznGhNS18LpA4");
+  urlencoded.append("client_id", "ptEFrHsu8P2MJPp5dkYbGO75fBYyZfMa");
+  urlencoded.append("client_secret", "eQQsEFAQGJp6tj1w");
 
   let requestOptions = {
     method: "POST",
