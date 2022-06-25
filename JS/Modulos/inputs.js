@@ -11,7 +11,7 @@ async function gestionInputs(origen, destino, token) {
 
   let originLocation = origen;
   let destinationLocation = destino;
-  let maxFlights = 10;
+  let maxFlights = 5;
   let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${fecha.value}&adults=${numAdultos.value}&max=${maxFlights}`;
 
   //* muestra loading
