@@ -6,6 +6,7 @@ import { loadingState } from "./carga.js";
 
 //& Muestra aeropuertos por palabra clave (ciudad)
 async function tellAirports(text, token) {
+  console.log('text', text)
   //* define cabeceras
   let myHeaders = new Headers();
   myHeaders.append("Content-type", "application/x-www-form-urlencoded");
@@ -17,7 +18,7 @@ async function tellAirports(text, token) {
     redirect: "follow",
   };
 
-  try {
+ 
    /*  if (text.length > 3){
       console.log('textantes', text)
       text = text.slice(0,3);
@@ -29,10 +30,9 @@ async function tellAirports(text, token) {
       );
       
     const result_1 = await response.text();
+    console.log('result_1', result_1)
     return [JSON.parse(result_1)];
-  } catch (error) {
-    return console.error("API ERROR", error);
-  } //TODO Control de errores
+ 
 }
 //& Obtiene los vuelos
 async function vuelosDisponibles(link, accessToken) {

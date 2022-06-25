@@ -30,7 +30,7 @@ async function gestionInputs(origen, destino, token) {
     let domElement = document.querySelector(".vuelos"); //~DOM
     //* por cada vuelo de la lista (11)
     for (let i = 0; i < result.data.length; i++) {
-      pintaVuelo(result.data[i]);
+      pintaVuelo(result.data[i],token);
     }
   }
 
