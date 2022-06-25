@@ -19,6 +19,7 @@ html {
   --liver-organ: #642919ff;
   --liver-dogs: #b56a2dff;
   font-family: "Source Serif 4", serif;
+  --body: #5da36f;
 }
 /* todo */
 /* 
@@ -30,7 +31,8 @@ body {
   margin: 0 auto;
   background-color: var(--color2);
   height: 100vh;
-  background-color: rgb(249, 215, 181);
+  /* background-color: rgb(249, 215, 181); */
+  background-color: var(--body);
 }
 
 header h1 {
@@ -39,7 +41,6 @@ header h1 {
   text-align: center;
   font-weight: bold;
   color: var(--liver-dogs);
-  /* box-shadow: 10px 5px 5px black; */
   text-shadow: 1px 1px 1px black;
 }
 
@@ -48,14 +49,11 @@ main {
   flex-direction: column;
   min-height: 80vh;
   align-items: center;
-
-  /* justify-content: center; */
 }
 /*
      &formulario 
  */
 form {
-  /* debbug */
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -66,9 +64,9 @@ form {
   background-position: center;
   align-items: center;
 }
-/*media query + 390px*/
 
-form input {
+form input,
+ul {
   height: fit-content;
   margin: 1rem;
   width: 50vw;
@@ -76,14 +74,23 @@ form input {
   height: 2.5rem;
   outline: none;
   border: none;
+  text-align: center;
+  font-size: 12px;
+}
+form input {
   border-radius: 5px;
   text-align: center;
   font-size: 12px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
+form input#aeropuerto-salida,
+form input#aeropuerto-llegada {
+  margin-bottom: 0;
+}
 
-ul {
+div.autocom-box ul {
   position: absolute;
+  padding: 0;
   margin: 0;
   padding: 0;
 }
@@ -92,11 +99,15 @@ li {
   background-color: rgb(224, 252, 252, 50);
   list-style: none;
   padding: 8px 12px;
-  width: 75%;
+  width: 100%;
   cursor: default;
-  border-radius: 3px;
 }
-
+li:first-child {
+  border-radius: 3px 3px 0px 0px;
+}
+li:last-child {
+  border-radius: 0px 0px 3px 3px;
+}
 .autocom-box ul li.active {
   color: #008;
   background: #cef;
@@ -105,9 +116,6 @@ li {
 li:hover {
   background-color: rgba(0, 0, 0, 0.717);
   color: white;
-}
-#pasajeros::before {
-  content: "🕴";
 }
 
 /* !IMPORTANTE llevar al ccs final */
@@ -129,8 +137,15 @@ button {
   width: 85vw;
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+.error p:first-child {
+  font-size: 30px;
+}
+.error p:first-child::after {
+  content: "😰";
 }
 .vuelos {
   display: flex;
@@ -244,24 +259,13 @@ article p {
 */
 @media (max-width: 350px) {
   .logo {
-    height: 30px;
+    height: 25px;
   }
   article {
     font-size: 12px;
   }
 }
-/* !nuevo
-  &para pantallas de ancho menor a 350
-*/
-@media (max-width: 600px) {
-  ul {
-    width: 80vw;
-    margin-left: 2.1rem;
-  }
-  li {
-    width: 80vw;
-  }
-}
+
 /* 
   &para pantallas de ancho mayor a 900px
 */
@@ -272,10 +276,8 @@ article p {
   form {
     align-items: flex-end;
   }
-  ul {
-    width: 56vw;
-  }
 }
+
 /* 
   &para pantallas de ancho mayor a 1500px
 */
