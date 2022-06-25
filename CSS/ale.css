@@ -13,8 +13,8 @@ font-family: 'Source Serif 4', serif;
 }
 
 html {
-  --selective-yellow: rgba(250, 192, 0, 0.993);
-  --alabaster: #ebe5dcff;
+  --selective-yellow: #f2ba04;
+  --alabaster: #ebe5dc;
   --camel: #b59779ff;
   --liver-organ: #642919ff;
   --liver-dogs: #b56a2dff;

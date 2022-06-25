@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,600&display=swap");
+@import url(./loading.css);
+
+/* 
+font-family: 'Fredoka One', cursive;
+font-family: 'Source Serif 4', serif;
+*/
+
+* {
+	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+}
+
+html {
+	--selective-yellow: rgba(250, 192, 0, 0.993);
+	--alabaster: #ebe5dcff;
+	--camel: #b59779ff;
+	--liver-organ: #642919ff;
+	--liver-dogs: #b56a2dff;
+	--background:rgb(255, 255, 255);
+	font-family: "Source Serif 4", serif;
+	font-size: 24px;
+	font-family: 'Source Serif 4', serif;
+
+
+}
+
+body {
+	background-color: var(--background);
+	height: 100vh;
+}
+
+header h1 {
+	color: var(--liver-dogs);
+    padding: 1rem;
+    font-family: "Fredoka One";
+	font-size: 2.8rem;
+    text-align: center;
+    text-shadow: -3px 6px 4px rgb(3 3 3 / 76%);
+}
+
+main {
+text-align: center;
+}
+
+/* &formulario */
+ form {
+	background-image: url(../IMG/cabecera.png);
+backface-visibility: visible;
+	padding: 1rem;
+	/* display: flex;
+	flex-direction: column; */
+	background-size: cover;
+background-blend-mode: color-burn;
+	background-position: center;
+	align-items: center;
+	box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+
+  }
+
+  form input {
+	margin: 1rem;
+	width: 80vw;
+	min-width: 300px;
+	height: 2.9rem;
+	font-size: 1.2rem;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	text-align: center;
+    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+}
+
+
+input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
+	color: red;
+}
+
+  .vuelos {
+	margin: 100px auto;
+	gap: 1rem;
+  }
+/*!-----------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: #7f7fd5;
+  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
+
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+.tag-brown {
+  background: #D1913C;
+background: linear-gradient(to bottom, #FFD194, #D1913C);
+  color: #fafafa;
+}
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.user {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image {
+  border-radius: 50%;
+}
+
+.user__info > small {
+  color: #666;
+}
