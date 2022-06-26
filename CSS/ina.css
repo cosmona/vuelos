@@ -106,6 +106,34 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
 	color: red;
 }
 
+ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: rgb(51 110 26 / 70%);
+  /* list-style: none; */
+  padding: 6px 7px;
+  width: 94%;
+  cursor: pointer;
+  /* border-radius: 3px; */
+  color: #f1e0c1;
+  font-size: 0.5rem;
+  text-align: left;
+}
+
+.autocom-box ul li.active {
+  color: #008;
+  background: #cef;
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;
+}
+
   .vuelos {
 	margin: 17px auto;
   display: flex;
