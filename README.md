@@ -24,6 +24,7 @@ FlightFinder, o Busca Vuelos es una aplicación que se encarga de buscar los 10 
 ## APIs usadas
 
 Siguiendo las indicaciones dadas, esta pagina utiliza multiples APIs creadas por [Amadeus](https://developers.amadeus.com/)
+
 1- [Flight offer search](https://developers.amadeus.com/self-service/category/air/api-doc/flight-offers-search)
 2- [Airport & city search](https://developers.amadeus.com/self-service/category/air/api-doc/airport-and-city-search)
 3- [Travel restrictions](https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions)
@@ -57,5 +58,6 @@ API que dara toda la informacion necesaria con relacion a las restricciones que 
 **_¡Importante!_**
 Esta API tiene un numero maxima de llamadas que un usuario no pago puede hacer de 200 llamadas
 
-###Contribuyentes
-Alejandra Latorraca Población, Iñaki Perez Fernandez y Mario Collar Álvarez
+### Desarroyadores
+
+Alejandra Latorraca Población, Iñaki Perez Fernández y Mario Collar Álvarez
