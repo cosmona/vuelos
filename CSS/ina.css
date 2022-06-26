@@ -32,32 +32,29 @@ body {
 }
 
 header h1 {
-  padding: 1rem;
   font-family: "Fredoka One";
   font-size: 2.8rem;
   text-align: center;
   text-shadow: -4px 3px 0 #34d16e, -14px 7px 0 #0a0e27;
-
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1px rgb(0, 0, 0); 
   color: transparent;
   font-size:120px;
   /* background: url("https://source.unsplash.com/600x400/?clouds") repeat;
   background-position: 40% 50%;*/
-  -webkit-background-clip: text;
-  -webkit-text-stroke: 1px rgb(0, 0, 0); 
-margin: 30px auto;
-
+  margin: 1rem auto;
   line-height:90px;
   letter-spacing: -4px;
 }
 
 main {
-text-align: center;
+  text-align: center;
 }
 
 /* &formulario */
  form {
 	background-image: url(../IMG/cabecera.png);
-backface-visibility: visible;
+  
 	padding: 1rem;
 	/* display: flex;
 	flex-direction: column; */
