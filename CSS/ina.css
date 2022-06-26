@@ -54,12 +54,12 @@ main {
 /* &formulario */
  form {
 	background-image: url(../IMG/cabecera.png);
-  
-	padding: 1rem;
+	height: min-content;
+  padding: 0.5rem;
 	/* display: flex;
 	flex-direction: column; */
 	background-size: cover;
-background-blend-mode: color-burn;
+  background-blend-mode: color-burn;
 	background-position: center;
 	align-items: center;
 	box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
