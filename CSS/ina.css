@@ -73,12 +73,14 @@ main {
     max-width: 350px;
 }
 
-input::-webkit-input-placeholder {
+input[type="date" i]{
   text-align: center;
+  background-color: #34d16ec5;
 }
 
-:-moz-placeholder {
+input[type="date" i]::placeholder{
   text-align: center;
+  background-color: #34d16ec5;
 }
 
 
