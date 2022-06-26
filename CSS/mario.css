@@ -142,6 +142,17 @@ button {
   box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
 }
 
+.error p:first-child {
+  font-size: 30px;
+}
+.error p:first-child::after {
+  content: "😰";
+}
+
+.error img {
+  width: 100%;
+}
+
 .vuelos {
   display: flex;
   flex-direction: column;
@@ -255,14 +266,24 @@ footer {
 */
 
 /* !nuevo
-  &para pantallas de ancho menor a 350
+  &para pantallas de ancho menor a 428px
 */
-@media (max-width: 350px) {
+@media (max-width: 428px) {
   .logo {
     height: 30px;
   }
   article {
     font-size: 12px;
+  }
+  .error p:first-child {
+    font-size: 15px;
+  }
+  .error img {
+    width: 50%;
+  }
+  .error {
+    display: flex;
+    flex-direction: column;
   }
 }
 /* 
