@@ -59,30 +59,47 @@ main {
 
   }
 
-  form input {
-    color: black;
-    margin: 0.5rem;
-    width: 80vw;
-    min-width: 300px;
-    height: 2rem;
-    font-size: 0.5rem;
-    /* outline: none; */
-    border: none;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: -7px 4px 3px 0px #0c341ac5;
-    max-width: 350px;
-    background-color: #fafafac5;
+form input {
+  color: black;
+  margin: 0.5rem;
+  width: 80vw;
+  min-width: 300px;
+  height: 2rem;
+  font-size: 0.5rem;
+  /* outline: none; */
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: -7px 4px 3px 0px #0c341ac5;
+  max-width: 350px;
+  background-color: #fafafac5;
   }
+
   
-  input[type="date" i]{
+
+input[type="date"]{
     text-align: center;
-  }
+}
   
-  input::placeholder{
+input::placeholder{
   color: gray;
   text-align: center;
-font-style: italic;}
+  font-style: italic;
+}
+label {
+  position: relative;
+}
+
+label span {
+  position: absolute;
+  font-size: 0.7rem;
+  top: 8px;
+  right: 24px;
+  color: gray;
+  text-align: center;
+  
+  font-style: italic;
+}
 
 
 input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
