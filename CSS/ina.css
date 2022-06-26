@@ -136,8 +136,8 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
   }
 
 .card_body{
-  font-size: 0.7rem;
-  padding: 0.5rem;
+  font-size: 0.6rem;
+  padding: 0.6rem;
 }
   article {
     margin-top: 1rem;
