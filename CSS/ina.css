@@ -72,6 +72,17 @@ main {
     box-shadow: -7px 4px 3px 0px rgb(0 0 0 / 31%);
     max-width: 350px;
 }
+input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  display: none;
+}
 
 
 input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
