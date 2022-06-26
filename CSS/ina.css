@@ -73,7 +73,7 @@ main {
     max-width: 350px;
 }
 
-::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
   text-align: center;
 }
 
