@@ -127,7 +127,8 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
   .card {
     display: flex;
     flex-direction: column;
-    width: clamp(10rem, calc(12rem + 8vw), 16rem);    overflow: hidden;
+    width: clamp(10rem, calc(12rem + 8vw), 16rem);   
+    overflow: hidden;
     box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: 1em;
     background-color: rgba(250, 192, 0, 0.756);
@@ -135,10 +136,11 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
   
   }
 
-.card_body{
+.card__body{
   font-size: 0.6rem;
   padding: 0.6rem;
 }
+
   article {
     margin-top: 1rem;
     border-radius: 5px;
