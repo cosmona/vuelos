@@ -55,12 +55,12 @@ main {
   padding: 0.1rem;
 	background-size: cover;
 	align-items: center;
-	box-shadow: 1px 10px 10px 6px #34d16ec5;
+	box-shadow: 1px 10px 10px 6px #0c341b69;
 
   }
 
   form input {
-    color: yellow;
+    color: black;
     margin: 0.5rem;
     width: 80vw;
     min-width: 300px;
@@ -72,7 +72,7 @@ main {
     text-align: center;
     box-shadow: -7px 4px 3px 0px #0c341ac5;
     max-width: 350px;
-    background-color: #34d16ec5;
+    background-color: #fafafac5;
   }
   
   input[type="date" i]{
@@ -80,9 +80,9 @@ main {
   }
   
   input::placeholder{
-  color: yellow;
+  color: gray;
   text-align: center;
-}
+font-style: italic;}
 
 
 input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
