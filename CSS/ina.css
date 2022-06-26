@@ -110,28 +110,33 @@ ul {
   position: absolute;
   margin: 0;
   padding: 0;
+  position: absolute;
+  margin-top: 74px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-li {
-  background-color: rgb(51 110 26 / 70%);
-  /* list-style: none; */
-  padding: 6px 7px;
-  width: 94%;
+li{
+  max-width: 90%;
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;  /* list-style: none; */
+  padding: 6px;
   cursor: pointer;
   /* border-radius: 3px; */
-  color: #f1e0c1;
   font-size: 0.5rem;
   text-align: left;
 }
 
-.autocom-box ul li.active {
-  color: #008;
-  background: #cef;
-}
 
-li:hover {
-  background-color: rgba(0, 0, 0, 0.717);
-  color: white;
+
+
+li:hover, 
+.autocom-box ul li.active 
+  {
+/* border-top: 2.4px dotted green; */
+border-bottom: 2mm ridge rgba(22, 230, 167, 0.6);
 }
 
   .vuelos {
@@ -250,6 +255,35 @@ li:hover {
   height: fit-content;
 }
 
+@media (min-width: 800px) {
+.autocom-box{
+  width: 99vw;
+    height: 10vh;
+    position: absolute;
+}
+  ul {
+    background-color: rgba(0, 0, 0, 0.717);
+    /* width: 99vh; */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+li{
+  background-color: transparent;
+  max-width: 100%;
+  height: 10vh;
+
+  
+  
+}
+li:hover{
+ 
+  
+}
+  
+  
+}
 
 /*!-----------------------------------
 
