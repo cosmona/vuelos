@@ -147,6 +147,9 @@ button {
 .error p:first-child::after {
   content: "😰";
 }
+.error img {
+  width: 100%;
+}
 .vuelos {
   display: flex;
   flex-direction: column;
@@ -259,7 +262,7 @@ article p {
 */
 @media (max-width: 350px) {
   .logo {
-    height: 25px;
+    height: 20px;
   }
   article {
     font-size: 12px;
