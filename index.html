@@ -15,7 +15,15 @@
     <title>FlightFinder</title>
   </head>
   <body>
-    <header><h1>Flight finder</h1></header>
+    <header>
+      <!-- <a href="https://iconscout.com/icons/airplane" target="_blank">Airplane Icon</a> by <a href="https://iconscout.com/contributors/fiki-a" target="_blank">Fiki Ahmadi</a>  -->
+      <img
+        id="plane"
+        src="./IMG/icons/airplane.png"
+        alt=" Airplane Icon by Fiki Ahmadi on IconScout"
+      />
+      <h1>Flight finder</h1>
+    </header>
     <main>
       <form name="flightForm" id="flightForm">
         <input
@@ -26,6 +34,7 @@
           value="2022-07-22"
           min="2022-01-01"
           max="2018-12-1"
+          required
         />
         <input
           type="number"
@@ -44,6 +53,7 @@
               minlength="3"
               id="aeropuerto-salida"
               autocomplete="off"
+              required
             />
           </div>
           <div class="autocom-box">
@@ -61,6 +71,7 @@
               minlength="3"
               id="aeropuerto-llegada"
               autocomplete="off"
+              required
             />
           </div>
           <div class="autocom-box">
