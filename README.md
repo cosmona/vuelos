@@ -57,4 +57,4 @@ Esta API solo tiene datos de destinos en:
   Esta API tiene un numero maxima de llamadas que un usuario no pago puede hacer de 200 llamadas
 
 ###Contribuyentes
-Alejandra Latorraca Población, Iñaki Perez y Mario Collar Álvarez
+Alejandra Latorraca Población, Iñaki Perez Fernandez y Mario Collar Álvarez
