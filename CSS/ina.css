@@ -33,17 +33,15 @@ body {
 
 header h1 {
   font-family: "Fredoka One";
-  font-size: 2.8rem;
+  /* font-size: 2.8rem; */
   text-align: center;
   text-shadow: -4px 3px 0 #34d16e, -14px 7px 0 #0a0e27;
   -webkit-background-clip: text;
-  -webkit-text-stroke: 1px rgb(0, 0, 0); 
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
   color: transparent;
-  font-size:120px;
-  /* background: url("https://source.unsplash.com/600x400/?clouds") repeat;
-  background-position: 40% 50%;*/
-  margin: 1rem auto;
-  line-height:90px;
+  font-size: 107px;
+  margin: 0.6rem auto;
+  line-height: 90px;
   letter-spacing: -4px;
 }
 
@@ -54,29 +52,25 @@ main {
 /* &formulario */
  form {
 	background-image: url(../IMG/cabecera.png);
-	height: min-content;
   padding: 0.1rem;
-	/* display: flex;
-	flex-direction: column; */
 	background-size: cover;
-  background-blend-mode: color-burn;
-	background-position: center;
 	align-items: center;
 	box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
 
   }
 
   form input {
-	margin: 0.5rem;
-	width: 80vw;
-	min-width: 300px;
-	height: 2.9rem;
-	font-size: 0.8rem;
-	outline: none;
-	border: none;
-	border-radius: 12px;
-	text-align: center;
-    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+    margin: 0.5rem;
+    width: 80vw;
+    min-width: 300px;
+    height: 2rem;
+    font-size: 0.5rem;
+    /* outline: none; */
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: -7px 4px 3px 0px rgb(0 0 0 / 31%);
+    max-width: 350px;
 }
 
 
