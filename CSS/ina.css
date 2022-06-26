@@ -107,7 +107,7 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
 }
 
   .vuelos {
-	margin: 45px auto;
+	margin: 17px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,7 +117,8 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
   .containerCards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    
     margin-block: 2rem;
     gap: 2rem;
   }
@@ -134,7 +135,10 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
   
   }
 
-
+.card_body{
+  font-size: 0.7rem;
+  padding: 0.5rem;
+}
   article {
     margin-top: 1rem;
     border-radius: 5px;
