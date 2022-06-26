@@ -104,6 +104,7 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
 	color: red;
 }
 
+
 /*& Sugerencias origen/destino*/ 
 .autocom-box{
   display: flex;
@@ -138,6 +139,9 @@ li:hover,
   border-bottom: 2mm ridge rgba(22, 230, 167, 0.6);
 }
 
+form input:active{
+  border: 0;;
+}
 /*& Vuelos */
 .vuelos {
   margin: 17px auto;
@@ -153,6 +157,8 @@ li:hover,
     justify-content: space-evenly;
     margin-block: 2rem;
     gap: 2rem;
+    margin: 0.5rem;
+    padding: 4rem;
   }
   
 
@@ -207,6 +213,21 @@ article {
   .idVuelo > section.detalle.notHide {
     opacity: 1;
     height: fit-content;
+    padding: 1rem 0;
+  }
+
+  .idVuelo > section.detalle.notHide:last-child {
+    border-radius: 0 0 15px 15px !important;
+  }
+
+  .idVuelo > section.detalle.notHide:nth-child(odd) {
+    background-color: rgba(227, 197, 96, 0.877);
+    border-radius: 0;
+  }
+
+  .idVuelo > section.detalle.notHide:nth-child(even) {
+    background-color: rgba(113, 214, 184, 0.43);
+    border-radius: 0;
   }
   
   .idVuelo {
@@ -220,19 +241,42 @@ article {
   
   .idVuelo article::after{  /** Primera oferta */
     content: "↕";
-    
+    font-size: 1.5rem;
     top: 0;
     position: relative;
     z-index: -99;
   }
   
 
+  .error {
+    display: flex;
+    flex-direction: column;
+    
+    font-family: monospace;
+    color: whitesmoke;
+
+    border-radius: 1em;
+    background-color: rgba(250, 192, 0, 0.756);
+    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+    margin: 1rem ;
+    font-size: 2rem;
+  }
+
+  .error img{
+    border: 2px solid grey;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 800px;
+    overflow: hidden;  
+  }
+
   .idVuelo:first-child article::before{  /** Primera oferta */
     content: "💸";
-    left: -147px;
+    left: 0;
     top: 0;
-    position: relative;
-    z-index: -99;
+    position: absolute;
+    font-size: 2rem;
+    padding: 0.5rem;
   }
   
   .idVuelo article {
@@ -240,8 +284,7 @@ article {
     margin: 0;
     display: flex;
     flex-direction: column;
-    /* grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr; */
+    position: relative;
   }
 
 
@@ -252,17 +295,55 @@ article {
   display: none;
   }
 
-  .idVuelo article p:nth-child(3)::after{
-    margin-top: 15px;
-    margin-left: 5px;
+  .idVuelo article p:nth-child(3)::before{
+    margin-top: -5px;
+    
+    margin-left: -9px;
     position: absolute;
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     content:" escala" ;
   }
 
-  .logo {
-    height: 60px;
+  .idVuelo article p:nth-child(2){ /**Hora salida /llegada total**/
+    font-size: 2rem;
+    margin-top: 0.2rem;
   }
+
+  .idVuelo article p:nth-child(3){ /**escala**/
+    font-size: 1.4rem;
+    margin-top: 0.1rem;
+  }
+
+  .idVuelo article p:nth-child(4){ /**duracion**/
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .idVuelo article p:nth-child(4)::before{ /**duracion**/
+    content:"🕚";
+    font-size: 0.8rem;
+    margin-top: -5px;
+    margin-left: -25px;
+    position: absolute;
+
+  }
+
+  .idVuelo article p:nth-child(5){
+    font-size: 3rem;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .idVuelo:first-child article p:nth-child(5){
+  color: green;
+  }
+
+  .logo {
+    height: 96px;
+    }
 
 /*& Covid*/
 .vuelos .idVuelo .covid {
@@ -296,50 +377,42 @@ article {
   align-items: flex-start;
   padding: 0.5rem;
   text-align: left;
-
+position: relative;
 }
 
 .detallesCovid1 details{
   text-align: left;
 }
-
-
+footer{
+  background-color: #1bb898;
+  font-size: 0.8rem;
+  text-align: center;
+  color: white;
+}
 
 /*!-----------------------------------MEDIA SCREEN*/
-@media (min-width: 800px) {
-.autocom-box{
-  width: 99vw;
-    height: 10vh;
-    position: absolute;
+@media (min-width: 900px) {
+
+  form {
+    text-align: right;
+    height: 457px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: auto 3rem;
+    padding: 4rem 1rem;
+    justify-content: space-around;
+
 }
 
-
-
-
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    
+form input{
+  min-width: 430px;
 }
 
-body {
-  font-family: "Quicksand", sans-serif;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  background: #7f7fd5;
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-}
+  
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1200px;
-  margin-block: 2rem;
-  gap: 2rem;
-}
+  
 
 img {
   max-width: 100%;
@@ -355,69 +428,31 @@ img {
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
-background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  
 }
 
 
 
-.card__body {
+
+
+
+.idVuelo:first-child article:before {
+  content: "💸";
+  font-size: 2rem;
+  left: 0;
+  top: -15px;
+  position: absolute;
   padding: 1rem;
+}
+
+.idVuelo article {
+  padding: 0.5rem;
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: .5rem;
+  flex-direction: row;
+  position: relative;
 }
 
 
-.tag {
-  align-self: flex-start;
-  padding: .25em .75em;
-  border-radius: 1em;
-  font-size: .75rem;
-}
-
-.tag + .tag {
-  margin-left: .5em;
-}
-
-.tag-blue {
-  background: #56CCF2;
-background: linear-gradient(to bottom, #2F80ED, #56CCF2);
-  color: #fafafa;
-}
-
-.tag-brown {
-  background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
-  color: #fafafa;
-}
-
-.tag-red {
-  background: #cb2d3e;
-background: linear-gradient(to bottom, #ef473a, #cb2d3e);
-  color: #fafafa;
-}
-
-.card__body h4 {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-}
-
-.card__footer {
-  display: flex;
-  padding: 1rem;
-  margin-top: auto;
-}
-
-.user {
-  display: flex;
-  gap: .5rem;
-}
-
-.user__image {
-  border-radius: 50%;
-}
-
-.user__info > small {
-  color: #666;
 }
