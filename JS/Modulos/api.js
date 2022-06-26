@@ -17,7 +17,7 @@ async function tellAirports(text, token) {
     redirect: "follow",
   };
 
-  try {
+ 
    /*  if (text.length > 3){
       console.log('textantes', text)
       text = text.slice(0,3);
@@ -30,9 +30,7 @@ async function tellAirports(text, token) {
       
     const result_1 = await response.text();
     return [JSON.parse(result_1)];
-  } catch (error) {
-    return console.error("API ERROR", error);
-  } //TODO Control de errores
+ 
 }
 //& Obtiene los vuelos
 async function vuelosDisponibles(link, accessToken) {
