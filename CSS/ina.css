@@ -55,11 +55,12 @@ main {
   padding: 0.1rem;
 	background-size: cover;
 	align-items: center;
-	box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+	box-shadow: 1px 10px 10px 6px #34d16ec5;
 
   }
 
   form input {
+    color: yellow;
     margin: 0.5rem;
     width: 80vw;
     min-width: 300px;
@@ -69,18 +70,18 @@ main {
     border: none;
     border-radius: 12px;
     text-align: center;
-    box-shadow: -7px 4px 3px 0px rgb(0 0 0 / 31%);
+    box-shadow: -7px 4px 3px 0px #0c341ac5;
     max-width: 350px;
-}
-
-input[type="date" i]{
+    background-color: #34d16ec5;
+  }
+  
+  input[type="date" i]{
+    text-align: center;
+  }
+  
+  input::placeholder{
+  color: yellow;
   text-align: center;
-  background-color: #34d16ec5;
-}
-
-input[type="date" i]::placeholder{
-  text-align: center;
-  background-color: #34d16ec5;
 }
 
 
