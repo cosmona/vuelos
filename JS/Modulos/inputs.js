@@ -4,7 +4,7 @@ import { vuelosDisponibles, tellAirports } from "./api.js";
 import { pintaVuelo, showSuggestions } from "./pinta.js";
 import { loadingState } from "./carga.js";
 
-//& Gestiona llamadas a los vuelos inputs origen / destino
+//&+ Gestiona llamadas a los vuelos inputs origen / destino
 async function gestionInputs(origen, destino, token) {
   let fecha = document.getElementById("start"); //~DOM
   let numAdultos = document.getElementById("pasajeros"); //~DOM

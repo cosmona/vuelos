@@ -10,20 +10,18 @@ async function main() {
   //? SCOPE PRINCIPAL ORIGEN
   const NUM_ADULTOS = document.getElementById("pasajeros"); //~DOM
   const FECHA = document.getElementById("start"); //~DOM
-  //TODO a una línea
-  const searchWrapperORIGEN = document.querySelector(".origen .search-input"); //~DOM
-  const INPUT_BOX_ORIGEN = searchWrapperORIGEN.querySelector("input"); //~DOM
+  
+  const INPUT_BOX_ORIGEN = document.querySelector(".origen .search-input input"); //~DOM
   let listGroupORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
   let actualOrigen;
   let origen;
-  //TODO a una línea
-  const searchWrapperDESTINO = document.querySelector(".destino .search-input"); //~DOM
-  const INPUT_BOX_DESTINO = searchWrapperDESTINO.querySelector("input"); //~DOM
+  
+  const INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
   let listGroupDESTINO = document.querySelector(".destino .autocom-box ul"); //~DOM
   let actualDestino;
   let destino;
   
-  //^ función manejadora de li al hacer click en él
+  //^+ función manejadora de li al hacer click en él
   const handleClickLiORIGEN = (event) => {
     //* Pone en el texto del input lo que pone en el li del click
     let INPUT_BOX_ORIGEN = document.querySelector(".origen .search-input input"); //~DOM
@@ -50,7 +48,7 @@ async function main() {
   //* solicita token
   let token = await getToken();
   
-  //* evento al input de origen para escuchar el teclado para sugerencias
+  //*+ evento al input de origen para escuchar el teclado para sugerencias
   INPUT_BOX_ORIGEN.addEventListener("keyup",async (e) => {
     
     //* especifica min 3 caracteres
@@ -123,7 +121,7 @@ async function main() {
   
 //? SCOPE PRINCIPAL DESTINO
   
-  //^ defino función manejadora de li al hacer click en él
+  //^+ función manejadora de li al hacer click en él
   const handleClickLiDESTINO = (event) => {
     //* Pone en el texto del imput lo que pone en el li del click
     let INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
@@ -147,7 +145,7 @@ async function main() {
     } 
   };
   
-  //* evento al input de origen para escuchar el teclado para sugerencias
+  //*+ evento al input de origen para escuchar el teclado para sugerencias
   INPUT_BOX_DESTINO.addEventListener("keyup",async (e) => {
     //* especifica min 3 caracteres
     if (e.target.value.length >= 3) {
@@ -215,12 +213,12 @@ async function main() {
         }         
   });
 
-  //* cuando se clica el input selecciona todo el texto
+  //*+ cuando se clica el input selecciona todo el texto
   INPUT_BOX_DESTINO.onclick = () => {
     INPUT_BOX_DESTINO.select();
   };
 
-  //* Evento nº de pasajeros y fecha
+  //*+ Evento nº de pasajeros y fecha
   const inputAdultsDate = (event) => {
     if (origen && destino) {
       if (origen != destino) {
@@ -233,12 +231,11 @@ async function main() {
     }
   };
 
+  //* escucha el imput de personas para que lance la consulta si se cambia el valor
   NUM_ADULTOS.addEventListener("input", inputAdultsDate);
 
   //* cuando se clica el input selecciona todo el texto
-  NUM_ADULTOS.onclick = () => {
-    NUM_ADULTOS.select();
-  };
+  NUM_ADULTOS.onclick = () => { NUM_ADULTOS.select(); };
 
   //* Evento cambio de fecha
   FECHA.addEventListener("change", inputAdultsDate);
