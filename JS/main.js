@@ -121,11 +121,7 @@ async function main() {
   
 //? SCOPE PRINCIPAL DESTINO
   
-<<<<<<< HEAD
-  //^ define función manejadora de li al hacer click en él
-=======
   //^+ función manejadora de li al hacer click en él
->>>>>>> origin/inaki3
   const handleClickLiDESTINO = (event) => {
     //* Pone en el texto del imput lo que pone en el li del click
     let INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
