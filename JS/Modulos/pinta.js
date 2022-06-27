@@ -10,10 +10,10 @@ async function pintaVuelo(vuelo, access_token) {
   const newArticle = document.createElement("article"); //~DOM
   
 /* 
-  //* pedimos token
+  //* solicita token
   let token = await getToken(); //TODO CORRECTO PEDIR TOKEN HAY QUE PASARLO A PINTAVUELO */
 
-  //* si el listado de vuelos esta vacio busca si ya hay una tarjeta con error en pantalla
+  //* si el listado de vuelos está vacio busca si ya hay una tarjeta con error en pantalla
   //* si no hay tarjeta de error en pantalla pinta una añade clase error y la inserta
   if (!vuelo) {
     let errorClase = document.getElementsByClassName("error"); //~DOM

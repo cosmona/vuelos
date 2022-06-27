@@ -23,7 +23,7 @@ async function gestionInputs(origen, destino, token) {
   let result = await vuelosDisponibles(enlace, token);
 
   //* si el listado de vuelos esta vacio manda false (error) a pintaVuelo
-  //* sino selecciona lo que hay (listado de vuelos) y se lo pasa a pintaVuelo
+  //* si no selecciona lo que hay (listado de vuelos) y se lo pasa a pintaVuelo
   if (result.data.length === 0) {
     pintaVuelo(false);
   } else {

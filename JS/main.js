@@ -70,7 +70,7 @@ async function main() {
       
       
       //* asocia a cada li la funcion  manejadora handleClickLiORIGEN
-      for (const li of LIST_LI_ORIGEN) { //! const?
+      for (const li of LIST_LI_ORIGEN) { 
          li.addEventListener("click", handleClickLiORIGEN);
        }
           
@@ -123,7 +123,7 @@ async function main() {
   
 //? SCOPE PRINCIPAL DESTINO
   
-  //^ defino función manejadora de li al hacer click en él
+  //^ define función manejadora de li al hacer click en él
   const handleClickLiDESTINO = (event) => {
     //* Pone en el texto del imput lo que pone en el li del click
     let INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
