@@ -8,8 +8,8 @@ font-family: 'Source Serif 4', serif;
 
 * {
 	margin: 0;
-  	padding: 0;
-  	box-sizing: border-box;
+ 	padding: 0;
+ 	box-sizing: border-box;
 }
 
 html {
@@ -19,11 +19,8 @@ html {
 	--liver-organ: #642919ff;
 	--liver-dogs: #b56a2dff;
 	--background:rgb(255, 255, 255);
-	font-family: "Source Serif 4", serif;
-	font-size: 24px;
-	font-family: 'Source Serif 4', serif;
-
-
+  font-family: "Source Serif 4", serif;
+	font-size: 20px;
 }
 
 body {
@@ -32,44 +29,74 @@ body {
 }
 
 header h1 {
-	color: var(--liver-dogs);
-    padding: 1rem;
-    font-family: "Fredoka One";
-	font-size: 2.8rem;
-    text-align: center;
-    text-shadow: -3px 6px 4px rgb(3 3 3 / 76%);
+  font-family: "Fredoka One";
+  /* font-size: 2.8rem; */
+  text-align: center;
+  text-shadow: -4px 3px 0 #34d16e, -14px 7px 0 #0a0e27;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  color: transparent;
+  font-size: 107px;
+  margin: 0.6rem auto;
+  line-height: 90px;
+  letter-spacing: -4px;
 }
 
 main {
-text-align: center;
+  text-align: center;
 }
 
 /* &formulario */
  form {
 	background-image: url(../IMG/cabecera.png);
-backface-visibility: visible;
-	padding: 1rem;
-	/* display: flex;
-	flex-direction: column; */
+  padding: 0.1rem;
 	background-size: cover;
-background-blend-mode: color-burn;
-	background-position: center;
 	align-items: center;
-	box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+	box-shadow: 1px 10px 10px 6px #0c341b69;
+  height:271px;
 
   }
 
-  form input {
-	margin: 1rem;
-	width: 80vw;
-	min-width: 300px;
-	height: 2.9rem;
-	font-size: 1.2rem;
-	outline: none;
-	border: none;
-	border-radius: 12px;
-	text-align: center;
-    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+form input {
+  color: black;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  width: 80vw;
+  min-width: 300px;
+  height: 2rem;
+  font-size: 0.5rem;
+  /* outline: none; */
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: -7px 4px 3px 0px #0c341ac5;
+  max-width: 350px;
+  background-color: #fafafac5;
+  }
+
+  
+
+input[type="date"]{
+    text-align: center;
+}
+  
+input::placeholder{
+  color: gray;
+  text-align: center;
+  font-style: italic;
+}
+
+label {
+  position: relative;
+}
+
+label span {
+  position: absolute;
+  font-size: 0.7rem;
+  top: 8px;
+  right: 24px;
+  color: gray;
+  text-align: center;  
+  font-style: italic;
 }
 
 
@@ -77,37 +104,314 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
 	color: red;
 }
 
-  .vuelos {
-	margin: 100px auto;
-	gap: 1rem;
-  }
-/*!-----------------------------------
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: "Quicksand", sans-serif;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  background: #7f7fd5;
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-}
-
-.container {
+/*& Sugerencias origen/destino*/ 
+.autocom-box{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1200px;
-  margin-block: 2rem;
-  gap: 2rem;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+
+ul {
+  position: absolute;
+  margin: 0rem 0.5rem 0 0.5rem;
+  max-width: 350px;
+  border-bottom: 5mm ridge rgb(252 185 47 / 96%);
+  }
+  
+li {
+  background-color: rgba(0, 0, 0, 0.717);
+  color: white;  
+  list-style: none;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 0.5rem;
+  text-align: left;
+}
+
+li:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+li:hover, 
+.autocom-box ul li.active {
+  border-bottom: 2mm ridge rgba(22, 230, 167, 0.6);
+}
+
+form input:active{
+  border: 0;;
+}
+/*& Vuelos */
+.vuelos {
+  margin: 17px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
+
+  .containerCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-block: 2rem;
+    gap: 2rem;
+    margin: 0.5rem;
+  }
+  
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: clamp(10rem, calc(15rem + 8vw), 16rem);
+        overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background-color: rgba(250, 192, 0, 0.756);
+    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+  
+  }
+
+    .card__body{
+      font-size: 0.6rem;
+      padding: 0.6rem;
+    }
+
+article {
+  margin-top: 1rem;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+  .vuelos article section {
+    background-color: #ffffff;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    width: 85vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .idVuelo > section.detalle {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    opacity: 0;
+    height: 0;
+    border-top:1rem red;
+    
+  }
+  
+  .idVuelo > section.detalle.notHide {
+    opacity: 1;
+    height: fit-content;
+    padding: 1rem 0;
+  }
+
+  .idVuelo > section.detalle.notHide:last-child {
+    border-radius: 0 0 15px 15px !important;
+  }
+
+  .idVuelo > section.detalle.notHide:nth-child(odd) {
+    background-color: rgba(227, 197, 96, 0.877);
+    border-radius: 0;
+  }
+
+  .idVuelo > section.detalle.notHide:nth-child(even) {
+    background-color: rgba(113, 214, 184, 0.43);
+    border-radius: 0;
+  }
+  
+  .idVuelo {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    /* background-color: #ffffff; */
+    box-shadow: rgb(0 0 0) 1px 11px 20px 1px;
+    /* flex-wrap: wrap; */
+  }
+  
+  .idVuelo article::after{  /** Primera oferta */
+    content: "↕";
+    font-size: 1.5rem;
+    top: 0;
+    position: relative;
+    z-index: -99;
+  }
+  
+
+  .error {
+    display: flex;
+    flex-direction: column;
+    
+    font-family: monospace;
+    color: whitesmoke;
+
+    border-radius: 1em;
+    background-color: rgba(250, 192, 0, 0.756);
+    box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+    margin: 1rem ;
+    font-size: 2rem;
+  }
+
+  .error img{
+    border: 2px solid grey;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 800px;
+    overflow: hidden;  
+  }
+
+  .idVuelo:first-child article::before{  /** Primera oferta */
+    content: "💸";
+    left: 0;
+    top: 0;
+    position: absolute;
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+  
+  .idVuelo article {
+    padding: 0.5rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+
+  
+
+  .idVuelo article:first-child {
+  /*   font-weight: bold; */
+  display: none;
+  }
+
+  .idVuelo article p:nth-child(3)::before{
+    margin-top: -5px;
+    
+    margin-left: -9px;
+    position: absolute;
+    font-size: 0.5rem;
+    content:" escala" ;
+  }
+
+  .idVuelo article p:nth-child(2){ /**Hora salida /llegada total**/
+    font-size: 2rem;
+    margin-top: 0.2rem;
+  }
+
+  .idVuelo article p:nth-child(3){ /**escala**/
+    font-size: 1.4rem;
+    margin-top: 0.1rem;
+  }
+
+  .idVuelo article p:nth-child(4){ /**duracion**/
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .idVuelo article p:nth-child(4)::before{ /**duracion**/
+    content:"🕚";
+    font-size: 0.8rem;
+    margin-top: -5px;
+    margin-left: -25px;
+    position: absolute;
+
+  }
+
+  .idVuelo article p:nth-child(5){
+    font-size: 3rem;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .idVuelo:first-child article p:nth-child(5){
+  color: green;
+  }
+
+  .logo {
+    height: 96px;
+    }
+
+/*& Covid*/
+.vuelos .idVuelo .covid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-left: 3rem;
+}
+
+.idVuelo .covidCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.vuelos .idVuelo .detallesCovid {
+  opacity: 0;
+  height: 0;
+}
+
+.vuelos .idVuelo .notHide {
+  opacity: 1;
+  height: fit-content;
+}
+
+.covidCard section:nth-child(2){
+  background-color: #1bb898;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 0.8rem;
+  align-items: flex-start;
+  padding: 0.5rem;
+  text-align: left;
+position: relative;
+}
+
+.detallesCovid1 details{
+  text-align: left;
+}
+footer{
+  background-color: #1bb898;
+  font-size: 0.8rem;
+  text-align: center;
+  color: white;
+}
+
+/*!-----------------------------------MEDIA SCREEN*/
+@media (min-width: 900px) {
+
+  form {
+    text-align: right;
+    height: 457px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: auto 3rem;
+    padding: 4rem 1rem;
+    justify-content: space-around;
+
+}
+
+    
+form input{
+  min-width: 430px;
+}
+
+  
+
+  
 
 img {
   max-width: 100%;
@@ -123,69 +427,31 @@ img {
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
-background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  
 }
 
 
 
-.card__body {
+
+
+
+.idVuelo:first-child article:before {
+  content: "💸";
+  font-size: 2rem;
+  left: 0;
+  top: -15px;
+  position: absolute;
   padding: 1rem;
+}
+
+.idVuelo article {
+  padding: 0.5rem;
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: .5rem;
+  flex-direction: row;
+  position: relative;
 }
 
 
-.tag {
-  align-self: flex-start;
-  padding: .25em .75em;
-  border-radius: 1em;
-  font-size: .75rem;
-}
-
-.tag + .tag {
-  margin-left: .5em;
-}
-
-.tag-blue {
-  background: #56CCF2;
-background: linear-gradient(to bottom, #2F80ED, #56CCF2);
-  color: #fafafa;
-}
-
-.tag-brown {
-  background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
-  color: #fafafa;
-}
-
-.tag-red {
-  background: #cb2d3e;
-background: linear-gradient(to bottom, #ef473a, #cb2d3e);
-  color: #fafafa;
-}
-
-.card__body h4 {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-}
-
-.card__footer {
-  display: flex;
-  padding: 1rem;
-  margin-top: auto;
-}
-
-.user {
-  display: flex;
-  gap: .5rem;
-}
-
-.user__image {
-  border-radius: 50%;
-}
-
-.user__info > small {
-  color: #666;
 }
