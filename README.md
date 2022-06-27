@@ -2,9 +2,9 @@
 
 FlightFinder, o Busca Vuelos es una aplicación que se encarga de buscar los 5 vuelos mas baratos entre 2 aeropuertos dados.
 
-[CSS1](https://vuelosinaki.netlify.app/inaki.html)
-[CSS2](https://vuelosinaki.netlify.app/inaki.html)
-[CSS3](https://vuelosinaki.netlify.app/inaki.html)
+[CSS1](https://vuelosale.netlify.app/index1.html)
+[CSS2](https://vuelosinaki.netlify.app/2.html)
+[CSS3](https://vuelosmario.netlify.app/index3.html)
 
 ## Especificaciones dadas
 
@@ -73,7 +73,8 @@ Se usa esta API debido a el limite de llamadas que se nos impone en la que nos d
 
 ## Recusos
 
-Pantalla de carga: esperando recursos
+Pantalla de carga: https://codepen.io/MattIn4D/pen/DOOGBo
+[Desarrollador](https://codepen.io/MattIn4D)
 
 ## Desarrolladores
 
