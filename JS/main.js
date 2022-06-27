@@ -68,7 +68,7 @@ async function main() {
       
       
       //* asocia a cada li la funcion  manejadora handleClickLiORIGEN
-      for (const li of LIST_LI_ORIGEN) { //! const?
+      for (const li of LIST_LI_ORIGEN) { 
          li.addEventListener("click", handleClickLiORIGEN);
        }
           

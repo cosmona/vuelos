@@ -1,54 +1,213 @@
-<h1 id="flightfinder">FlightFinder</h1>
-<p>FlightFinder, o Busca Vuelos es una aplicación que se encarga de buscar los 5 vuelos mas baratos entre 2 aeropuertos dados.</p>
-<p><a href="https://vuelosinaki.netlify.app/inaki.html">CSS1</a> <a href="https://vuelosinaki.netlify.app/inaki.html">CSS2</a> <a href="https://vuelosinaki.netlify.app/inaki.html">CSS3</a></p>
-<h2 id="especificaciones-dadas">Especificaciones dadas</h2>
-<ul>
-<li>La aplicación debe mostrar una página inicial con el título y un formulario con dos campos de texto y un botón.</li>
-<li>Los campos de texto deben permitir introducir el código IATA 1 de 3 letras.</li>
-<li>El formulario solo se puede enviar si los dos campos están cubiertos con 3 caracteres cada uno.</li>
-<li>La aplicación asume que el vuelo es para una persona y con fecha del día siguiente al actual.</li>
-<li>Al enviar el formulario la aplicación debe hacer una petición a la API de Amadeus de forma correcta y recoger el resultado.</li>
-<li>Después de tener el resultado la aplicación debe extraer la información del vuelo más barato y mostrarlos en la página debajo del formulario.</li>
-<li>Si hay algún error (aeropuertos no existen, no hay vuelos, error de conexión, etc...) la aplicación debe informar del error en pantalla.</li>
-<li>La aplicación debe permitir repetir la búsqueda con otros aeropuertos.</li>
-</ul>
-<h2 id="cambios-hechos-por-el-equipo">Cambios hechos por el equipo</h2>
-<ul>
-<li>Campos de texto permiten más de 3 letras, detectando y dando sugerencias de posibles ciudades.</li>
-<li>El usuario puede especificar tanto la cantidad de pasajeros como la fecha de viaje.</li>
-<li>Se mostrarán los 5 vuelos mas baratos entre las ciudades dadas, organizadas en orden alfabetico.</li>
-<li>Existe la posibilidad de mostrar los detalles del vuelo al hacer click en el vuelo deseado.</li>
-<li>Se pueden ver las restricciones que el pais de destino tiene con respecto al covid.</li>
-</ul>
-<h2 id="apis-usadas">APIs usadas</h2>
-<p>Siguiendo las indicaciones dadas, esta página utiliza multiples APIs creadas por <a href="https://developers.amadeus.com/">Amadeus</a></p>
-<p>1- <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-offers-search">Flight offer search</a> 2- <a href="https://developers.amadeus.com/self-service/category/air/api-doc/airport-and-city-search">Airport &amp; city search</a> 3- <a href="https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions">Travel restrictions</a> 4- <a href="https://mockapi.io/">MockApi</a></p>
-<h3 id="1--busca-vuelos">1- Busca vuelos</h3>
-<p>API que nos permitirá obtener la información de los vuelos que necesitamos, con acceso a itinerarios de mas de 500 aerolineas. La busqueda nos devolverá los vuelos desde el más barato al más costoso, con un límite de 250 objetos. La información obtenida incluye: detalles de los vuelos, posibles escalas, horarios de los mismos, detalles de precios, posibilidad de poner ida y vuelta y equipaje, entre otras cosas.</p>
-<h3 id="2--busqueda-de-ciudades">2- Busqueda de ciudades</h3>
-<p>API que recibe el nombre de las posibles ciudades y automáticamente devuelve información de las mismas, incluyendo nombre completo del aeropuerto, codigo IATA, dónde se localiza el aeropuerto, número de pasajeros que transitan por este anualmente y coordenadas, entre otras.</p>
-<p><strong><em>Límites</em></strong></p>
-<p>Esta API solo tiene datos de destinos en:</p>
-<ul>
-<li>Estados Unidos</li>
-<li>España</li>
-<li>Reino Unido</li>
-<li>Alemania</li>
-<li>India</li>
-</ul>
-<h3 id="api-para-especificaciones-covid">API para especificaciones covid</h3>
-<p>API que dará toda la información necesaria con relación a las restricciones que actualmente vigentes en el pais de destino, se puede obtener:</p>
-<ul>
-<li>Estadísticas: total de casos, casos activos y porcentaje de infecciones por cada 100.000 habitantes.</li>
-<li>Restricciones: restricciones y prohibiciones de viaje, posibles requerimientos necesarios para entrar al pais o procedimientos de cuarentena.</li>
-<li>Regulaciones: regulaciones, zonas con mas casos, aislamiento, confinamiento, toques de queda y leyes de mascarilla.</li>
-</ul>
-<p><strong><em>¡Importante!</em></strong></p>
-<p>Esta API tiene un número máximo de llamadas para un usuario sin pagar, puede hacer 200 llamadas.</p>
-<h3 id="api-mockup">API MockUp</h3>
-<p>Esta API nos permite recrear llamadas a otras APIs, nos permite definir la estructura de los datos, su relacion, posibles errores y otras caracteristicas de la API que se esta recreando.</p>
-<p>Se usa esta API debido a el limite de llamadas que se nos impone en la que nos da la informacion sobre las restricciones por Covid-19</p>
-<h2 id="recusos">Recusos</h2>
-<p>Pantalla de carga: esperando recursos</p>
-<h2 id="desarrolladores">Desarrolladores</h2>
-<p>Alejandra Latorraca Población, Iñaki Perez Fernández y Mario Collar Álvarez</p>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./CSS/readme.css" />
+		<link rel="shortcut icon"
+      			href="./IMG/icons/favicon.ico"
+      type="image/x-icon"
+    />
+		<script
+			src="https://kit.fontawesome.com/dcaa761415.js"
+			crossorigin="anonymous"
+		></script>
+
+		<title>Document</title>
+	</head>
+	<body>
+		<header></header>
+		<main>
+			
+			<h1 id="flightfinder">FlightFinder</h1>
+			<p>
+				FlightFinder, o Busca Vuelos es una aplicación que se encarga de
+				buscar los 5 vuelos mas baratos entre 2 aeropuertos dados.
+			</p>
+			<p>
+				<a href="https://vuelosmaster.netlify.app/index1.html" target="_blank">CSS1</a>
+				<a href="https://vuelosmaster.netlify.app/index2.html"	target="_blank">CSS2</a>
+				<a href="https://vuelosmaster.netlify.app/index3.html"	target="_blank"	>CSS3</a>
+				
+			</p>
+			<p>
+				<i class="fa-brands fa-github"><a href="https://github.com/cosmona/vuelos"></a></i>
+			</p>
+
+			<h2 id="especificaciones-dadas">
+				Especificaciones dadas
+				<i	class="fa-solid fa-arrow-turn-down"></i>
+			</h2>
+
+			<ul>
+				<li>
+					La aplicación debe mostrar una página inicial con el título
+					y un formulario con dos campos de texto y un botón.
+				</li>
+				<li>
+					Los campos de texto deben permitir introducir el código IATA
+					1 de 3 letras.
+				</li>
+				<li>
+					El formulario solo se puede enviar si los dos campos están
+					cubiertos con 3 caracteres cada uno.
+				</li>
+				<li>
+					La aplicación asume que el vuelo es para una persona y con
+					fecha del día siguiente al actual.
+				</li>
+				<li>
+					Al enviar el formulario la aplicación debe hacer una
+					petición a la API de Amadeus de forma correcta y recoger el
+					resultado.
+				</li>
+				<li>
+					Después de tener el resultado la aplicación debe extraer la
+					información del vuelo más barato y mostrarlos en la página
+					debajo del formulario.
+				</li>
+				<li>
+					Si hay algún error (aeropuertos no existen, no hay vuelos,
+					error de conexión, etc...) la aplicación debe informar del
+					error en pantalla.
+				</li>
+				<li>
+					La aplicación debe permitir repetir la búsqueda con otros
+					aeropuertos.
+				</li>
+			</ul>
+			<h2 id="cambios-hechos-por-el-equipo">
+				Cambios hechos por el equipo
+				<i	class="fa-solid fa-arrow-turn-down"></i>
+			</h2>
+			<ul>
+				<li>
+					Campos de texto permiten más de 3 letras, detectando y dando
+					sugerencias de posibles ciudades.
+				</li>
+				<li>
+					El usuario puede especificar tanto la cantidad de pasajeros
+					como la fecha de viaje.
+				</li>
+				<li>
+					Se mostrarán los 5 vuelos mas baratos entre las ciudades
+					dadas, organizadas en orden alfabetico.
+				</li>
+				<li>
+					Existe la posibilidad de mostrar los detalles del vuelo al
+					hacer click en el vuelo deseado.
+				</li>
+				<li>
+					Se pueden ver las restricciones que el pais de destino tiene
+					con respecto al covid.
+				</li>
+			</ul>
+			<h2 id="apis-usadas">
+				APIs usadas<i class="fa-solid fa-arrow-turn-down"></i>
+			</h2>
+			<p>
+				Siguiendo las indicaciones dadas, esta página utiliza multiples
+				APIs creadas por
+				<a href="https://developers.amadeus.com/">Amadeus</a>
+			</p>
+			<p>
+				1-
+				<a
+					href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-offers-search"
+					>Flight offer search</a
+				>
+				2-
+				<a
+					href="https://developers.amadeus.com/self-service/category/air/api-doc/airport-and-city-search"
+					>Airport &amp; city search</a
+				>
+				3-
+				<a
+					href="https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions"
+					>Travel restrictions</a
+				>
+				4- <a href="https://mockapi.io/">MockApi</a>
+			</p>
+			<h3 id="1--busca-vuelos">1- Busca vuelos</h3>
+			<p>
+				API que nos permitirá obtener la información de los vuelos que
+				necesitamos, con acceso a itinerarios de mas de 500 aerolineas.
+				La busqueda nos devolverá los vuelos desde el más barato al más
+				costoso, con un límite de 250 objetos. La información obtenida
+				incluye: detalles de los vuelos, posibles escalas, horarios de
+				los mismos, detalles de precios, posibilidad de poner ida y
+				vuelta y equipaje, entre otras cosas.
+			</p>
+			<h3 id="2--busqueda-de-ciudades">2- Busqueda de ciudades</h3>
+			<p>
+				API que recibe el nombre de las posibles ciudades y
+				automáticamente devuelve información de las mismas, incluyendo
+				nombre completo del aeropuerto, codigo IATA, dónde se localiza
+				el aeropuerto, número de pasajeros que transitan por este
+				anualmente y coordenadas, entre otras.
+			</p>
+			<p>
+				<strong><em>Límites</em></strong>
+			</p>
+			<p>Esta API solo tiene datos de destinos en:</p>
+			<ul>
+				<li>Estados Unidos</li>
+				<li>España</li>
+				<li>Reino Unido</li>
+				<li>Alemania</li>
+				<li>India</li>
+			</ul>
+			<h3 id="api-para-especificaciones-covid">
+				API para especificaciones covid
+			</h3>
+			<p>
+				API que dará toda la información necesaria con relación a las
+				restricciones que actualmente vigentes en el pais de destino, se
+				puede obtener:
+			</p>
+			<ul>
+				<li>
+					Estadísticas: total de casos, casos activos y porcentaje de
+					infecciones por cada 100.000 habitantes.
+				</li>
+				<li>
+					Restricciones: restricciones y prohibiciones de viaje,
+					posibles requerimientos necesarios para entrar al pais o
+					procedimientos de cuarentena.
+				</li>
+				<li>
+					Regulaciones: regulaciones, zonas con mas casos,
+					aislamiento, confinamiento, toques de queda y leyes de
+					mascarilla.
+				</li>
+			</ul>
+			<p>
+				<strong><em>¡Importante!</em></strong>
+			</p>
+			<p>
+				Esta API tiene un número máximo de llamadas para un usuario sin
+				pagar, puede hacer 200 llamadas.
+			</p>
+			<h3 id="api-mockup">API MockUp</h3>
+			<p>
+				Esta API nos permite recrear llamadas a otras APIs, nos permite
+				definir la estructura de los datos, su relacion, posibles
+				errores y otras caracteristicas de la API que se esta recreando.
+			</p>
+			<p>
+				Se usa esta API debido a el limite de llamadas que se nos impone
+				en la que nos da la informacion sobre las restricciones por
+				Covid-19
+			</p>
+			<h2 id="recusos">Recusos</h2>
+			<p>Pantalla de carga: <a href="https://codepen.io/MattIn4D" target="_blank">MattIn4D</a></p>
+			<h2 id="desarrolladores">Desarrolladores</h2>
+			<p>
+				<a href="https://www.linkedin.com/in/alejandra-latorraca-poblacion/" target="_blank">Alejandra Latorraca Población</a>, <a href="https://www.linkedin.com/in/inakiperezfernandez/" target="_blank">Iñaki Perez Fernández</a> y <a href="https://www.linkedin.com/in/mariocollaralvarez/" target="_blank">Mario
+					Collar Álvarez</a>
+			</p>
+		</main>
+		<footer></footer>
+	</body>
+</html>
