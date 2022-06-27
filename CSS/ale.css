@@ -1,4 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,600&display=swap");
 @import url(./loading.css);
+
+/* 
+font-family: 'Fredoka One', cursive;
+font-family: 'Source Serif 4', serif;
+*/
+/* 
+*#############
+* index.html
+*#############
+*/
 * {
   margin: 0;
   padding: 0;
@@ -6,60 +17,59 @@
 }
 
 html {
-  --selective-yellow: rgba(250, 192, 0, 0.993);
-  --alabaster: #ebe5dcff;
+  --selective-yellow: #f2ba04;
+  --otro-amarillo: #ffb900;
+  --alabaster: #ebe5dc;
   --camel: #b59779ff;
   --liver-organ: #642919ff;
   --liver-dogs: #b56a2dff;
+  font-family: "Source Serif 4", serif;
+  --body: #5da36f;
 }
-/* todo */
-/* 
-*#############
-* index.html
-*#############
-*/
+
 body {
   margin: 0 auto;
   background-color: var(--color2);
   height: 100vh;
-  background-color: rgb(249, 215, 181);
+  background-color: var(--body);
 }
-
+#plane {
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  background-color: var(--body);
+  /* transform: translatey(-1px); */
+}
 header h1 {
   padding: 1rem;
+  font-family: "Fredoka One";
   text-align: center;
   font-weight: bold;
-  color: rgb(95, 204, 247);
-  box-shadow: 10px 5px 5px black;
-  text-shadow: 0 0 5 px black;
+  color: var(--otro-amarillo);
+  text-shadow: 1px 1px 1px black;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 89vh;
   align-items: center;
-
-  /* justify-content: center; */
 }
-/*
-     &formulario 
- */
+/* &formulario */
 form {
-  /* debbug */
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   background-image: url(../IMG/cabecera.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   align-items: center;
 }
-/*media query + 390px*/
-
-form input {
+/*& Campo de ciudades */
+form input,
+ul {
   height: fit-content;
   margin: 1rem;
   width: 50vw;
@@ -67,40 +77,58 @@ form input {
   height: 2.5rem;
   outline: none;
   border: none;
+  text-align: center;
+  font-size: 12px;
+}
+
+form input {
   border-radius: 5px;
   text-align: center;
   font-size: 12px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-ul {
+form input#aeropuerto-salida,
+form input#aeropuerto-llegada {
+  margin-bottom: 0;
+}
+/*& Lista de sugerencias de ciudades */
+div.autocom-box ul {
   position: absolute;
+  padding: 0;
   margin: 0;
+  margin-left: 1rem;
   padding: 0;
 }
 
 li {
-  background-color: rgb(224, 252, 252, 50);
+  background-color: #97f1ae;
+  opacity: 0.98;
   list-style: none;
   padding: 8px 12px;
-  width: 75%;
+  width: 100%;
   cursor: default;
-  border-radius: 3px;
+}
+
+li:first-child {
+  border-radius: 3px 3px 0px 0px;
+}
+
+li:last-child {
+  border-radius: 0px 0px 3px 3px;
 }
 
 .autocom-box ul li.active {
-  color: #008;
-  background: #cef;
+  color: rgb(209, 209, 12);
+  background: #669072;
 }
 
 li:hover {
   background-color: rgba(0, 0, 0, 0.717);
   color: white;
 }
-#pasajeros::before {
-  content: "🕴";
-}
 
+/*& Campo de ciudades que no cumpla min 3 letras*/
 /* !IMPORTANTE llevar al ccs final */
 input:invalid:focus {
   color: red;
@@ -109,10 +137,34 @@ input:invalid:focus {
 button {
   width: fit-content;
 }
-/*
-     &Tarjeta de vuelo
- */
 
+/*&Tarjeta de error */
+.error {
+  border: 1px solid rgb(62, 61, 61);
+  background-color: #ffffff;
+  border-radius: 5px;
+  list-style: none;
+  width: 85vw;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+
+.error p:first-child {
+  font-size: 30px;
+}
+
+.error p:first-child::after {
+  content: "😰";
+}
+
+.error img {
+  width: 100%;
+}
+
+/* &Tarjeta de vuelo */
 .vuelos {
   display: flex;
   flex-direction: column;
@@ -121,14 +173,12 @@ button {
   margin: 0 auto;
   gap: 1rem;
 }
+
 article {
   margin-top: 1rem;
-  border-radius: 5px;
   list-style: none;
   width: 85vw;
-  /* 
-    ^flex section
-  */
+  /* ^flex section*/
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -137,37 +187,57 @@ article {
 .vuelos article section {
   border: 1px solid rgb(62, 61, 61);
   background-color: #ffffff;
-  border-radius: 5px;
   list-style: none;
   width: 85vw;
-  /* 
-    ^flex section
-  */
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+/*& Seccion detalles desplegables*/
+.idVuelo > section.detalle {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  opacity: 0;
+  height: 0;
+  border-bottom: 0;
+}
+.idVuelo > section.detalle p:first-child,
+.idVuelo > section.detalle p:nth-child(3) {
+  font-weight: bold;
+}
+/*&Muestra detalles*/
+.idVuelo > section.detalle.notHide {
+  opacity: 1;
+  height: fit-content;
 }
 
 .idVuelo {
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
   border: 1px solid rgb(62, 61, 61);
   background-color: #ffffff;
   box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
 }
 
+.idVuelo article {
+  padding: 0.5rem;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.idVuelo article:first-child {
+  font-weight: bold;
+}
+
 .logo {
   height: 48px;
 }
-.aerolinea {
-  background-color: blue;
-  /*justify-content: space-between; */
-  /* justify-content: space-evenly; */
-  /* justify-content: space-around; */
-}
-/*
-     !la imagen trae franjas blancas 
-*/
+
 img {
   margin-left: 0.5;
   background-color: rgb(255, 255, 255);
@@ -176,29 +246,83 @@ img {
 
 article p {
   padding: 0.5rem;
-}
-/* article p:last-child {
-  height: 100%;
-  background-color: #bdbdbdb3;
-} */
-/* 
-*#############
-* vuelo.html
-*#############
-*/
-#vueloInd section h2 {
   text-align: center;
 }
-#vueloInd section {
+
+/*&Tarjetas detalles de covid*/
+/**!Añadiddo iñaki noche del miercoles*/
+.vuelos .idVuelo .covid {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  padding-left: 3rem;
 }
-#vueloInd section > section {
-  padding: 1.5rem;
-  border: 1px solid black;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+
+.covidCard {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  border-radius: 0 0 5px 5px;
+}
+/*?imagen y pais */
+.covidCard > section {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.covidCard section:last-child {
+  border-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.covidCard section:last-child,
+.details:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.vuelos .idVuelo .detallesCovid {
+  opacity: 0;
+  height: 0;
+}
+
+/*&Muestra detalles*/
+.vuelos .idVuelo .notHide {
+  opacity: 1;
+  height: fit-content;
+}
+
+/*&Cartas noticias*/
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(10rem, calc(12rem + 8vw), 16rem);
+  overflow: hidden;
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background-color: rgba(250, 192, 0, 0.756);
+  box-shadow: 14px 14px 10px 6px rgb(0 0 0 / 10%);
+}
+
+.card__body {
+  font-size: 0.6rem;
+  padding: 0.6rem;
+}
+
+footer {
+  display: flex;
+  align-items: flex-end;
+  height: fit-content;
 }
 
 /* 
@@ -207,33 +331,41 @@ article p {
 *#############
 */
 
-/* !nuevo
-  &para pantallas de ancho menor a 350
-*/
-@media (max-width: 350px) {
+/*  &para pantallas de ancho menor a 400*/
+@media (max-width: 400px) {
   .logo {
-    height: 30px;
+    height: 20px;
   }
   article {
     font-size: 12px;
   }
 }
-/* 
-  &para pantallas de ancho mayor a 900px
-*/
+
+/* &para pantallas de ancho mayor a 900px*/
 @media (min-width: 900px) {
-  form input {
+  form input,
+  ul {
     max-width: 600px;
   }
   form {
     align-items: flex-end;
   }
+  .covidCard > section {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
 }
-/* 
-  &para pantallas de ancho mayor a 1500px
-*/
+
+/* &para pantallas de ancho mayor a 1500px*/
 @media (min-width: 1500px) {
   form input {
     margin-right: 5rem;
   }
+}
+/*transition?*/
+
+#plane:hover {
+  transform: translateX(90rem);
+  transition-duration: 3s;
 }

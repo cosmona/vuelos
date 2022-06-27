@@ -8,153 +8,221 @@ import { loadingState } from "./Modulos/carga.js";
 //& Funcion principal
 async function main() {
   //? SCOPE PRINCIPAL ORIGEN
-
-  //TODO a una línea
-  const searchWrapperORIGEN = document.querySelector(".origen .search-input"); //~DOM
-  const inputBoxORIGEN = searchWrapperORIGEN.querySelector("input"); //~DOM
-  const suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
-  //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
-  let introducidoUsuarioORIGEN = [];
+  const NUM_ADULTOS = document.getElementById("pasajeros"); //~DOM
+  const FECHA = document.getElementById("start"); //~DOM
+  
+  const INPUT_BOX_ORIGEN = document.querySelector(".origen .search-input input"); //~DOM
+  let listGroupORIGEN = document.querySelector(".origen .autocom-box ul"); //~DOM
+  let actualOrigen;
   let origen;
-  //* pedimos token
-  let res = await getToken();
-
-  //* defino función manejadora de li al hacer click en él
+  
+  const INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
+  let listGroupDESTINO = document.querySelector(".destino .autocom-box ul"); //~DOM
+  let actualDestino;
+  let destino;
+  
+  //^+ función manejadora de li al hacer click en él
   const handleClickLiORIGEN = (event) => {
-    //* Pongo en el texto del imput lo que pone en el li del click
-    let inputBoxORIGEN = document.querySelector(".origen .search-input input");
-    inputBoxORIGEN.value = event.target.innerText;
+    //* Pone en el texto del input lo que pone en el li del click
+    let INPUT_BOX_ORIGEN = document.querySelector(".origen .search-input input"); //~DOM
+    INPUT_BOX_ORIGEN.value = event.target.innerText;
 
-    //* Hago desaparecer todos los li's
-    //let suggBoxORIGEN = document.querySelector(".origen .autocom-box ul"); //!DUPLICADO
-    suggBoxORIGEN.innerHTML = ""; //! modificado inaki noche del domingo
+    //* Hace desaparecer todos los li's
+    listGroupORIGEN.innerHTML = "";
 
-    //* Guardo en el item el li donde hizo click el usuario
+    //* Guarda en el origen el li donde hizo click el usuario
     origen = event.target.id;
-    //* si hay valor en origen y destino y son diferentes
-    console.log("origen", origen);
-    console.log("destino", destino);
+
+    //* Si hay valor en origen y destino y son diferentes llama a gestionInputs
+    //* gestionInputs: funcion que llama a buscar/pintar resultados de la busqueda
     if (origen && destino) {
       if (origen != destino) {
-        console.log("Hioputa");
-        gestionInputs(origen, destino, res); //! TOKEN ADDED
+        gestionInputs(origen, destino, token);
       } else {
         console.error("Origen y destino igual (origen)");
         //! control de error capa8: si el origen y destino es igual
       }
-    }
+    } 
   };
-  //!TECLAS ORIGEN
-  // Obtener la lista, para recorrer cada elemento
-  let listGroupORIGEN = document.querySelector(".origen .autocom-box ul");
-  console.log("listGroup", listGroupORIGEN);
-  // Asignar evento al campo de texto
-  document
-    .querySelector("#aeropuerto-salida")
-    .addEventListener("keydown", (e) => {
-      console.log("dentro");
 
-      if (!listGroupORIGEN) {
-        return; // No existe la lista
-      }
-      // Obtener todos los elementos
-      let items = listGroupORIGEN.querySelectorAll("li");
-      console.log("items", items);
-      // Saber si alguno está activo
-      let actual = Array.from(items).findIndex((item) =>
-        item.classList.contains("active")
-      );
-      console.log("actual", actual);
-      // Analizar tecla pulsada
-      if (e.key == "Enter") {
-        // Tecla Enter, evitar que se procese el formulario
-        e.preventDefault();
-        // ¿Hay un elemento activo?
-        if (items[actual]) {
-          console.log("items[actual", items[actual]);
-          // Hacer clic
-          items[actual].click();
-        }
-      }
-      if (e.key == "ArrowUp" || e.key == "ArrowDown") {
-        // Flecha arriba (restar) o abajo (sumar)
-        if (items[actual]) {
-          // Solo si hay un elemento activo, eliminar clase
-          items[actual].classList.remove("active");
-        }
-        // Calcular posición del siguiente
-        actual += e.key == "ArrowUp" ? -1 : 1;
-        // Asegurar que está dentro de los límites
-        if (actual < 0) {
-          actual = 0;
-        } else if (actual >= items.length) {
-          actual = items.length - 1;
-        }
-        // Asignar clase activa
-        items[actual].classList.add("active");
-      }
-    });
-
-  //!FIN TECLA
-
-  //* escucha el teclado
-  inputBoxORIGEN.onkeyup = async (e) => {
+  //* solicita token
+  let token = await getToken();
+  
+  //*+ evento al input de origen para escuchar el teclado para sugerencias
+  INPUT_BOX_ORIGEN.addEventListener("keyup",async (e) => {
+    
+    //* especifica min 3 caracteres
     if (e.target.value.length >= 3) {
-      //* pedimos el token
-      let result = await tellAirports(inputBoxORIGEN.value.toString(), res);
-
-      //TODO revisar error undefined reading length
-      if (e.key != "ArrowUp") {
-        if (e.key != "ArrowDown") {
-          showSuggestions(result[0].data, true);
+      //* Llamadas a apis solamente cuando se escribe texto
+      if (e.key != "ArrowUp" && e.key != "ArrowDown") {
+        //* Pide listado de aeropuertos pasandole el token
+        let resultOrigen = await tellAirports(INPUT_BOX_ORIGEN.value.toString(), token);
+        //* Llama a enseñar sugerencias
+        if (resultOrigen){
+          showSuggestions(resultOrigen[0].data, true);
         }
       }
 
-      //* seleciona los li de ul
-      const listLi = document.querySelectorAll(".origen .autocom-box ul li");
-      //* asocio a cada li la funcion manejadora handleClickLi
-      for (const li of listLi) {
-        li.addEventListener("click", handleClickLiORIGEN);
-      }
-      //!subir bajar en suguerencias con teclado
+      //* Seleciona los li de sugerencias
+      const LIST_LI_ORIGEN = document.querySelectorAll(".origen .autocom-box ul li"); //~DOM
+      
+      
+      //* asocia a cada li la funcion  manejadora handleClickLiORIGEN
+      for (const li of LIST_LI_ORIGEN) { 
+         li.addEventListener("click", handleClickLiORIGEN);
+       }
+          
+      //* Si el usuario a pulsado subir o bajar Flecha arriba (restar) o abajo (sumar)
+       if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+         
+        //* Saber si alguno está activo
+        actualOrigen = Array.from(LIST_LI_ORIGEN).findIndex((item) =>{
+          return item.classList.contains("active");
+        });
+                
+        //* Solo si hay un elemento activo, eliminar clase
+        if (LIST_LI_ORIGEN[actualOrigen]) {
+         LIST_LI_ORIGEN[actualOrigen].classList.remove("active");
+        }
 
-      //!fin subir bajar en suguerencias con teclado
-    } else {
-      introducidoUsuarioORIGEN += [e.key];
-    }
-  };
+        //* Calcular posición del siguiente
+        if (e.key === "ArrowUp"){
+          actualOrigen -= 1;
+        }
+        if (e.key === "ArrowDown"){
+          actualOrigen += 1;
+        }
+              
+        //* Asegurar que está dentro de los límites
+        if (actualOrigen < 0) {
+          actualOrigen = 0;
+        } else if (actualOrigen >= LIST_LI_ORIGEN.length) {
+          actualOrigen = LIST_LI_ORIGEN.length - 1;
+        }         
+          
+        //* Asignar clase activa
+        LIST_LI_ORIGEN[actualOrigen].classList.add("active");
+      }           
 
-  //* limpia input de origen
-  inputBoxORIGEN.onclick = () => {
-    inputBoxORIGEN.select();
-  };
+        //* Si la tecla pulsada es enter emula un evento click
+        if (e.key == "Enter") {
+          //* Tecla Enter, evitar que se procese el formulario
+          e.preventDefault();
+          //* ¿Hay un elemento activo? hacer clic
+          if (LIST_LI_ORIGEN[actualOrigen]) {
+            LIST_LI_ORIGEN[actualOrigen].click();
+          }
+        }   
+        }         
+  });
 
-  //? SCOPE PRINCIPAL DESTINO
-  //TODO a una línea
-  const searchWrapperDESTINO = document.querySelector(".destino .search-input"); //~DOM
-  const inputBoxDESTINO = searchWrapperDESTINO.querySelector("input"); //~DOM
-  const suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //~DOM
-  //todo hABRIA QUE PASARLO POR PARAMETRO? A showSuggestions
-  let introducidoUsuarioDESTINO = [];
-  let destino;
-
-  //* defino función manejadora de li al hacer click en el
+  //* cuando se clica el input selecciona todo el texto
+  INPUT_BOX_ORIGEN.onclick = () => { INPUT_BOX_ORIGEN.select() };
+  
+//? SCOPE PRINCIPAL DESTINO
+  
+  //^+ función manejadora de li al hacer click en él
   const handleClickLiDESTINO = (event) => {
-    //* Pongo en el texto del imput lo que pone en el li del click
-    let inputBoxDESTINO = document.querySelector(
-      ".destino .search-input input"
-    );
-    inputBoxDESTINO.value = event.target.innerText;
+    //* Pone en el texto del imput lo que pone en el li del click
+    let INPUT_BOX_DESTINO = document.querySelector(".destino .search-input input"); //~DOM
+    INPUT_BOX_DESTINO.value = event.target.innerText;
 
-    //* Hago desaparecer todos los li's
-    //let suggBoxDESTINO = document.querySelector(".destino .autocom-box ul"); //!REPETIDA
-    suggBoxDESTINO.innerHTML = "";
+    //* Hace desaparecer todos los li's
+     listGroupDESTINO.innerHTML = "";
 
-    //* guardo en item el li donde hizo click el usuario
+    //* Guarda en el origen el li donde hizo click el usuario
     destino = event.target.id;
+
+    //* Si hay valor en origen y destino y son diferentes
     if (origen && destino) {
       if (origen != destino) {
-        gestionInputs(origen, destino, res); //!TOKEN ADDED
+        gestionInputs(origen, destino, token);
+      } else {
+        console.error("Origen y destino igual (origen)");
+        pintaVuelo(false);
+        //! control de error capa8: si el origen y destino es igual
+      }
+    } 
+  };
+  
+  //*+ evento al input de origen para escuchar el teclado para sugerencias
+  INPUT_BOX_DESTINO.addEventListener("keyup",async (e) => {
+    //* especifica min 3 caracteres
+    if (e.target.value.length >= 3) {
+
+      //* llamadas a apis solamente cuando se escribe texto
+      if (e.key != "ArrowUp" && e.key != "ArrowDown") {
+        //* Pide listado de aeropuertos pasandole el token
+        let resultDestino = await tellAirports(INPUT_BOX_DESTINO.value.toString(), token);
+        //*llama a enseñar sugerencias
+        if (resultDestino){
+          showSuggestions(resultDestino[0].data, false);
+        }
+      }
+
+      //* seleciona los li de ul de sugerencias
+      const LIST_LI_DESTINO = document.querySelectorAll(".destino .autocom-box ul li"); //~DOM
+      
+      
+      //* asocia a cada li la funcion  manejadora handleClickLi
+      for (const li of LIST_LI_DESTINO) { //! const
+         li.addEventListener("click", handleClickLiDESTINO);
+       }
+          
+      //* Si el usuario a pulsado subir o bajar Flecha arriba (restar) o abajo (sumar)
+       if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+         
+        //* Saber si alguno está activo
+        actualDestino = Array.from(LIST_LI_DESTINO).findIndex((item) =>{
+          return item.classList.contains("active");
+        });
+                
+        //* Solo si hay un elemento activo, eliminar clase
+        if (LIST_LI_DESTINO[actualDestino]) {
+         LIST_LI_DESTINO[actualDestino].classList.remove("active");
+        }
+
+        //* Calcular posición del siguiente
+        if (e.key === "ArrowUp"){
+          actualDestino -= 1;
+        }
+        if (e.key === "ArrowDown"){
+          actualDestino += 1;
+        }
+              
+        //* Asegurar que está dentro de los límites
+        if (actualDestino < 0) {
+          actualDestino = 0;
+        } else if (actualDestino >= LIST_LI_DESTINO.length) {
+          actualDestino = LIST_LI_DESTINO.length - 1;
+        }         
+          
+        //* Asignar clase activa
+        LIST_LI_DESTINO[actualDestino].classList.add("active");
+      }           
+
+        //* Si la tecla pulsada es enter emula un evento click
+        if (e.key == "Enter") {
+          //* Tecla Enter, evitar que se procese el formulario
+          e.preventDefault();
+          //* ¿Hay un elemento activo? hacer clic
+          if (LIST_LI_DESTINO[actualDestino]) {
+            LIST_LI_DESTINO[actualDestino].click();
+          }
+        }   
+        }         
+  });
+
+  //*+ cuando se clica el input selecciona todo el texto
+  INPUT_BOX_DESTINO.onclick = () => {
+    INPUT_BOX_DESTINO.select();
+  };
+
+  //*+ Evento nº de pasajeros y fecha
+  const inputAdultsDate = (event) => {
+    if (origen && destino) {
+      if (origen != destino) {
+        gestionInputs(origen, destino, token);
       } else {
         pintaVuelo(false);
         console.error("Origen y destino igual (destino)");
@@ -163,101 +231,18 @@ async function main() {
     }
   };
 
-  //!TECLAS DESTINO
-  // Obtener la lista, para recorrer cada elemento
-  let listGroupDestino = document.querySelector(".destino .autocom-box ul");
-  console.log("listGroup", listGroupDestino);
-  // Asignar evento al campo de texto
-  document
-    .querySelector("#aeropuerto-llegada")
-    .addEventListener("keydown", (e) => {
-      console.log("dentro");
+  //* escucha el imput de personas para que lance la consulta si se cambia el valor
+  NUM_ADULTOS.addEventListener("input", inputAdultsDate);
 
-      if (!listGroupDestino) {
-        return; // No existe la lista
-      }
-      // Obtener todos los elementos
-      let items = listGroupDestino.querySelectorAll("li");
-      console.log("items", items);
-      // Saber si alguno está activo
-      let actuald = Array.from(items).findIndex((item) =>
-        item.classList.contains("active")
-      );
-      console.log("actual", actuald);
-      // Analizar tecla pulsada
-      if (e.key == "Enter") {
-        // Tecla Enter, evitar que se procese el formulario
-        e.preventDefault();
-        // ¿Hay un elemento activo?
-        if (items[actuald]) {
-          // Hacer clic
-          items[actuald].click();
-        }
-      }
-      if (e.key == "ArrowUp" || e.key == "ArrowDown") {
-        // Flecha arriba (restar) o abajo (sumar)
-        if (items[actuald]) {
-          // Solo si hay un elemento activo, eliminar clase
-          items[actuald].classList.remove("active");
-        }
-        // Calcular posición del siguiente
-        actuald += e.key == "ArrowUp" ? -1 : 1;
-        // Asegurar que está dentro de los límites
-        if (actuald < 0) {
-          actuald = 0;
-        } else if (actuald >= items.length) {
-          actuald = items.length - 1;
-        }
-        // Asignar clase activa
-        items[actuald].classList.add("active");
-      }
-    });
+  //* cuando se clica el input selecciona todo el texto
+  NUM_ADULTOS.onclick = () => { NUM_ADULTOS.select(); };
 
-  //!FIN TECLA
-
-  //* escucha el teclado
-  inputBoxDESTINO.onkeyup = async (e) => {
-    if (e.target.value.length >= 3) {
-      //* pedimos listado de aeropuertos pasandole el token
-      let result = await tellAirports(inputBoxDESTINO.value.toString(), res);
-      if (e.key != "ArrowUp") {
-        if (e.key != "ArrowDown") {
-          showSuggestions(result[0].data, false);
-        }
-      }
-      //* seleciona los li de ul
-      const listLi = document.querySelectorAll(".destino ul li");
-      //* asocio a cada li la funcion manejadora handleClickLi
-      for (const li of listLi) {
-        li.addEventListener("click", handleClickLiDESTINO);
-      }
-    } else {
-      introducidoUsuarioDESTINO += [e.key];
-    }
-  };
-
-  //* limpia input de destino
-  inputBoxDESTINO.onclick = () => {
-    inputBoxDESTINO.select();
-  };
-  //?BONUS
-  //todo solicitar el token una vez y guardar FUNCIÓN > VARIABLE GLOBAL
-  //! modificado inaki noche del domingo
-  //TODO las const en mayusculas y con _
-}
+  //* Evento cambio de fecha
+  FECHA.addEventListener("change", inputAdultsDate);
+};
 /*
-? originLocation-> origen del vuelo
-? destinationLocation-> destino del vuelo
-? deptDate-> fecha de salida
-? numAdultos-> numero de personas que vuelan, al principio solo 1
-? maxFlights-> numero de vuelos que se obtendran con el API, se puede obtener 250
-? flightClass-> Economy porque no hay plata
-*/
-/*
-!  __ __ __  __  __   __  __       __  __         
+!  __ __ __  __  __   __  __       __   __         
 ! (_ /  /  \|__)|_   |__)|__)||\ |/   ||__) /\ |   
 ! __)\__\__/|   |__  |   | \ || \|\__ ||   /--\|__ 
 */
-
-//? SCOPE PRINCIPAL ORIGEN
 main();

@@ -4,53 +4,38 @@ import { vuelosDisponibles, tellAirports } from "./api.js";
 import { pintaVuelo, showSuggestions } from "./pinta.js";
 import { loadingState } from "./carga.js";
 
-//& Gestiona llamadas a los vuelos inputs origen / destino
+//&+ Gestiona llamadas a los vuelos inputs origen / destino
 async function gestionInputs(origen, destino, token) {
-  let fecha = document.getElementById("start");
-  let numAdultos = document.getElementById("pasajeros");
-  //let tituloinputORIGEN = document.getElementById("origen"); //! no se usa
+  let fecha = document.getElementById("start"); //~DOM
+  let numAdultos = document.getElementById("pasajeros"); //~DOM
 
   let originLocation = origen;
   let destinationLocation = destino;
-  let maxFlights = 11;
+  let maxFlights = 5;
   let enlace = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originLocation}&destinationLocationCode=${destinationLocation}&departureDate=${fecha.value}&adults=${numAdultos.value}&max=${maxFlights}`;
 
   //* muestra loading
-  loadingState(true); //! modificado inaki noche del domingo
+  loadingState(true);
 
   //* Origen y destino rellenados, procede a buscar vuelos
-  const sect = document.querySelector(".vuelos"); //!resuelto fetch con async
+  const sect = document.querySelector(".vuelos");
   sect.innerHTML = "";
   let result = await vuelosDisponibles(enlace, token);
+
+  //* si el listado de vuelos esta vacio manda false (error) a pintaVuelo
+  //* si no selecciona lo que hay (listado de vuelos) y se lo pasa a pintaVuelo
   if (result.data.length === 0) {
     pintaVuelo(false);
   } else {
     let domElement = document.querySelector(".vuelos"); //~DOM
-    //newArticle.style.justifyContent = "space-around"; //! estilo de la tarjeta guia
-    //console.log("newArticle", newArticle);
+    //* por cada vuelo de la lista (11)
     for (let i = 0; i < result.data.length; i++) {
-      pintaVuelo(result.data[i]);
+      pintaVuelo(result.data[i],token);
     }
   }
-  //* oculta loading
-  loadingState(false); //! modificado inaki noche del domingo
 
-  //! FUERA
-  /*   getToken().then((res) => {
-    const sect = document.querySelector(".vuelos");
-    sect.innerHTML = "";
-    vuelosDisponibles(enlace, res).then((result) => {
-      if (result.data.length === 0) {
-        pintaVuelo(false);
-      } else {
-        for (let i = 0; i < result.data.length; i++) {
-          pintaVuelo(result.data[i]);
-        }
-      }
-      //* oculta loading
-      loadingState(false); //! modificado inaki noche del domingo
-    });
-  }); */
+  //* oculta loading
+  loadingState(false);
 }
 
 export { gestionInputs };

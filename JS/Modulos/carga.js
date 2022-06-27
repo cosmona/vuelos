@@ -1,10 +1,9 @@
 "use strict";
 
-//& Carga la animacion de loading true:muestra false:oculta
+//&+ Carga la animacion de loading true:muestra false:oculta
 function loadingState(activo) {
-  //! modificado inaki noche del domingo
   let load = document.querySelector(".loading");
-
+  //!DOC css copiado de internet
   if (activo) {
     //* muestra loading
     load.style.display = "block";
