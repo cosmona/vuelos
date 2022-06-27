@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./CSS/1.css" />
+    <link
+      rel="shortcut icon"
+      href="./IMG/icons/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>FlightFinder</title>
+  </head>
+  <body>
+    <header>
+      <!-- <a href="https://iconscout.com/icons/airplane" target="_blank">Airplane Icon</a> by <a href="https://iconscout.com/contributors/fiki-a" target="_blank">Fiki Ahmadi</a>  -->
+      <img
+        id="plane"
+        src="./IMG/icons/airplane.png"
+        alt=" Airplane Icon by Fiki Ahmadi on IconScout"
+      />
+      <h1>Flight finder</h1>
+    </header>
+    <main>
+      <form name="flightForm" id="flightForm">
+        <input
+          type="date"
+          id="start"
+          name="trip-start"
+          onkeydown="return false"
+          value="2022-07-22"
+          min="2022-01-01"
+          max="2018-12-1"
+          required
+        />
+        <input
+          type="number"
+          name="pasajeros"
+          id="pasajeros"
+          min="1"
+          max="4"
+          value="1"
+        />
+        <div class="container origen">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input
+              type="text"
+              placeholder="Ciudad de salida"
+              minlength="3"
+              id="aeropuerto-salida"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="autocom-box">
+            <ul>
+              <!-- lista insertada -->
+            </ul>
+          </div>
+        </div>
+        <div class="container destino">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input
+              type="text"
+              placeholder="Ciudad de destino"
+              minlength="3"
+              id="aeropuerto-llegada"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="autocom-box">
+            <ul>
+              <!-- lista insertada -->
+            </ul>
+          </div>
+        </div>
+      </form>
+      <div class="loading"></div>
+      <section class="vuelos">
+        <!--  <article>
+          <p>AER</p>
+          <p>9:25 - 17:25</p>
+          <p>1 escala</p>
+          <p>24h 00m</p>
+          <p>1664€</p> 
+        
+        </article>-->
+      </section>
+    </main>
+    <footer>
+      Develop & Design by: Alejandra Latorraca, Iñaki Perez y Mario Collar
+      Álvarez
+    </footer>
+    <script src="./JS/main.js" type="module"></script>
+  </body>
+</html>
