@@ -4,6 +4,7 @@ font-family: 'Changa', sans-serif;
 font-family: 'Source Code Pro', monospace;
 font-family: 'Staatliches', cursive;
  */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -22,41 +23,52 @@ body {
 	display: flex;
 	justify-content: space-between;
 }
+
 main {
 	width: 75vw;
-	background-color: rgb(225, 242, 241);
+	max-width: 1100px;
+	min-width: 370px;
 	margin: 5rem;
 	padding: 3rem;
+	background-color: rgb(225, 242, 241);
 	border-radius: 15px;
 	box-shadow: rgb(13 198 68 / 29%) 0px 20px 20px 10px,
 		rgb(15 204 141 / 27%) 2px -1px 20px 13px,
 		rgb(5 130 245 / 32%) -1px 0px 12px 10px,
 		rgb(149 58 213 / 55%) 6px 0px 20px 14px, rgb(7 181 94 / 9%) 0px -3px 5px;
-	max-width: 1100px;
-	min-width: 370px;
 }
 
 h1 {
 	font-family: "Source Code Pro", monospace;
 	text-align: center;
-	font-weight: 700;
-	font-size: 6rem;
 	text-shadow: -2px -2px 2px rgba(255, 150, 150, 1);
+	font-weight: 700;
+	font-size: 5rem;
 	margin-bottom: 3rem;
 }
 
 h2 {
 	margin-top: 5rem;
+	margin-bottom: 1rem;
 	text-shadow: -2px -2px 2px rgba(255, 150, 150, 1);
 }
+
 p {
 	margin: 3rem;
 }
 
-p:nth-child(3) {
+p strong{
+	text-shadow: 8px 11px 0px rgb(255 150 150);
+
+}
+
+main p:nth-child(3) {
 	text-align: center;
 	margin: 3rem;
 }
+
+
+
 
 p:nth-child(3) a:link,
 a:visited,
@@ -87,6 +99,7 @@ p:nth-child(4):hover {
 	transform: rotate(23deg);
 }
 
+
 .fa-arrow-turn-down:before {
 	padding: 1rem;
 	/* margin-top: 1rem; */
@@ -96,5 +109,6 @@ p:nth-child(4):hover {
 }
 
 ul {
-	padding: 1rem 0 0 5rem;
+	padding: 0 0 0 5rem;
+	margin-bottom: 3rem;
 }
