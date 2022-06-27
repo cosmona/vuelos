@@ -2,7 +2,7 @@
 
 FlightFinder, o Busca Vuelos es una aplicación que se encarga de buscar los 10 primeros vuelos mas baratos entre 2 aeropuertos dados
 
-## Especificaiones dadas
+## Especificaciones dadas
 
 - La aplicación debe mostrar una página inicial con el título y un formulario con dos campos de texto y un botón.
 - Los campos de texto deben permitir introducir el código IATA 1 de 3 letras.
@@ -58,6 +58,6 @@ API que dara toda la informacion necesaria con relacion a las restricciones que 
 **_¡Importante!_**
 Esta API tiene un numero maxima de llamadas que un usuario no pago puede hacer de 200 llamadas
 
-### Desarroyadores
+### Desarrolladores
 
 Alejandra Latorraca Población, Iñaki Perez Fernández y Mario Collar Álvarez
