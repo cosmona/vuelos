@@ -28,6 +28,7 @@ Siguiendo las indicaciones dadas, esta página utiliza multiples APIs creadas po
 1- [Flight offer search](https://developers.amadeus.com/self-service/category/air/api-doc/flight-offers-search)
 2- [Airport & city search](https://developers.amadeus.com/self-service/category/air/api-doc/airport-and-city-search)
 3- [Travel restrictions](https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions)
+4- MockApi
 
 ### 1- Busca vuelos
 

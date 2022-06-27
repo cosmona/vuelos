@@ -221,15 +221,40 @@ article {
   height: 48px;
 }
 
-.card {
+
+.containerCards {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100vw;
+  overflow: hidden;
+  justify-content: space-around;
+}
+
+.card {
+  max-width: 300px;
   width: clamp(20rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
-  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-  border-radius: 1em;
+  margin-top: 1rem;
   background: #ECE9E6;
   background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  border-radius: 1rem;
+}
+
+.card p {
+  padding: 1rem;
+}
+
+.card h4 {
+  text-align: center;
+}
+
+.card span {
+  display: block;
+  text-align: center;
+  padding: 0.3rem;
+  background-color: rgba(245, 208, 87, 0.97);
   
 }
 
@@ -297,7 +322,28 @@ footer {
     display: flex;
     flex-direction: column;
   }
+  .containerCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100vw;
+    overflow: hidden;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: clamp(20rem, calc(20rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: #ECE9E6;
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    
+  }
 }
+
 /* 
   &para pantallas de ancho mayor a 900px
 */
@@ -311,6 +357,16 @@ footer {
   ul {
     width: 56vw;
   }
+  .card {
+    max-width: 300px;
+    width: clamp(20rem, calc(20rem + 2vw), 22rem);
+    overflow: hidden;
+    margin-top: 1rem;
+    background: #ECE9E6;
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    border-radius: 1rem;
+    justify-content: space-around;
+  }
 }
 /* 
   &para pantallas de ancho mayor a 1500px
@@ -318,5 +374,15 @@ footer {
 @media (min-width: 1500px) {
   form input {
     margin-right: 5rem;
+  }
+  .card {
+    max-width: 300px;
+    width: clamp(20rem, calc(20rem + 2vw), 22rem);
+    overflow: hidden;
+    margin-top: 1rem;
+    background: #ECE9E6;
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    border-radius: 1rem;
+    justify-content: space-around;
   }
 }
