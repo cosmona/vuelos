@@ -2,13 +2,10 @@
 
 FlightFinder, o Busca Vuelos es una aplicación que se encarga de buscar los 5 vuelos mas baratos entre 2 aeropuertos dados.
 
-<<<<<<< HEAD
-=======
 [CSS1](https://vuelosinaki.netlify.app/inaki.html)
 [CSS2](https://vuelosinaki.netlify.app/inaki.html)
 [CSS3](https://vuelosinaki.netlify.app/inaki.html)
 
->>>>>>> origin/Ale4
 ## Especificaciones dadas
 
 - La aplicación debe mostrar una página inicial con el título y un formulario con dos campos de texto y un botón.
@@ -45,14 +42,9 @@ La información obtenida incluye: detalles de los vuelos, posibles escalas, hora
 ### 2- Busqueda de ciudades
 
 API que recibe el nombre de las posibles ciudades y automáticamente devuelve información de las mismas, incluyendo nombre completo del aeropuerto, codigo IATA, dónde se localiza el aeropuerto, número de pasajeros que transitan por este anualmente y coordenadas, entre otras.
-<<<<<<< HEAD
-
-**_Límites_**
-=======
 
 **_Límites_**
 
->>>>>>> origin/Ale4
 Esta API solo tiene datos de destinos en:
 
 - Estados Unidos
@@ -70,11 +62,11 @@ API que dará toda la información necesaria con relación a las restricciones q
 - Regulaciones: regulaciones, zonas con mas casos, aislamiento, confinamiento, toques de queda y leyes de mascarilla.
 
 **_¡Importante!_**
-<<<<<<< HEAD
+
 Esta API tiene un número máximo de llamadas para un usuario sin pagar, puede hacer 200 llamadas.
 
 ### Desarrolladores
-=======
+
 
 Esta API tiene un número máximo de llamadas para un usuario sin pagar, puede hacer 200 llamadas.
 
@@ -86,9 +78,8 @@ Se usa esta API debido a el limite de llamadas que se nos impone en la que nos d
 
 ## Recusos
 
-Pantalla de carga: esperando recursos
+Pantalla de carga: MattIn4D
 
 ## Desarrolladores
->>>>>>> origin/Ale4
 
 Alejandra Latorraca Población, Iñaki Perez Fernández y Mario Collar Álvarez
