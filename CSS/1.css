@@ -92,6 +92,9 @@ form input#aeropuerto-salida,
 form input#aeropuerto-llegada {
   margin-bottom: 0;
 }
+form input#aeropuerto-llegada {
+  margin-top: 2rem;
+}
 /*& Lista de sugerencias de ciudades */
 div.autocom-box ul {
   position: absolute;

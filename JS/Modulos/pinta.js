@@ -6,7 +6,6 @@ import { loadingState } from "./carga.js";
 
 //&+ Pinta un vuelo
 async function pintaVuelo(vuelo, access_token) {
-  console.log('vuelo', vuelo)
   let domElement = document.querySelector(".vuelos"); //~DOM - const?
   const newArticle = document.createElement("article"); //~DOM
   
@@ -133,7 +132,6 @@ async function pintaVuelo(vuelo, access_token) {
       //~ COVID
       //^+ callback (funcion de flecha)=> consulta covid
       const datosCovid = async (access_token,aeropuertoParam) => {
-        console.log('aeropuertoParam', aeropuertoParam)
 
         //* fech covid
         let myHeaders = new Headers();
@@ -154,28 +152,22 @@ async function pintaVuelo(vuelo, access_token) {
           } catch (error) {
             console.error("COVID ERROR: ", error);
           } 
-          console.log(`response${idVuelo}`, response)
-         /*  console.log('await response.text()', await response.text()) */
           const result_1 = await response.text();
           //* Return datos covid parseados
           return JSON.parse(result_1);
        };
         
       //* pide datos del aeropuerto pasandole el codido iata
-      console.log("UMPALUMPA");
-      console.log('escalas', escalas)
       if (escalas === "Directo") {
         escalas = 0;
         
       }
       let aeropuerto = await tellAirports(vuelo.itineraries[0].segments[escalas].arrival.iataCode, access_token);
-      console.log(`aeropuerto${idVuelo}`, aeropuerto)
    
 
       //* prepara la seccion de covid
       //*+ llama a la funcion callback pasandole token y el objeto aeropuerto
       let detalleSect2 = document.createElement("section");
-      console.log('aeropuerto', aeropuerto)
       if (!aeropuerto[0].error) {
         let covid = await datosCovid(access_token, aeropuerto);
         let covidRest = covid.data.areaAccessRestriction;
@@ -211,13 +203,6 @@ async function pintaVuelo(vuelo, access_token) {
               <p>${covidRest.diseaseTesting.text}</p>
             </details>
           </section>`;
-
-        //* tarjeta del vuelo para plegar/desplegar restricciones covid
-      /*   detalleSect2.addEventListener("click", (e) => {
-          let pescador = document.querySelector(`#${e.target.id} ~ section:first-child`); //~DOM
-          console.log('pescador', pescador)
-          pescador.classList.toggle("notHide");
-        }); */
       }
       //~ FIN COVID
   }
