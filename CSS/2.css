@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url(./loading.css);
 
 /* 
 font-family: 'Fredoka One', cursive;
 font-family: 'Source Serif 4', serif;
+font-family: 'Roboto Mono', monospace;
 */
 
 * {
@@ -19,8 +21,9 @@ html {
 	--liver-organ: #642919ff;
 	--liver-dogs: #b56a2dff;
 	--background:rgb(255, 255, 255);
-  font-family: "Source Serif 4", serif;
-	font-size: 20px;
+  /* font-family: "Source Serif 4", serif; */
+  font-family: 'Roboto Mono', monospace;
+	font-size: 16px;
 }
 
 body {
@@ -59,11 +62,11 @@ main {
 
 form input {
   color: black;
-  margin: 0.5rem 0.5rem 0 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   width: 80vw;
   min-width: 300px;
   height: 2rem;
-  font-size: 0.5rem;
+  font-size: 0.9rem;
   /* outline: none; */
   border: none;
   border-radius: 12px;
@@ -115,24 +118,20 @@ input:invalid:focus { /* !IMPORTANTE llevar al ccs final */
 
 ul {
   position: absolute;
-  margin: 0rem 0.5rem 0 0.5rem;
-  max-width: 350px;
+  max-width: 396px;
   border-bottom: 5mm ridge rgb(252 185 47 / 96%);
   }
   
 li {
-  background-color: rgba(0, 0, 0, 0.717);
+  background-color: rgb(0, 0, 0);
+  font-size: 0.8rem;
   color: white;  
   list-style: none;
   padding: 8px;
   cursor: pointer;
-  font-size: 0.5rem;
   text-align: left;
 }
 
-li:first-child {
-  border-radius: 10px 10px 0 0;
-}
 
 li:hover, 
 .autocom-box ul li.active {
@@ -235,14 +234,17 @@ article {
     border-radius: 15px;
     /* background-color: #ffffff; */
     box-shadow: rgb(0 0 0) 1px 11px 20px 1px;
+    margin-bottom: 3rem;
     /* flex-wrap: wrap; */
   }
   
   .idVuelo article::after{  /** Primera oferta */
     content: "↕";
-    font-size: 1.5rem;
+    font-size: 2rem;
     top: 0;
     position: relative;
+    margin-top: 2.2rem;
+
     z-index: -99;
   }
   
@@ -270,11 +272,11 @@ article {
   }
 
   .idVuelo:first-child article::before{  /** Primera oferta */
-    content: "💸";
+    content: "🟢";
     left: 0;
     top: 0;
     position: absolute;
-    font-size: 2rem;
+    font-size: 1rem;
     padding: 0.5rem;
   }
   
@@ -305,18 +307,17 @@ article {
 
   .idVuelo article p:nth-child(2){ /**Hora salida /llegada total**/
     font-size: 2rem;
-    margin-top: 0.2rem;
+    margin-top: 2.2rem;
   }
 
   .idVuelo article p:nth-child(3){ /**escala**/
     font-size: 1.4rem;
-    margin-top: 0.1rem;
+    margin-top: 2.2rem;
   }
 
   .idVuelo article p:nth-child(4){ /**duracion**/
     font-size: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 2.2rem;
   }
 
 
@@ -329,10 +330,9 @@ article {
 
   }
 
-  .idVuelo article p:nth-child(5){
+  .idVuelo article p:nth-child(5){ /**precio*/
     font-size: 3rem;
-    margin-top: 0rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.2rem;
   }
 
 
@@ -340,9 +340,15 @@ article {
   color: green;
   }
 
-  .logo {
-    height: 96px;
-    }
+  .vuelos article article:nth-child(2) p .logo {
+    height: 56px;
+    margin-top: 2.5rem;
+  }
+  .logo{
+    height: 60px;
+  }
+
+    
 
 /*& Covid*/
 .vuelos .idVuelo .covid {
@@ -389,27 +395,32 @@ footer{
   color: white;
 }
 
+#start{
+  margin-top: 3rem;
+  }
+  
+    
+
 /*!-----------------------------------MEDIA SCREEN*/
 @media (min-width: 900px) {
 
   form {
     text-align: right;
-    height: 457px;
+    height: 352px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin: auto 3rem;
+    margin: 1rem 3rem;
     padding: 4rem 1rem;
     justify-content: space-around;
 
 }
 
-    
 form input{
+  margin: 0.5rem 0.5rem 0 0.5rem;
   min-width: 430px;
 }
 
-  
 
   
 
@@ -420,18 +431,22 @@ img {
 }
 
 .card {
+  background-color: rgba(250, 192, 0, 0.756);
   display: flex;
   flex-direction: column;
   width: clamp(20rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
-  background: #ECE9E6;
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+margin-bottom: 3rem;
   
 }
 
 
+.idVuelo article p:nth-child(5){ /**precio*/
+  font-size: 3rem;
+  margin-top: 2.2rem;
+}
 
 
 
