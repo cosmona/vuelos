@@ -112,3 +112,9 @@ ul {
 	padding: 0 0 0 5rem;
 	margin-bottom: 3rem;
 }
+
+#Software{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
